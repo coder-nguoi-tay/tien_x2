@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script src="{{ asset('js/user.js') }}?t={{ time() }}" defer></script>
+
     <script>
         window.Laravel = {!! json_encode(
             [

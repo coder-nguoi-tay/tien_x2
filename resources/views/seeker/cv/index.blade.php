@@ -21,7 +21,7 @@
                 </div>
             @endforeach
 
-            @if (!count($cv) >= 2)
+            @if (count($cv) < 2)
                 <a href="{{ route('users.file.create') }}">
                     <div class="plus-box col-sm-6 mt-4 ml-5">
                         <span class="plus-sign" style="font-weight: bold; margin-top: -20px">+</span>
@@ -33,7 +33,7 @@
     <div class="card">
         <div class="card-body row">
             <h5 class="card-title fw-semibold mb-4">Tạo cv theo mẫu của mặc định</h5>
-            <a href="{{ route('users.file.create') }}">
+            <a href="{{ route('users.file.createCv') }}">
                 <div class="plus-box col-sm-6 mt-4 ml-5">
                     <span class="plus-sign" style="font-weight: bold; margin-top: -20px">+</span>
                 </div>

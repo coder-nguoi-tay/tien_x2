@@ -52,6 +52,7 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::resource('file', ManageController::class);
     Route::prefix('file')->name('file.')->group(function () {
         Route::get('destroy/{id}', [ManageController::class, 'destroy'])->name('destroy');
+        Route::get('/cv/create-cv', [ManageController::class, 'createCv'])->name('createCv');
     });
     Route::get('apply', [ManageController::class, 'apply'])->name('apply');
     Route::get('love', [ManageController::class, 'love'])->name('love');

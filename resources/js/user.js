@@ -135,7 +135,12 @@ app.component('login-user', Login);
 import Upcv from './components/client/UploadCv.vue';
 app.component('up-cv', Upcv)
 
-
+// create form cv
+import CreateFormCv from './components/seeker/formCv/createFormCv.vue';
+app.component('create-form-cv', CreateFormCv)
+// rating cv
+import RatingCv from 'vue-star-rating'
+app.component('rating-cv', RatingCv)
 // file cv
 import createCv from './components/seeker/cv/create.vue'
 app.component('create-cv', createCv)

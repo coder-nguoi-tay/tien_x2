@@ -70,7 +70,7 @@ class ManageController extends BaseController
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -132,10 +132,14 @@ class ManageController extends BaseController
             ->join('employer', 'employer.id', '=', 'job.employer_id')
             ->join('company', 'company.id', '=', 'employer.id_company')
             ->Orderby('favourite.created_at', 'DESC')
-            ->select('job.id as id', 'job.slug as slug', 'job.title as title', 'company.id as idCompany', 'company.logo as logo', 'company.name as nameCompany', 'favourite.created_at as created_at', 'wage.name as namewage','location.name as nameLocation')
+            ->select('job.id as id', 'job.slug as slug', 'job.title as title', 'company.id as idCompany', 'company.logo as logo', 'company.name as nameCompany', 'favourite.created_at as created_at', 'wage.name as namewage', 'location.name as nameLocation')
             ->get();
         return view('seeker.love.index', [
             'love' => $love,
         ]);
+    }
+    public function createCv()
+    {
+        return view('seeker.cv.createFormCv');
     }
 }

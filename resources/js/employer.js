@@ -41,8 +41,6 @@ const app = createApp({});
 // import VueSweetalert2 from 'vue-sweetalert2'
 // import 'sweetalert2/dist/sweetalert2.min.css'
 // app.use(VueSweetalert2)
-import test from './components/ExampleComponent.vue';
-app.component('example-component', test);
 // import Resetpassword from './components/resetpassword/index.vue';
 // app.component('reset-password', Resetpassword)
 // import showPassword from './components/showpassword/show.vue';

@@ -26129,25 +26129,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js":
-/*!**********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js ***!
-  \**********************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/common/datePickerCustom.vue?vue&type=script&lang=js":
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/common/datePickerCustom.vue?vue&type=script&lang=js ***!
@@ -26575,30 +26556,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   }
 });
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: () => (/* binding */ render)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-
-var _hoisted_1 = {
-  "class": "container"
-};
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row justify-content-center\"><div class=\"col-md-8\"><div class=\"card\"><div class=\"card-header\">dqwqwdqwd</div><div class=\"card-body\"> diuqehdwqkuidwbquh </div></div></div></div>", 1);
-var _hoisted_3 = [_hoisted_2];
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
-}
 
 /***/ }),
 
@@ -63885,34 +63842,6 @@ exports["default"] = (sfc, props) => {
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _ExampleComponent_vue_vue_type_template_id_299e239e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=template&id=299e239e */ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e");
-/* harmony import */ var _ExampleComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=script&lang=js */ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js");
-/* harmony import */ var C_xampp_htdocs_tien_x2_example_app_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
-
-
-
-
-;
-const __exports__ = /*#__PURE__*/(0,C_xampp_htdocs_tien_x2_example_app_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ExampleComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ExampleComponent_vue_vue_type_template_id_299e239e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/ExampleComponent.vue"]])
-/* hot reload */
-if (false) {}
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
-
-/***/ }),
-
 /***/ "./resources/js/components/common/datePickerCustom.vue":
 /*!*************************************************************!*\
   !*** ./resources/js/components/common/datePickerCustom.vue ***!
@@ -64035,22 +63964,6 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js":
-/*!******************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js ***!
-  \******************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ExampleComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ExampleComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ExampleComponent.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js");
- 
-
-/***/ }),
-
 /***/ "./resources/js/components/common/datePickerCustom.vue?vue&type=script&lang=js":
 /*!*************************************************************************************!*\
   !*** ./resources/js/components/common/datePickerCustom.vue?vue&type=script&lang=js ***!
@@ -64112,22 +64025,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./edit.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/employer/new/edit.vue?vue&type=script&lang=js");
  
-
-/***/ }),
-
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e":
-/*!************************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e ***!
-  \************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ExampleComponent_vue_vue_type_template_id_299e239e__WEBPACK_IMPORTED_MODULE_0__.render)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ExampleComponent_vue_vue_type_template_id_299e239e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ExampleComponent.vue?vue&type=template&id=299e239e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e");
-
 
 /***/ }),
 
@@ -68988,11 +68885,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var notyf_notyf_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! notyf/notyf.min.css */ "./node_modules/notyf/notyf.min.css");
-/* harmony import */ var _components_ExampleComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue");
-/* harmony import */ var _components_employer_new_create_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/employer/new/create.vue */ "./resources/js/components/employer/new/create.vue");
-/* harmony import */ var _components_employer_new_edit_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/employer/new/edit.vue */ "./resources/js/components/employer/new/edit.vue");
-/* harmony import */ var _components_common_datePickerCustom_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/common/datePickerCustom.vue */ "./resources/js/components/common/datePickerCustom.vue");
-/* harmony import */ var _components_common_notyf_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/common/notyf.vue */ "./resources/js/components/common/notyf.vue");
+/* harmony import */ var _components_employer_new_create_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/employer/new/create.vue */ "./resources/js/components/employer/new/create.vue");
+/* harmony import */ var _components_employer_new_edit_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/employer/new/edit.vue */ "./resources/js/components/employer/new/edit.vue");
+/* harmony import */ var _components_common_datePickerCustom_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/common/datePickerCustom.vue */ "./resources/js/components/common/datePickerCustom.vue");
+/* harmony import */ var _components_common_notyf_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/common/notyf.vue */ "./resources/js/components/common/notyf.vue");
 
 // import { configure, defineRule } from 'vee-validate'
 
@@ -69035,8 +68931,6 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({});
 // import VueSweetalert2 from 'vue-sweetalert2'
 // import 'sweetalert2/dist/sweetalert2.min.css'
 // app.use(VueSweetalert2)
-
-app.component('example-component', _components_ExampleComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
 // import Resetpassword from './components/resetpassword/index.vue';
 // app.component('reset-password', Resetpassword)
 // import showPassword from './components/showpassword/show.vue';
@@ -69070,14 +68964,14 @@ app.component('example-component', _components_ExampleComponent_vue__WEBPACK_IMP
 
 // employer new
 
-app.component('create-new-employer', _components_employer_new_create_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
+app.component('create-new-employer', _components_employer_new_create_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
-app.component('edit-new-employer', _components_employer_new_edit_vue__WEBPACK_IMPORTED_MODULE_5__["default"]);
+app.component('edit-new-employer', _components_employer_new_edit_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
 
 // import ChangePasswordEmployer from "./components/employer/profile/change-password.vue";
 // app.component('change-password-employer', ChangePasswordEmployer);
 
-app.component('picker-new-employer', _components_common_datePickerCustom_vue__WEBPACK_IMPORTED_MODULE_6__["default"]);
+app.component('picker-new-employer', _components_common_datePickerCustom_vue__WEBPACK_IMPORTED_MODULE_5__["default"]);
 
 // import History from "./components/employer/profile/history.vue";
 // app.component('history', History);
@@ -69097,7 +68991,7 @@ app.component('picker-new-employer', _components_common_datePickerCustom_vue__WE
 // app.component('create-company', CretaeCompany);
 
 
-app.component("notyf", _components_common_notyf_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
+app.component("notyf", _components_common_notyf_vue__WEBPACK_IMPORTED_MODULE_6__["default"]);
 // import registerEmployer from "./components/employer/register.vue";
 // app.component('register-employer', registerEmployer);
 // import ProfileEmployer from './components/employer/profile/update.vue'
