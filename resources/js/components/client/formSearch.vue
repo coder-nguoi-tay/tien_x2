@@ -58,7 +58,8 @@
                         <ul>
                             <li class="p-2" v-for="(item, index) in data.skill" :key="item.id"
                                 :style="index > 10 && showAllSkills ? 'display: none' : ''">
-                                <input type="checkbox" class="cus" name="skill[]" v-model="item.id" :value="item.id">
+                                <input type="checkbox" class="cus" :checked="item.id == data.request.skill" name="skill[]"
+                                    :value="item.id">
                                 <span class="ml-2 cus">{{ item.label }}</span>
                             </li>
                             <span class="custom-link" @click="showAllSkills ? showAllSkills = false : showAllSkills = true">

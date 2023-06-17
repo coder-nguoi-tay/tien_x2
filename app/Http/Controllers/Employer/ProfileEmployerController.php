@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Employer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileEmployerController extends Controller
 {
@@ -14,7 +16,11 @@ class ProfileEmployerController extends Controller
      */
     public function index()
     {
-        return view('employer.profile.index');
+        $countJob = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+
+        return view('employer.profile.index', [
+            'countJob' => count($countJob->job)
+        ]);
     }
 
     /**

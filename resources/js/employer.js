@@ -79,11 +79,12 @@ app.component('create-new-employer', CreateNewEmployer);
 import EditNewEmployer from './components/employer/new/edit.vue';
 app.component('edit-new-employer', EditNewEmployer);
 
-// import ChangePasswordEmployer from "./components/employer/profile/change-password.vue";
-// app.component('change-password-employer', ChangePasswordEmployer);
 import DatePickerCustom from "./components/common/datePickerCustom.vue";
 app.component('picker-new-employer', DatePickerCustom);
 
+// create company
+import CreateCompany from './components/employer/company/create.vue';
+app.component('create-company', CreateCompany);
 // import History from "./components/employer/profile/history.vue";
 // app.component('history', History);
 

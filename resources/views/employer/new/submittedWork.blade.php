@@ -33,7 +33,7 @@
                                     @if ($item->status == 2)
                                         <span class="badge p-1 bg-danger text-white mb-2">Đã từ chối</span>
                                         <br>
-                                        <a href="#" onclick="Reason(JSON.parse('{{ $item }}'))">Lý do từ
+                                        <a href="javascript:void(0)" onclick="Reason(JSON.parse('{{ $item }}'))">Lý do từ
                                             chối</a>
                                     @endif
                                 </td>
@@ -113,16 +113,16 @@
         })
 
         function chanstatusCv(id) {
-            const url = 'change-status-cv/' + id.cv_id;
+            const url = '/employers/new/change-status-cv/' + id.cv_id;
             axios.get(url).then(function(res) {}).catch(function(error) {
                 console.log(error);
             })
         }
 
         function Reason(id) {
-            const url = 'get-data-reason/' + id.cv_id;
+            const url = '/employers/new/get-data-reason/' + id.cv_id;
             axios.get(url).then(function(res) {
-                $('#dataReasonCv').text(res.data.content);
+                $('#dataReasonCv').text(res.data.data.content);
                 $('#modalReasonCv').modal('show');
             }).catch(function(error) {
                 console.log(error);

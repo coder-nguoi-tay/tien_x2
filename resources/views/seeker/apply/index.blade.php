@@ -50,7 +50,8 @@
                                                     <span class="badge bg-dark rounded-3 fw-semibold mb-2"
                                                         style="font-size: 12px;">bị hủy</span>
                                                     <br>
-                                                    <a href="#">Lý do từ chối</a>
+                                                    <a href="#" onclick="Reason(JSON.parse('{{ $item }}'))">Lý
+                                                        do từ chối</a>
                                                 @endif
                                             </div>
                                         </td>
@@ -66,4 +67,29 @@
             </div>
         </div>
     </div>
+    {{-- modal ly do --}}
+    <div class="modal fade" id="modalReasonCv" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Lý do
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="title">
+                        <span id="dataReasonCv"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        async function Reason(id) {
+            const url = '/employers/new/get-data-reason/' + id.id;
+            await axios.get(url).then(function(res) {
+                $('#dataReasonCv').text(res.data.data.content);
+            })
+            $('#modalReasonCv').modal('show');
+        }
+    </script>
 @endsection

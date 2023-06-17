@@ -9,8 +9,10 @@ use App\Models\Accuracy;
 use App\Models\Employer;
 use App\Models\Job;
 use App\Models\Jobskill;
+use App\Models\Reason;
 use App\Models\SaveCv;
 use Carbon\Carbon;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -138,7 +140,7 @@ class NewEmployerController extends BaseController
                 ['job.id', $id],
                 // ['save_cv.status', 0],
             ])
-            ->select('users.name as user_name', 'users.images as images', 'save_cv.status as status', 'save_cv.id as cv_id', 'save_cv.file_cv as file_cv', 'save_cv.user_id as user_id', 'majors.name as majors_name', 'save_cv.created_at as create_at_sv', 'save_cv.token as token')
+            ->select('job.id as job_id', 'users.name as user_name', 'users.images as images', 'save_cv.status as status', 'save_cv.id as cv_id', 'save_cv.file_cv as file_cv', 'save_cv.user_id as user_id', 'majors.name as majors_name', 'save_cv.created_at as create_at_sv', 'save_cv.token as token')
             ->get();
         return view('employer.new.show', [
             'cv' => $cv,
@@ -237,5 +239,62 @@ class NewEmployerController extends BaseController
             $this->setFlash(__('Đã có một lỗi sảy ra'), 'error');
             return redirect()->route('employer.new.index');
         }
+    }
+    public function changeStatusCv($id)
+    {
+        $cv = SaveCv::query()->find($id);
+        $cv->status = 1;
+        $cv->save();
+        return [
+            'status' => 200
+        ];
+    }
+    public function reasonCv(Request $request)
+    {
+        try {
+            // change status
+            $cv = SaveCv::query()->find($request->cv_id);
+            $cv->status = 2;
+            if (!$cv->save()) {
+                $this->setFlash(__('Đã có một lỗi sảy ra'), 'error');
+                return back();
+            }
+            // phan hoi
+            $reason = new Reason();
+            $reason->fill($request->all());
+            if (!$reason->save()) {
+                $this->setFlash(__('Đã có một lỗi sảy ra'), 'error');
+                return back();
+            }
+            $this->setFlash(__('Phản hồi thành công'));
+            return back();
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+    }
+    public function getDataReason($id)
+    {
+        $reason = Reason::query()->where('cv_id', $id)->first();
+        return [
+            'data' => $reason,
+            'code' => 200,
+        ];
+    }
+    public function submittedWork()
+    {
+        $cv = SaveCv::query()
+            ->join('job', 'job.id', '=', 'save_cv.id_job')
+            ->leftjoin('users', 'users.id', '=', 'save_cv.user_id')
+            ->join('employer', 'employer.id', '=', 'job.employer_id')
+            ->leftjoin('majors', 'majors.id', '=', 'job.majors_id')
+            ->where([
+                ['employer.user_id', Auth::guard('user')->user()->id],
+                // ['save_cv.status', 0],
+            ])
+            ->select('job.id as job_id', 'users.name as user_name', 'users.images as images', 'save_cv.status as status', 'save_cv.id as cv_id', 'save_cv.file_cv as file_cv', 'save_cv.user_id as user_id', 'majors.name as majors_name', 'save_cv.created_at as create_at_sv', 'save_cv.token as token')
+            ->get();
+        return view('employer.new.submittedWork', [
+            'cv' => $cv
+        ]);
     }
 }

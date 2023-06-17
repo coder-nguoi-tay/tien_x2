@@ -70,7 +70,6 @@ class ManageController extends BaseController
      */
     public function show($id)
     {
-
     }
 
     /**
@@ -141,5 +140,9 @@ class ManageController extends BaseController
     public function createCv()
     {
         return view('seeker.cv.createFormCv');
+    }
+    public function deleteLoveCv($id)
+    {
+        
     }
 }

@@ -13,7 +13,8 @@
                 align-items: center;
                 font-size: 96px;
                 color: #fff;">
-                <span class="plus-sign" style="font-weight: bold; margin-top: -20px">+</span>
+                <a href="{{ route('employer.company.create') }}" class="plus-sign"
+                    style="font-weight: bold; margin-top: -20px">+</a>
             </div>
         </div>
     </div>

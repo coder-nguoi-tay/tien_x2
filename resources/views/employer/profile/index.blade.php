@@ -87,23 +87,19 @@
             <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
                 <div class="card p-4">
                     <div class=" image d-flex flex-column justify-content-center align-items-center"> <button
-                            class="btn btn-secondary"> <img src="https://i.imgur.com/wvxPV9S.png" height="100"
-                                width="100" /></button> <span class="name mt-3">{{ Auth::guard('user')->user()->name}}</span> <span
-                            class="idd">@eleanorpena</span>
-                        <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span
-                                class="idd1">Oxc4c16a645_b21a</span> <span></span> </div>
+                            class="btn btn-secondary"> <img src="{{ Auth::guard('user')->user()->images }}" height="100"
+                                width="100" /></button> <span
+                            class="name mt-3">{{ Auth::guard('user')->user()->name }}</span> <span class="idd">@
+                            {{ Auth::guard('user')->user()->slug }}</span>
                         <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span
-                                class="number">1069 <span class="follow">Bài đăng</span></span> </div>
+                                class="number">{{ $countJob }} <span class="follow">Bài
+                                    đăng</span></span> </div>
                         <div class=" d-flex mt-2"> <a href=""><i class="fas fa-edit"></i></a> </div>
                         <div class="text mt-3 text-center">
                             <span>Cảm ơn bạn đã tin tưởng và sử dụng ứng dụng của chúng tôi<br><br>
                                 Chúng tôi luôn luôn năng cấp hệ thống thường xuyên để giúp người dùng có trải nghiệm tốt
                                 nhất</span>
                         </div>
-                        <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i
-                                    class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i
-                                    class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> </div>
-                        <div class=" px-2 rounded mt-4 date "> <span class="join">Joined May,2021</span> </div>
                     </div>
                 </div>
             </div>

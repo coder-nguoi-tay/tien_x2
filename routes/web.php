@@ -56,6 +56,9 @@ Route::prefix('users')->name('users.')->group(function () {
     });
     Route::get('apply', [ManageController::class, 'apply'])->name('apply');
     Route::get('love', [ManageController::class, 'love'])->name('love');
+    Route::prefix('love')->group(function () {
+        Route::delete('delete-love-cv', [ManageController::class, 'deleteLoveCv'])->name('deleteLoveCv');
+    });
 });
 
 // logout
@@ -68,7 +71,12 @@ Route::prefix('employers')->name('employer.')->group(function () {
     Route::prefix('/new')->name('new.')->group(function () {
         Route::post('/update/{id}', [NewEmployerController::class, 'update'])->name('update');
         Route::get('/{id}', [NewEmployerController::class, 'destroy'])->name('destroy');
+        Route::get('change-status-cv/{id}', [NewEmployerController::class, 'changeStatusCv'])->name('changeStatusCv');
+        Route::post('update-reason-cv', [NewEmployerController::class, 'reasonCv'])->name('reasonCv');
+        Route::get('get-data-reason/{id}', [NewEmployerController::class, 'getDataReason'])->name('getDataReason');
     });
+    // submitted work
+    Route::get('submitted-work', [NewEmployerController::class, 'submittedWork'])->name('submittedWork');
     // 
     Route::resource('/package', PackageController::class);
     Route::resource('/profile', ProfileEmployerController::class);
@@ -78,6 +86,6 @@ Route::prefix('employers')->name('employer.')->group(function () {
         Route::get('package/payment/return', [PackageController::class, 'vnpayReturn'])->name('payment.return');
     });
     // search cv
-    Route::get('search-cv',[SearchCvController::class,'index'])->name('search.cv');
-    Route::get('cv-bought',[SearchCvController::class,'showCvBought'])->name('cvbought');
+    Route::get('search-cv', [SearchCvController::class, 'index'])->name('search.cv');
+    Route::get('cv-bought', [SearchCvController::class, 'showCvBought'])->name('cvbought');
 });
