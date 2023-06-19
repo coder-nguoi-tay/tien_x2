@@ -32,6 +32,8 @@ class HomeController extends BaseController
 
         $location = location::query()->get();
 
+        $allJob = Job::query()->get();
+
         $jobForUser = Job::query()
             ->join('employer', 'employer.id', '=', 'job.employer_id')
             ->join('company', 'company.id', '=', 'employer.id_company')
@@ -104,6 +106,7 @@ class HomeController extends BaseController
             'job' => $job,
             'location' => $location,
             'company' => $company,
+            'countJob' => $allJob->count(),
         ]);
     }
 
@@ -343,6 +346,8 @@ class HomeController extends BaseController
                 ['job.status', 1],
                 ['job.expired', 0],
             ])
+            ->with('getMajors')
+            ->with('getWage')
             ->distinct()
             ->with('getTime_work')
             ->select('job.*', 'company.logo as logo', 'company.id as idCompany', 'company.name as nameCompany')

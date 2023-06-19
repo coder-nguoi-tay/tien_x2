@@ -1,45 +1,38 @@
 <template>
     <VeeForm as="div" v-slot="{ handleSubmit }" @invalid-submit="onInvalidSubmit">
-        <form @submit="handleSubmit($event, onSubmit)" ref="formData" method="POST" :action="data.urlStore">
+        <form>
             <input type="hidden" :value="csrfToken" name="_token" />
-            <div class="form-group first">
-                <label for="username">Email</label>
-                <Field type="email" name="email" v-model="model.email" rules="required|email" id="email"
-                    class="form-control" />
+            <div class="account-popup">
+                <span class="close-popup"><i class="la la-close"></i></span>
+                <h3>Đăng nhập</h3>
+                <form @submit="handleSubmit($event, onSubmit)" ref="formData" method="POST" :action="data.urlStore">
+                    <div class="cfield">
+                        <Field type="email" name="email" v-model="model.email" rules="required|email" placeholder="Email" />
+                        <i class="la la-user"></i>
+                    </div>
+                    <ErrorMessage class="error" name="email" /> <br>
 
-            </div>
-            <ErrorMessage class="error" name="email" />
-            <div class="form-group last mb-4">
-                <label for="password">Mật khẩu</label>
-                <Field type="password" v-model="model.password" name="password" rules="required|min:8|max:16" id="password"
-                    class="form-control" />
+                    <div class="cfield">
+                        <Field type="password" v-model="model.password" name="password" rules="required|min:8|max:16"
+                            placeholder="********" />
+                        <i class="la la-key"></i>
 
-            </div>
-            <ErrorMessage class="error ml-2" name="password" />
+                    </div>
+                    <ErrorMessage class="error ml-2" name="password" /> <br>
 
-            <div class="d-flex mb-5 align-items-center">
-                <label class="control control--checkbox mb-0"><span class="caption">Remember
-                        me</span>
-                    <input type="checkbox" checked="checked" />
-                    <div class="control__indicator"></div>
-                </label>
-                <span class="ml-auto"><a href="#" class="forgot-pass">Quên mật khẩu</a></span>
-            </div>
-
-            <input type="submit" value="Log In" class="btn btn-block btn-primary">
-
-            <span class="d-block text-left my-4 text-muted">&mdash; Hoặc &mdash;</span>
-
-            <div class="social-login">
-                <a href="#" class="facebook">
-                    <span class="icon-facebook mr-3"></span>
-                </a>
-                <a href="#" class="twitter">
-                    <span class="icon-twitter mr-3"></span>
-                </a>
-                <a href="#" class="google">
-                    <span class="icon-google mr-3"></span>
-                </a>
+                    <p class="remember-label">
+                        <Field type="checkbox" name="cb" id="cb1" /><label for="cb1">Remember me</label>
+                    </p>
+                    <a href="#" title="">Forgot Password?</a>
+                    <button type="submit">Login</button>
+                </form>
+                <div class="extra-login">
+                    <span>Or</span>
+                    <div class="login-social">
+                        <a class="fb-login" href="#" title=""><i class="fa fa-facebook"></i></a>
+                        <a class="tw-login" href="#" title=""><i class="fa fa-twitter"></i></a>
+                    </div>
+                </div>
             </div>
         </form>
     </VeeForm>

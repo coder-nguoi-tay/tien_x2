@@ -20,19 +20,19 @@ final class ImageMajors extends Enum
     {
         switch ($value) {
             case self::ONE:
-                return 'http://127.0.0.1:8000/asset/imags/icone/service-icone-1.png';
+                return 'la la-bullhorn';
                 break;
             case self::Two:
-                return 'http://127.0.0.1:8000/asset/imags/icone/service-icone-2.png';
+                return 'la la-graduation-cap';
                 break;
             case self::Three:
-                return 'http://127.0.0.1:8000/asset/imags/icone/service-icone-3.png';
+                return 'la la-line-chart';
                 break;
             case self::Four:
-                return 'http://127.0.0.1:8000/asset/imags/icone/service-icone-4.png';
+                return 'la la-users';
                 break;
             case self::Five:
-                return 'http://127.0.0.1:8000/asset/imags/icone/service-icone-5.png';
+                return 'la la-phone';
                 break;
             default:
                 return '';

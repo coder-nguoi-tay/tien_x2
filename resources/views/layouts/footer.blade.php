@@ -1,55 +1,83 @@
-<footer id="footer" class="background-color-white">
-    <div class="container">
-        <div class="vertical-space-100"></div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 vertical-space-2">
-                <h5>About Us</h5>
-                <p class="paregraf">Tristique velit phasellus sed auctor leo eros luctus nibh fermentu ad impediet
-                    rhonus dolor habitant purus velit aliquet donecurna ut in turpis faucibus</p>
-                <a href="#">
-                    <i class="fa fa-facebook social-icon"></i></a>
-                <a href="#">
-                    <i class="fa fa-twitter social-icon"></i></a>
-                <a href="#">
-                    <i class="fa fa-pinterest-p social-icon"></i></a>
-                <a href="#">
-                    <i class="fa fa-map-marker social-icon"></i></a>
-            </div>
-            <div class="col-lg-2 col-md-6 vertical-space-2">
-                <h5>Company</h5>
-                <div class="text">
-                    <a href="#">About</a>
-                    <a href="#">Support</a>
-                    <a href="#">Tems</a>
-                    <a href="#">Privacy</a>
+<footer>
+    <div class="block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 column">
+                    <div class="widget">
+                        <div class="about_widget">
+                            <div class="logo">
+                                <a href="index.html" title=""><img src="{{ asset('home/images/resource/logo.png') }}"
+                                        alt="" /></a>
+                            </div>
+                            <span>Collin Street West, Victor 8007, Australia.</span>
+                            <span>+1 246-345-0695</span>
+                            <span>info@jobhunt.com</span>
+                            <div class="social">
+                                <a href="#" title=""><i class="fa fa-facebook"></i></a>
+                                <a href="#" title=""><i class="fa fa-twitter"></i></a>
+                                <a href="#" title=""><i class="fa fa-linkedin"></i></a>
+                                <a href="#" title=""><i class="fa fa-pinterest"></i></a>
+                                <a href="#" title=""><i class="fa fa-behance"></i></a>
+                            </div>
+                        </div><!-- About Widget -->
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-2 col-md-6 vertical-space-2">
-                <h5>Supports</h5>
-                <div class="text">
-                    <a href="#">About</a>
-                    <a href="#">Support</a>
-                    <a href="#">Tems</a>
-                    <a href="#">Privacy</a>
+                <div class="col-lg-4 column">
+                    <div class="widget">
+                        <h3 class="footer-title">Frequently Asked Questions</h3>
+                        <div class="link_widgets">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a href="#" title="">Privacy & Seurty </a>
+                                    <a href="#" title="">Terms of Serice</a>
+                                    <a href="#" title="">Communications </a>
+                                    <a href="#" title="">Referral Terms </a>
+                                    <a href="#" title="">Lending Licnses </a>
+                                    <a href="#" title="">Disclaimers </a>
+                                </div>
+                                <div class="col-lg-6">
+                                    <a href="#" title="">Support </a>
+                                    <a href="#" title="">How It Works </a>
+                                    <a href="#" title="">For Employers </a>
+                                    <a href="#" title="">Underwriting </a>
+                                    <a href="#" title="">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 vertical-space-2">
-                <h5>Subscribe Us</h5>
-                <p>Get latest update and newsletter</p>
-                <div class="vertical-space-30"></div>
-                <form>
-                    <input type="email" class="email " placeholder="Email Address " required="">
-                    <span class="fa fa-envelope email-icone "></span>
-                    <input type="submit" class="Subscribe" value="Subscribe">
-                </form>
+                <div class="col-lg-2 column">
+                    <div class="widget">
+                        <h3 class="footer-title">Find Jobs</h3>
+                        <div class="link_widgets">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <a href="#" title="">US Jobs</a>
+                                    <a href="#" title="">Canada Jobs</a>
+                                    <a href="#" title="">UK Jobs</a>
+                                    <a href="#" title="">Emplois en Fnce</a>
+                                    <a href="#" title="">Jobs in Deuts</a>
+                                    <a href="#" title="">Vacatures China</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 column">
+                    <div class="widget">
+                        <div class="download_widget">
+                            <a href="#" title=""><img src="{{ asset('home/images/resource/dw1.png') }}"
+                                    alt="" /></a>
+                            <a href="#" title=""><img src="{{ asset('home/images/resource/dw2.png') }}"
+                                    alt="" /></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="vertical-space-60"></div>
     </div>
-    <div class="container-fluid background-color-orange main-footer">
-        <div class="container text-center">
-            <div class="vertical-space-30"></div>
-            <p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
-        </div>
+    <div class="bottom-line">
+        <span>© 2018 Jobhunt All rights reserved. Design by Creative Layers</span>
+        <a href="#scrollup" class="scrollup" title=""><i class="la la-arrow-up"></i></a>
     </div>
 </footer>

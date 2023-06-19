@@ -1,164 +1,168 @@
 <template>
-    <div class="row" ref="targetElement">
-        <div class="col-lg-4 col-md-12">
-            <div class="Salary-Range-box">
-                <form action="#" class="search-box_search_form">
-                    <input type="text" name="key" class="search-box_search_input" :value="data.request.key"
-                        placeholder="Search Keyword">
-                    <p class="small-title">Lĩnh vực</p>
-                    <div class="search">
-                        <ul>
-                            <li class="p-2" v-for="item in data.majors" :key="item.id">
-                                <input type="radio" class="cus" :value="item.id" name="majors"
-                                    :checked="item.id == data.request.majors">
-                                <span class="ml-2 cus">{{ item.label }}</span>
-                            </li>
-                        </ul>
-                        <p class="small-title">Mức lương</p>
-                        <ul>
-                            <li class="p-2" v-for="item in data.wage" :key="item.id">
-                                <input type="radio" class="cus" :checked="item.id == data.request.wage" v-model="item.id"
-                                    :value="item.id" name="wage">
-                                <span id class="ml-2 cus">{{ item.label }}</span>
-                            </li>
-                        </ul>
-                        <p class="small-title">Chuyên ngành</p>
-                        <ul>
-                            <li class="p-2" v-for="item in data.profession" :key="item.id">
-                                <input type="radio" class="cus" :checked="item.id == data.request.profession"
-                                    v-model="item.id" :value="item.id" name="profession">
-                                <span class="ml-2 cus">{{ item.label }}</span>
-                            </li>
-                        </ul>
-                        <p class="small-title">Hình thức làm việc</p>
-                        <ul>
-                            <li class="p-2" v-for="item in data.workingform" :key="item.id">
-                                <input type="radio" class="cus" :checked="item.id == data.request.workingform"
-                                    v-model="item.id" :value="item.id" name="workingform">
-                                <span class="ml-2 cus">{{ item.label }}</span>
-                            </li>
-                        </ul>
-                        <p class="small-title">Kinh Nghiệm</p>
-                        <ul>
-                            <li class="p-2" v-for="item in data.experience" :key="item.id">
-                                <input type="radio" class="cus" :checked="item.id == data.request.experience"
-                                    v-model="item.id" :value="item.id" name="experience">
-                                <span class="ml-2 cus">{{ item.label }}</span>
-                            </li>
-                        </ul>
-                        <p class="small-title">Thời gian làm việc</p>
-                        <ul>
-                            <li class="p-2" v-for="item in data.timework" :key="item.id">
-                                <input type="radio" class="cus" :checked="item.id == data.request.timework"
-                                    v-model="item.id" :value="item.id" name="timework">
-                                <span class="ml-2 cus">{{ item.label }}</span>
-                            </li>
-                        </ul>
-                        <p class="small-title">Kỹ năng</p>
-                        <ul>
-                            <li class="p-2" v-for="(item, index) in data.skill" :key="item.id"
-                                :style="index > 10 && showAllSkills ? 'display: none' : ''">
-                                <input type="checkbox" class="cus" :checked="item.id == data.request.skill" name="skill[]"
-                                    :value="item.id">
-                                <span class="ml-2 cus">{{ item.label }}</span>
-                            </li>
-                            <span class="custom-link" @click="showAllSkills ? showAllSkills = false : showAllSkills = true">
-                                {{
-                                    showAllSkills ? 'Xem thêm..' : 'Thu lại..'
-                                }}</span>
-                        </ul>
-                        <p class="small-title">Địa chỉ</p>
-                        <ul>
-                            <li class="p-2" v-for="(item, index) in data.location" :key="item.id"
-                                :style="index > 10 && showAllLocation ? 'display: none' : ''">
-                                <input type="radio" v-model="item.id" :checked="item.id == data.request.location"
-                                    :value="item.id" name="location">
-                                <span class="ml-2 cus">{{ item.label }}</span>
-                            </li>
-                        </ul>
-                        <span class="custom-link"
-                            @click="showAllLocation ? showAllLocation = false : showAllLocation = true">
-                            {{
-                                showAllLocation ? 'Xem thêm..' : 'Thu lại..'
-                            }}</span>
-                    </div>
-                    <button class="btn btn-primary mt-4" type="submit">Lọc</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-lg-8 col-md-12" id="paginated-list">
-            <div class="detail width-100" v-for="item in data.job" :key="item.id">
-                <div class="media display-inline text-align-center render-job-search">
-                    <img :src="item.logo" class="mr-3 logo-company">
-                    <div class="media-body text-left  text-align-center">
-                        <h6 class="title-job-mobile"><a :href="url + '/viec-lam/' + item.slug + '.' + item.id"
-                                class="font-color-black">
-                                {{ item.title }}</a>
-                        </h6>
-                        <i class="large material-icons">account_balance</i>
-                        <span class="text name-company-search">{{ item.nameCompany }}</span>
-                        <br />
-                        <i class="large material-icons">place</i>
-                        <span class="text font-size name-company-search">{{ item.address }}</span>
-                        <div class="float-right margin-top text-align-center name-company-search">
-                            <a href="#" class="part-full-time">{{ item.get_time_work.name }}</a>
-                            <p class="date-time">Hạn: {{ item.end_job_time }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- paginate -->
-            <div class="job-list width-100">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 job-list">
-                        <span class="text-center p-3 name-company-search">
-                            <div id="pagination-numbers" style="margin-bottom: 20px">
-                            </div>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <!-- công việc liên quan -->
-            <div class="ralate" v-if="data.datalq.length">
-                <div class="card">
-                    <div class="card-header" style="background: #fff;">
-                        <h5>Công việc liên quan</h5>
-                    </div>
-                </div>
-                <div class="detail width-100 mt-3" v-for="item in data.datalq" :key="item.id">
-                    <div class="media display-inline text-align-center render-job-search">
-                        <img :src="item.logo" class="mr-3 logo-company">
-                        <div class="media-body text-left  text-align-center">
-                            <h6 class="title-job-mobile"><a :href="url + '/viec-lam/' + item.slug + '.' + item.id"
-                                    class="font-color-black">{{
-                                        item.title
-                                    }}</a>
-                            </h6>
-                            <i class="large material-icons">account_balance</i>
-                            <span class="text name-company-search">{{ item.nameCompany }}</span>
-                            <br />
-                            <i class="large material-icons">place</i>
-                            <span class="text font-size name-company-search">{{ item.address }}</span>
-                            <div class="float-right margin-top text-align-center name-company-search">
-                                <a href="#" class="part-full-time">{{ item.get_time_work.name }}</a>
-                                <p class="date-time">Hạn: {{ item.end_job_time }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- paginate -->
-                <div class="job-list width-100">
+    <div class="layout-search">
+        <section class="overlape">
+            <div class="block no-padding">
+                <div data-velocity="-.1"
+                    style="background: url('/home/images/resource/mslider1.jpg') repeat scroll 50% 422.28px transparent;"
+                    class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+                <div class="container fluid">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 job-list">
-                            <span class="text-center p-3 name-company-search">
-                                <div id="pagination-numbers" style="margin-bottom: 20px">
-                                </div>
-                            </span>
+                        <div class="col-lg-12">
+                            <div class="inner-header">
+                                <h3>Tìm thấy {{ data.job.length }} công việc phù hợp với bạn</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section>
+            <div class="block remove-bottom">
+                <div class="container">
+                    <div class="row no-gape">
+                        <aside class="col-lg-3 column mb-5">
+                            <form action="">
+                                <div class="widget">
+                                    <div class="search_widget_job">
+                                        <div class="field_w_search">
+                                            <input type="text" name="key" :value="data.key" placeholder="Search Keywords" />
+                                            <i class="la la-search"></i>
+                                        </div><!-- Search Widget -->
+                                        <div class="field_w_search">
+                                            <select class="form-control" name="location" style="height: 62px;">
+                                                <option v-for="item in data.location" :key="item.id" :value="item.id">
+                                                    {{ item.label }}</option>
+                                            </select>
+                                            <i class="la la-map-marker"></i>
+                                        </div><!-- Search Widget -->
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <h3 class="sb-title open">Mức lương</h3>
+                                    <div class="specialism_widget">
+                                        <div class="simple-checkbox">
+                                            <p v-for="item in data.wage" :key="item.id" @change="changeQuery(item.id)">
+                                                <input type="radio" :checked="item.id == data.request.wage"
+                                                    v-model="item.id" :value="item.id" :id="'luong' + item.id" name="wage">
+                                                <label :for="'luong' + item.id">{{ item.label }}</label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <h3 class="sb-title open">Kỹ năng</h3>
+                                    <div class="specialism_widget" style="overflow: auto;">
+                                        <div class="simple-checkbox scrollbar ss-container" style="height: 366px;">
+                                            <p v-for="item in data.skill" :key="item.id">
+                                                <input type="checkbox" :checked="item.id == data.request.skill"
+                                                    @change="changeQuery(item.id)" name="skill[]" :value="item.id"
+                                                    :id="'skill' + item.id">
+                                                <label :for="'skill' + item.id">{{ item.label }}</label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <h3 class="sb-title open">Kinh nghiệm</h3>
+                                    <div class="specialism_widget">
+                                        <div class="simple-checkbox scrollbar">
+                                            <p v-for="item in data.experience" :key="item.id">
+                                                <input type="radio" :id="'experience' + item.id"
+                                                    :checked="item.id == data.request.experience" v-model="item.id"
+                                                    :value="item.id" name="experience"><label
+                                                    :for="'experience' + item.id">{{
+                                                        item.label }}</label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <h3 class="sb-title open">Lĩnh vực</h3>
+                                    <div class="specialism_widget">
+                                        <div class="simple-checkbox scrollbar">
+                                            <p v-for="item in data.majors" :key="item.id">
+                                                <input type="radio" :value="item.id" name="majors" :id="'majors' + item.id"
+                                                    :checked="item.id == data.request.majors"><label
+                                                    :for="'majors' + item.id">{{ item.label
+                                                    }}</label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <h3 class="sb-title open">Chuyên ngành</h3>
+                                    <div class="specialism_widget">
+                                        <div class="simple-checkbox scrollbar">
+                                            <p v-for="item in data.profession" :key="item.id">
+                                                <input type="radio" :checked="item.id == data.request.profession"
+                                                    v-model="item.id" :value="item.id" :id="'profession' + item.id"
+                                                    name="profession"><label :for="'profession' + item.id">{{
+                                                        item.label }}</label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <h3 class="sb-title open">Hình thức làm việc</h3>
+                                    <div class="specialism_widget">
+                                        <div class="simple-checkbox scrollbar">
+                                            <p v-for="item in data.workingform" :key="item.id">
+                                                <input type="radio" :checked="item.id == data.request.workingform"
+                                                    v-model="item.id" :value="item.id" :id="'workingform' + item.id"
+                                                    name="workingform"><label :for="'workingform' + item.id">{{
+                                                        item.label }}</label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <h3 class="sb-title open">Thời gian làm việc</h3>
+                                    <div class="specialism_widget">
+                                        <div class="simple-checkbox scrollbar">
+                                            <p v-for="item in data.timework" :key="item.id">
+                                                <input type="radio" :checked="item.id == data.request.timework"
+                                                    v-model="item.id" :value="item.id" :id="'timework' + item.id"
+                                                    name="timework"><label :for="'timework' + item.id">{{ item.label
+                                                    }}</label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Lọc</button>
+                            </form>
+                        </aside>
+                        <div class="col-lg-9 column">
+                            <div class="emply-resume-sec" id="paginated-list">
+                                <div class="emply-resume-list square" v-for="item in data.job" :key="item.id">
+                                    <div class="render-job-search">
+                                        <div class="emply-resume-thumb">
+                                            <img :src="url + '/' + item.logo" alt="" />
+                                        </div>
+                                        <div class="emply-resume-info">
+                                            <h3><a href="#" title="" v-html="item.title"></a></h3>
+                                            <span><i v-html="item.get_majors.name"></i></span>
+                                            <p><i class="la la-map-marker"></i>{{ item.address }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="shortlists">
+                                        <a href="#" title="">{{ item.get_wage.name }}</a>
+                                    </div>
+                                </div><!-- Emply List -->
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 job-list browse-all-cat">
+                                        <span class="text-center p-3 ">
+                                            <div id="pagination-numbers" style="margin-bottom: 20px">
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -169,17 +173,7 @@ export default {
         return {
             showAllSkills: true,
             showAllLocation: true,
-            url: Laravel.baseUrl
-        }
-    },
-    mounted() {
-        const targetElement = this.$refs.targetElement;
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 300,
-                behavior: 'smooth',
-                delay: 10
-            });
+            url: Laravel.baseUrl,
         }
     },
 }
