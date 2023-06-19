@@ -31,8 +31,8 @@
                     <input type="hidden" :value="csrfToken" name="_token" />
                     <input type="hidden" :value="data.jobId" name="id_job" />
                     <div id="new-apply">
-                        <div id="frm-select-cv-online" style="padding: 32px;">
-                            <div class="p-3 rounded mx-auto d-block" style="line-height: 30px;">
+                        <div id="frm-select-cv-online">
+                            <div class="p-3 rounded mx-auto d-block">
                                 <div class="col-xs-6">
                                     <!-- up cv new -->
                                     <div v-if="active == 2">
@@ -81,7 +81,7 @@
                                                 <input type="radio" :id="'html' + cvs.id" name="cv_for_save" :value="cvs.id"
                                                     checked />
                                                 <!-- v-if="cvs.id == this.cv[0].id" -->
-                                                <label :htmlFor="'html' + cvs.id">{{ cvs.title
+                                                <label :htmlFor="'html' + cvs.id" class="ml-4">{{ cvs.title
                                                 }}<a class="text-highlight" target="_blank"
                                                         :href="url + '/' + cvs.file_cv">(Xem)</a></label><br />
                                             </li>
@@ -254,6 +254,19 @@ export default {
 
     .btn-custom-cv {
         border: 1px solid #ccc;
+    }
+
+    label ::before {
+        content: none !important;
+    }
+
+    .checkbok {
+        opacity: 1;
+        position: inherit
+    }
+
+    .border {
+        border: 1px solid #ccc !important;
     }
 }
 </style>

@@ -40,7 +40,7 @@ Route::prefix('cong-ty')->name('company.')->group(function () {
     Route::get('/', [CompanyController::class, 'index'])->name('index');
 });
 
-// home page
+// search job
 Route::get('/search', [ControllersHomeController::class, 'search'])->name('home.search');
 
 // client user

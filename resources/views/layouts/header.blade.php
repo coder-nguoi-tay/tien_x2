@@ -1,151 +1,326 @@
-<header class="header">
-
-    <div class="top_bar background-color-orange">
-        <div class="top_bar_container">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                            <ul class="top_bar_contact_list">
-                                <li>
-                                    <i class="fa fa-phone coll" aria-hidden="true"></i>
-                                    <div class="contact-no">0123 4567 8912</div>
-                                </li>
-                                <li>
-                                    <i class="fa fa-envelope coll" aria-hidden="true"></i>
-                                    <div class="email"><a
-                                            href="https://demo.technosarjan.com/cdn-cgi/l/email-protection"
-                                            class="__cf_email__"
-                                            data-cfemail="c3a6bba2aeb3afa683a9aca1b7a6ada7eda0acae">[email&#160;protected]</a>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class=" ml-auto ">
-                                <div class="search_button search"><i
-                                        class="large material-icons search-icone">search</i></div>
-                                <div class="hamburger menu_mm  search_button transparent search display"><i
-                                        class="large material-icons font-color-white  search-icone  menu_mm ">menu</i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{-- menu mobile --}}
+<div class="responsive-header">
+    <div class="responsive-menubar">
+        <div class="res-logo"><a href="{{ route('home') }}" title=""><img
+                    src="{{ asset('home/images/resource/logo.png') }}" alt="" /></a>
+        </div>
+        <div class="menu-resaction">
+            <div class="res-openmenu">
+                <img src="{{ asset('home/images/icon.png') }}" alt="" /> Menu
+            </div>
+            <div class="res-closemenu">
+                <img src="{{ asset('home/images/icon2.png') }}" alt="" /> Close
             </div>
         </div>
     </div>
-
-    <div class="header_container background-color-orange-light">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                        <div class="logo_container">
-                            <a href="{{ route('home') }}">
-                                <img src="{{ asset('asset/imags/logo.png') }}" class="logo-text" alt="">
-                            </a>
-                        </div>
-                        <nav class="main_nav_contaner ml-auto"
-                            style="display: flex;
-                        justify-content: center;
-                        align-items: center;">
-                            <ul class="main_nav mr-5">
-                                <li class="dropdown active ">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Home
-                                        <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="index.html">Home variation 1</a></li>
-                                        <li><a href="index2.html">Home variation 2</a></li>
-                                    </ul>
+    <div class="responsive-opensec">
+        <div class="responsivemenu">
+            <ul>
+                <li class="menu-item-has-children">
+                    <a href="#" title="">Home</a>
+                    <ul>
+                        <li><a href="index.html" title="">Home Layout 1</a></li>
+                        <li><a href="index2.html" title="">Home Layout 2</a></li>
+                        <li><a href="index3.html" title="">Home Layout 3</a></li>
+                        <li><a href="index4.html" title="">Home Layout 4</a></li>
+                        <li><a href="index5.html" title="">Home Layout 5</a></li>
+                        <li><a href="index6.html" title="">Home Layout 6</a></li>
+                        <li><a href="index7.html" title="">Home Layout 7</a></li>
+                        <li><a href="index8.html" title="">Home Layout 8</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="#" title="">Employers</a>
+                    <ul>
+                        <li><a href="employer_list1.html" title=""> Employer List 1</a></li>
+                        <li><a href="employer_list2.html" title="">Employer List 2</a></li>
+                        <li><a href="employer_list3.html" title="">Employer List 3</a></li>
+                        <li><a href="employer_list4.html" title="">Employer List 4</a></li>
+                        <li><a href="employer_single1.html" title="">Employer Single 1</a></li>
+                        <li><a href="employer_single2.html" title="">Employer Single 2</a></li>
+                        <li class="menu-item-has-children">
+                            <a href="#" title="">Employer Dashboard</a>
+                            <ul>
+                                <li><a href="employer_manage_jobs.html" title="">Employer Job
+                                        Manager</a></li>
+                                <li><a href="employer_packages.html" title="">Employer Packages</a></li>
+                                <li><a href="employer_post_new.html" title="">Employer Post New</a></li>
+                                <li><a href="employer_profile.html" title="">Employer Profile</a></li>
+                                <li><a href="employer_resume.html" title="">Employer Resume</a></li>
+                                <li><a href="employer_transactions.html" title="">Employer
+                                        Transaction</a></li>
+                                <li><a href="employer_job_alert.html" title="">Employer Job Alert</a>
                                 </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Job
-                                        <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="job_category.html">Job List</a></li>
-                                        <li><a href="job_detail.html">Job Detail</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="blog_page.html"> Blog</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="employer_change_password.html" title="">Employer Change
+                                        Password</a></li>
                             </ul>
-                            @if (Auth::guard('user')->check())
-                                <div class="dropdown Post-Jobs dropdown-menu-mobile">
-                                    <div class="ml-2" style="width: 200px">
-                                        <div class="title"
-                                            style="background: #fafafa;
-                                        border-radius: 20px;">
-                                            <a href="{{ route('users.profile.index', Auth::guard('user')->user()->slug) }}"
-                                                style="display: flex;
-                                        align-items: center;
-                                        justify-content: space-evenly;">
-                                                <img src="https://www.topcv.vn/images/avatar-default.jpg" width="30"
-                                                    style="border-radius: 15px ">
-                                                <span class="fullname"
-                                                    style="color: #f26522; font-weight: 500">{{ Auth::guard('user')->user()->name }}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="Post-Jobs ml-3">
-                                    <a href="{{ route('users.login.index') }}" class="">
-                                        Đăng nhập
-                                    </a>
-                                </div>
-                                <div class="Post-Jobs search-seeker">
-                                    <a href="" class="">
-                                        Đăng ký
-                                    </a>
-                                </div>
-                            @endif
-                            <div class="hamburger menu_mm menu-vertical">
-                                <i class="large material-icons font-color-white menu_mm menu-vertical">menu</i>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- menu mobiel --}}
-    <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
-        <div class="menu_close_container">
-            <div class="menu_close">
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-        <div class="search">
-            <form action="#" class="header_search_form menu_mm">
-                <input type="search" class="search_input menu_mm" placeholder="Search" required="required">
-                <button
-                    class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm">
-                    <i class="fa fa-search menu_mm" aria-hidden="true"></i>
-                </button>
-            </form>
-        </div>
-        <nav class="menu_nav">
-            <ul class="menu_mm">
-                <li class="dropdown menu_mm">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Home
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="index.html">Home 1</a></li>
-                        <li><a href="index2.html">Home 2</a></li>
+                        </li>
                     </ul>
                 </li>
-                <li class="dropdown menu_mm">
-                    <a class="dropdown-toggle menu_mm" data-toggle="dropdown" href="#">Job
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu menu_mm">
-                        <li class="menu_mm"><a href="job_category.html">Job List</a></li>
-                        <li class="menu_mm"><a href="job_detail.html">Job Detail</a></li>
+                <li class="menu-item-has-children">
+                    <a href="#" title="">Candidates</a>
+                    <ul>
+                        <li><a href="candidates_list.html" title="">Candidates List 1</a></li>
+                        <li><a href="candidates_list2.html" title="">Candidates List 2</a></li>
+                        <li><a href="candidates_list3.html" title="">Candidates List 3</a></li>
+                        <li><a href="candidates_single.html" title="">Candidates Single 1</a></li>
+                        <li><a href="candidates_single2.html" title="">Candidates Single 2</a></li>
+                        <li class="menu-item-has-children">
+                            <a href="#" title="">Candidates Dashboard</a>
+                            <ul>
+                                <li><a href="candidates_my_resume.html" title="">Candidates Resume</a>
+                                </li>
+                                <li><a href="candidates_my_resume_add_new.html" title="">Candidates
+                                        Resume new</a></li>
+                                <li><a href="candidates_profile.html" title="">Candidates Profile</a>
+                                </li>
+                                <li><a href="candidates_shortlist.html" title="">Candidates
+                                        Shortlist</a></li>
+                                <li><a href="candidates_job_alert.html" title="">Candidates Job
+                                        Alert</a></li>
+                                <li><a href="candidates_dashboard.html" title="">Candidates
+                                        Dashboard</a></li>
+                                <li><a href="candidates_cv_cover_letter.html" title="">CV Cover
+                                        Letter</a></li>
+                                <li><a href="candidates_change_password.html" title="">Change
+                                        Password</a></li>
+                                <li><a href="candidates_applied_jobs.html" title="">Candidates Applied
+                                        Jobs</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
-                <li class="menu_mm"><a href="blog_page.html">Blog</a></li>
-                <li class="menu_mm"><a href="about_us.html">About</a></li>
-                <li class="menu_mm"><a href="contact.html">Contact</a></li>
+                <li class="menu-item-has-children">
+                    <a href="#" title="">Blog</a>
+                    <ul>
+                        <li><a href="blog_list.html"> Blog List 1</a></li>
+                        <li><a href="blog_list2.html">Blog List 2</a></li>
+                        <li><a href="blog_list3.html">Blog List 3</a></li>
+                        <li><a href="blog_single.html">Blog Single</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="#" title="">Job</a>
+                    <ul>
+                        <li><a href="job_list_classic.html">Job List Classic</a></li>
+                        <li><a href="job_list_grid.html">Job List Grid</a></li>
+                        <li><a href="job_list_modern.html">Job List Modern</a></li>
+                        <li><a href="job_single1.html">Job Single 1</a></li>
+                        <li><a href="job_single2.html">Job Single 2</a></li>
+                        <li><a href="job-single3.html">Job Single 3</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="#" title="">Pages</a>
+                    <ul>
+                        <li><a href="about.html" title="">About Us</a></li>
+                        <li><a href="404.html" title="">404 Error</a></li>
+                        <li><a href="contact.html" title="">Contact Us 1</a></li>
+                        <li><a href="contact2.html" title="">Contact Us 2</a></li>
+                        <li><a href="faq.html" title="">FAQ's</a></li>
+                        <li><a href="how_it_works.html" title="">How it works</a></li>
+                        <li><a href="login.html" title="">Login</a></li>
+                        <li><a href="pricing.html" title="">Pricing Plans</a></li>
+                        <li><a href="register.html" title="">Register</a></li>
+                        <li><a href="terms_and_condition.html" title="">Terms & Condition</a></li>
+                    </ul>
+                </li>
             </ul>
-        </nav>
+        </div>
+        @if (!Auth::guard('user')->check())
+            <div class="btn-extars">
+                <ul class="account-btns">
+                    <li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
+                    <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i>
+                            Login</a></li>
+                </ul>
+            </div>
+        @else
+            <div class="btns-profiles-sec">
+                <span><img src="{{ asset('home/images/resource/profile.jpg') }}"
+                        alt="">{{ Auth::guard('user')->user()->name }}<i class="la la-angle-down"></i></span>
+                <ul>
+                    <li><a href="employer_profile.html" title=""><i class="la la-file-text"></i>Thông tin
+                            cá nhân</a></li>
+                    <li><a href="employer_manage_jobs.html" title=""><i class="la la-briefcase"></i>Công
+                            việc đã ứng tuyển</a></li>
+                    <li><a href="employer_transactions.html" title=""><i class="la la-money"></i>Công việc
+                            đã ưu thích</a></li>
+                    <li><a href="employer_resume.html" title=""><i class="la la-paper-plane"></i>Công việc
+                            đã nộp</a>
+                    </li>
+                    <li><a href="employer_packages.html" title=""><i class="la la-user"></i>Quản lý CV</a>
+                    </li>
+                    <li><a href="employer_change_password.html" title=""><i class="la la-lock"></i>Đổi mật
+                            khẩu</a></li>
+                    <li><a href="{{ route('logout') }}" title=""><i class="la la-unlink"></i>Logout</a>
+                    </li>
+                </ul>
+            </div>
+        @endif
+    </div>
+</div>
+{{-- header --}}
+<header class="stick-top forsticky">
+    <div class="menu-sec">
+        <div class="container">
+            <div class="logo">
+                <a href="{{ route('home') }}" title=""><img class="hidesticky"
+                        src="{{ asset('home/images/resource/logo.png') }}" alt="" /><img class="showsticky"
+                        src="{{ asset('home/images/resource/logo10.png') }}" alt="" /></a>
+            </div>
+            <!-- Logo -->
+            @if (!Auth::guard('user')->check())
+                <div class="btn-extars">
+                    <ul class="account-btns">
+                        <li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
+                        <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i>
+                                Login</a></li>
+                    </ul>
+                </div>
+            @else
+                <div class="btns-profiles-sec">
+                    <span><img src="{{ asset('home/images/resource/profile.jpg') }}"
+                            alt="">{{ Auth::guard('user')->user()->name }}<i
+                            class="la la-angle-down"></i></span>
+                    <ul>
+                        <li><a href="{{ route('users.profile.index', Auth::guard('user')->user()->slug) }}"
+                                title=""><i class="la la-file-text"></i>Thông tin
+                                cá nhân</a></li>
+                        <li><a href="employer_manage_jobs.html" title=""><i class="la la-briefcase"></i>Công
+                                việc đã ứng tuyển</a></li>
+                        <li><a href="employer_transactions.html" title=""><i class="la la-money"></i>Công việc
+                                đã ưu thích</a></li>
+                        <li><a href="employer_resume.html" title=""><i class="la la-paper-plane"></i>Công việc
+                                đã nộp</a>
+                        </li>
+                        <li><a href="employer_packages.html" title=""><i class="la la-user"></i>Quản lý CV</a>
+                        </li>
+                        <li><a href="employer_change_password.html" title=""><i class="la la-lock"></i>Đổi mật
+                                khẩu</a></li>
+                        <li><a href="{{ route('logout') }}" title=""><i class="la la-unlink"></i>Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            @endif
+
+            <!-- Btn Extras -->
+            <nav>
+                <ul>
+                    <li class="menu-item-has-children">
+                        <a href="#" title="">Home</a>
+                        <ul>
+                            <li><a href="index.html" title="">Home Layout 1</a></li>
+                            <li><a href="index2.html" title="">Home Layout 2</a></li>
+                            <li><a href="index3.html" title="">Home Layout 3</a></li>
+                            <li><a href="index4.html" title="">Home Layout 4</a></li>
+                            <li><a href="index5.html" title="">Home Layout 5</a></li>
+                            <li><a href="index6.html" title="">Home Layout 6</a></li>
+                            <li><a href="index7.html" title="">Home Layout 7</a></li>
+                            <li><a href="index8.html" title="">Home Layout 8</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#" title="">Employers</a>
+                        <ul>
+                            <li><a href="employer_list1.html" title=""> Employer List 1</a></li>
+                            <li><a href="employer_list2.html" title="">Employer List 2</a></li>
+                            <li><a href="employer_list3.html" title="">Employer List 3</a></li>
+                            <li><a href="employer_list4.html" title="">Employer List 4</a></li>
+                            <li><a href="employer_single1.html" title="">Employer Single 1</a></li>
+                            <li><a href="employer_single2.html" title="">Employer Single 2</a></li>
+                            <li class="menu-item-has-children">
+                                <a href="#" title="">Employer Dashboard</a>
+                                <ul>
+                                    <li><a href="employer_manage_jobs.html" title="">Employer Job
+                                            Manager</a></li>
+                                    <li><a href="employer_packages.html" title="">Employer Packages</a>
+                                    </li>
+                                    <li><a href="employer_post_new.html" title="">Employer Post New</a>
+                                    </li>
+                                    <li><a href="employer_profile.html" title="">Employer Profile</a>
+                                    </li>
+                                    <li><a href="employer_resume.html" title="">Employer Resume</a></li>
+                                    <li><a href="employer_transactions.html" title="">Employer
+                                            Transaction</a></li>
+                                    <li><a href="employer_job_alert.html" title="">Employer Job
+                                            Alert</a></li>
+                                    <li><a href="employer_change_password.html" title="">Employer Change
+                                            Password</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#" title="">Candidates</a>
+                        <ul>
+                            <li><a href="candidates_list.html" title="">Candidates List 1</a></li>
+                            <li><a href="candidates_list2.html" title="">Candidates List 2</a></li>
+                            <li><a href="candidates_list3.html" title="">Candidates List 3</a></li>
+                            <li><a href="candidates_single.html" title="">Candidates Single 1</a></li>
+                            <li><a href="candidates_single2.html" title="">Candidates Single 2</a></li>
+                            <li class="menu-item-has-children">
+                                <a href="#" title="">Candidates Dashboard</a>
+                                <ul>
+                                    <li><a href="candidates_my_resume.html" title="">Candidates
+                                            Resume</a></li>
+                                    <li><a href="candidates_my_resume_add_new.html" title="">Candidates
+                                            Resume new</a></li>
+                                    <li><a href="candidates_profile.html" title="">Candidates
+                                            Profile</a></li>
+                                    <li><a href="candidates_shortlist.html" title="">Candidates
+                                            Shortlist</a></li>
+                                    <li><a href="candidates_job_alert.html" title="">Candidates Job
+                                            Alert</a></li>
+                                    <li><a href="candidates_dashboard.html" title="">Candidates
+                                            Dashboard</a></li>
+                                    <li><a href="candidates_cv_cover_letter.html" title="">CV Cover
+                                            Letter</a></li>
+                                    <li><a href="candidates_change_password.html" title="">Change
+                                            Password</a></li>
+                                    <li><a href="candidates_applied_jobs.html" title="">Candidates
+                                            Applied Jobs</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#" title="">Blog</a>
+                        <ul>
+                            <li><a href="blog_list.html"> Blog List 1</a></li>
+                            <li><a href="blog_list2.html">Blog List 2</a></li>
+                            <li><a href="blog_list3.html">Blog List 3</a></li>
+                            <li><a href="blog_single.html">Blog Single</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#" title="">Job</a>
+                        <ul>
+                            <li><a href="job_list_classic.html">Job List Classic</a></li>
+                            <li><a href="job_list_grid.html">Job List Grid</a></li>
+                            <li><a href="job_list_modern.html">Job List Modern</a></li>
+                            <li><a href="job_single1.html">Job Single 1</a></li>
+                            <li><a href="job_single2.html">Job Single 2</a></li>
+                            <li><a href="job-single3.html">Job Single 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#" title="">Pages</a>
+                        <ul>
+                            <li><a href="about.html" title="">About Us</a></li>
+                            <li><a href="404.html" title="">404 Error</a></li>
+                            <li><a href="contact.html" title="">Contact Us 1</a></li>
+                            <li><a href="contact2.html" title="">Contact Us 2</a></li>
+                            <li><a href="faq.html" title="">FAQ's</a></li>
+                            <li><a href="how_it_works.html" title="">How it works</a></li>
+                            <li><a href="login.html" title="">Login</a></li>
+                            <li><a href="pricing.html" title="">Pricing Plans</a></li>
+                            <li><a href="register.html" title="">Register</a></li>
+                            <li><a href="terms_and_condition.html" title="">Terms & Condition</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav><!-- Menus -->
+        </div>
     </div>
 </header>

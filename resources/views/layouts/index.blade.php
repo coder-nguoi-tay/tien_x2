@@ -1,31 +1,27 @@
-<!doctype html>
-<html lang="zxx">
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from creativelayers.net/themes/jobhunt-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Jun 2023 05:37:28 GMT -->
 
 <head>
-    <meta charset="utf-8">
-    <meta name="author" content="John Doe">
-    <meta name="description" content="">
-    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="csrf-token" value="{{ csrf_token() }}">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="CreativeLayers">
 
-    <title>Home</title>
-
-    <script src="{{ asset('asset/js/4n2NXumNjtg5LPp6VXLlDicTUfA.js') }}"></script>
-    <link rel="apple-touch-icon" href="{{ asset('asset/images/apple-touch-icon.html') }}">
-    <link rel="shortcut icon" type="image/ico" href="{{ asset('asset/images/favicon.html') }}" />
-
-    <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}">
-
-    <link href="{{ asset('asset/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-
-    <link href="{{ asset('asset/css/matrialize.css') }}" rel="stylesheet">
-
-    <link href="{{ asset('asset/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-
-    <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
-
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/css/bootstrap-grid.css') }}" />
+    <link rel="stylesheet" href="{{ asset('home/css/icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('home/css/animate.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/css/responsive.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/css/chosen.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/css/colors/colors.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/css/bootstrap.css') }}" />
+    <link rel="stylesheet"
+        href="{{ asset('home/maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
     <script>
         window.Laravel = {!! json_encode(
             [
@@ -35,47 +31,43 @@
             JSON_UNESCAPED_UNICODE,
         ) !!};
     </script>
+
 </head>
 
 <body id="app">
-    {{-- header --}}
-    @include('layouts.header')
-    @if (session()->get('Message.flash'))
-        <notyf :data="{{ json_encode(session()->get('Message.flash')[0]) }}"></notyf>
-    @endif
-    @php
-        session()->forget('Message.flash');
-    @endphp
-    @yield('home')
 
-    {{-- footer --}}
-
-    @include('layouts.footer')
-
-    <div class="modal" id="myModal">
-        <div class="container">
-            <div class="vertical-space-85"></div>
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-
-                    <div class="modal-body">
-                        <button class="button button-rounded  close" data-dismiss="modal">&times;</button>
-                        <video class="" controls>
-                            <source src="{{ asset('asset/video/Pexels_Videos_2706.mp4') }}" type="video/mp4">
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="page-loading">
+        <img src="{{ asset('home/images/loader.gif') }}" alt="" />
     </div>
 
-    <script data-cfasync="false" src="{{ asset('asset/js/email-decode.min.js') }}"></script>
-    <script src="{{ asset('asset/js/jquery.min.js') }}"></script>
+    <div class="theme-layout" id="scrollup">
+
+        {{-- head --}}
+        @include('layouts.header')
+        @if (session()->get('Message.flash'))
+            <notyf :data="{{ json_encode(session()->get('Message.flash')[0]) }}"></notyf>
+        @endif
+        @php
+            session()->forget('Message.flash');
+        @endphp
+        @yield('home')
+
+        {{-- footer --}}
+        @include('layouts.footer')
+    </div>
+
     <script src="{{ asset('js/user.js') }}?t={{ time() }}" defer></script>
-    <script src="{{ asset('asset/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('asset/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('asset/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('asset/js/custom.js') }}"></script>
+    <script src="{{ asset('home/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('home/js/modernizr.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('home/js/script.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('home/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('home/js/wow.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('home/js/slick.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('home/js/parallax.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('home/js/select-chosen.js') }}" type="text/javascript"></script>
+
 </body>
+
+<!-- Mirrored from creativelayers.net/themes/jobhunt-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Jun 2023 05:37:35 GMT -->
 
 </html>
