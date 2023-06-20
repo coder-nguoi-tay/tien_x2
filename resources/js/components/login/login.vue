@@ -1,40 +1,39 @@
 <template>
     <VeeForm as="div" v-slot="{ handleSubmit }" @invalid-submit="onInvalidSubmit">
-        <form>
-            <input type="hidden" :value="csrfToken" name="_token" />
-            <div class="account-popup">
-                <span class="close-popup"><i class="la la-close"></i></span>
-                <h3>Đăng nhập</h3>
-                <form @submit="handleSubmit($event, onSubmit)" ref="formData" method="POST" :action="data.urlStore">
-                    <div class="cfield">
-                        <Field type="email" name="email" v-model="model.email" rules="required|email" placeholder="Email" />
-                        <i class="la la-user"></i>
-                    </div>
-                    <ErrorMessage class="error" name="email" /> <br>
 
-                    <div class="cfield">
-                        <Field type="password" v-model="model.password" name="password" rules="required|min:8|max:16"
-                            placeholder="********" />
-                        <i class="la la-key"></i>
+        <div class="account-popup">
+            <span class="close-popup"><i class="la la-close"></i></span>
+            <h3>Đăng nhập</h3>
+            <form @submit="handleSubmit($event, onSubmit)" ref="formData" method="POST" :action="data.urlStore">
+                <input type="hidden" :value="csrfToken" name="_token" />
+                <div class="cfield">
+                    <Field type="email" name="email" v-model="model.email" rules="required|email" placeholder="Email" />
+                    <i class="la la-user"></i>
+                </div>
+                <ErrorMessage class="error" name="email" /> <br>
 
-                    </div>
-                    <ErrorMessage class="error ml-2" name="password" /> <br>
+                <div class="cfield">
+                    <Field type="password" v-model="model.password" name="password" rules="required|min:8|max:16"
+                        placeholder="********" />
+                    <i class="la la-key"></i>
 
-                    <p class="remember-label">
-                        <Field type="checkbox" name="cb" id="cb1" /><label for="cb1">Remember me</label>
-                    </p>
-                    <a href="#" title="">Forgot Password?</a>
-                    <button type="submit">Login</button>
-                </form>
-                <div class="extra-login">
-                    <span>Or</span>
-                    <div class="login-social">
-                        <a class="fb-login" href="#" title=""><i class="fa fa-facebook"></i></a>
-                        <a class="tw-login" href="#" title=""><i class="fa fa-twitter"></i></a>
-                    </div>
+                </div>
+                <ErrorMessage class="error ml-2" name="password" /> <br>
+
+                <p class="remember-label">
+                    <Field type="checkbox" name="cb" id="cb1" /><label for="cb1">Remember me</label>
+                </p>
+                <a href="#" title="">Forgot Password?</a>
+                <button type="submit">Login</button>
+            </form>
+            <div class="extra-login">
+                <span>Or</span>
+                <div class="login-social">
+                    <a class="fb-login" href="#" title=""><i class="fa fa-facebook"></i></a>
+                    <a class="tw-login" href="#" title=""><i class="fa fa-twitter"></i></a>
                 </div>
             </div>
-        </form>
+        </div>
     </VeeForm>
 </template>
   
