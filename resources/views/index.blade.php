@@ -103,7 +103,7 @@
                         <div class="simple-text-block">
                             <h3>Make a Difference with Your Online Resume!</h3>
                             <span>Your resume in minutes with JobHunt resume assistant is ready!</span>
-                            <a href="#" title="">Create an Account</a>
+                            <a href="" title="">Create an Account</a>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                                 @foreach ($majors as $value)
                                     <div class="col-lg-3 col-md-3 col-sm-6">
                                         <div class="p-category">
-                                            <a href="#" title="">
+                                            <a href="" title="">
                                                 <i class="{{ $value->image_majors }}"></i>
                                                 <span>{{ $value->name }}</span>
                                                 <p>({{ count($value->majors) }} Việc làm)</p>
@@ -249,23 +249,23 @@
                         </div><!-- Heading -->
                         <div class="comp-sec">
                             <div class="company-img">
-                                <a href="#" title=""><img src="{{ asset('home/images/resource/cc1.jpg') }}"
+                                <a href="" title=""><img src="{{ asset('home/images/resource/cc1.jpg') }}"
                                         alt="" /></a>
                             </div><!-- Client  -->
                             <div class="company-img">
-                                <a href="#" title=""><img src="{{ asset('home/images/resource/cc2.jpg') }}"
+                                <a href="" title=""><img src="{{ asset('home/images/resource/cc2.jpg') }}"
                                         alt="" /></a>
                             </div><!-- Client  -->
                             <div class="company-img">
-                                <a href="#" title=""><img src="{{ asset('home/images/resource/cc3.jpg') }}"
+                                <a href="" title=""><img src="{{ asset('home/images/resource/cc3.jpg') }}"
                                         alt="" /></a>
                             </div><!-- Client  -->
                             <div class="company-img">
-                                <a href="#" title=""><img src="{{ asset('home/images/resource/cc4.jpg') }}"
+                                <a href="" title=""><img src="{{ asset('home/images/resource/cc4.jpg') }}"
                                         alt="" /></a>
                             </div><!-- Client  -->
                             <div class="company-img">
-                                <a href="#" title=""><img src="{{ asset('home/images/resource/cc5.jpg') }}"
+                                <a href="" title=""><img src="{{ asset('home/images/resource/cc5.jpg') }}"
                                         alt="" /></a>
                             </div><!-- Client  -->
                         </div>
@@ -293,20 +293,20 @@
                                 <div class="col-lg-4">
                                     <div class="my-blog">
                                         <div class="blog-thumb">
-                                            <a href="#" title=""><img
+                                            <a href="" title=""><img
                                                     src="{{ asset('home/images/resource/b1.jpg') }}"
                                                     alt="" /></a>
                                             <div class="blog-metas">
-                                                <a href="#" title="">March 29, 2017</a>
-                                                <a href="#" title="">0 Comments</a>
+                                                <a href="" title="">March 29, 2017</a>
+                                                <a href="" title="">0 Comments</a>
                                             </div>
                                         </div>
                                         <div class="blog-details">
-                                            <h3><a href="#" title="">Attract More Attention Sales And
+                                            <h3><a href="" title="">Attract More Attention Sales And
                                                     Profits</a></h3>
                                             <p>A job is a regular activity performed in exchange becoming an
                                                 employee, volunteering, </p>
-                                            <a href="#" title="">Read More <i
+                                            <a href="" title="">Read More <i
                                                     class="la la-long-arrow-right"></i></a>
                                         </div>
                                     </div>
@@ -314,20 +314,20 @@
                                 <div class="col-lg-4">
                                     <div class="my-blog">
                                         <div class="blog-thumb">
-                                            <a href="#" title=""><img
+                                            <a href="" title=""><img
                                                     src="{{ asset('home/images/resource/b2.jpg') }}"
                                                     alt="" /></a>
                                             <div class="blog-metas">
-                                                <a href="#" title="">March 29, 2017</a>
-                                                <a href="#" title="">0 Comments</a>
+                                                <a href="" title="">March 29, 2017</a>
+                                                <a href="" title="">0 Comments</a>
                                             </div>
                                         </div>
                                         <div class="blog-details">
-                                            <h3><a href="#" title="">11 Tips to Help You Get New
+                                            <h3><a href="" title="">11 Tips to Help You Get New
                                                     Clients</a></h3>
                                             <p>A job is a regular activity performed in exchange becoming an
                                                 employee, volunteering, </p>
-                                            <a href="#" title="">Read More <i
+                                            <a href="" title="">Read More <i
                                                     class="la la-long-arrow-right"></i></a>
                                         </div>
                                     </div>
@@ -335,20 +335,20 @@
                                 <div class="col-lg-4">
                                     <div class="my-blog">
                                         <div class="blog-thumb">
-                                            <a href="#" title=""><img
+                                            <a href="" title=""><img
                                                     src="{{ asset('home/images/resource/b3.jpg') }}"
                                                     alt="" /></a>
                                             <div class="blog-metas">
-                                                <a href="#" title="">March 29, 2017</a>
-                                                <a href="#" title="">0 Comments</a>
+                                                <a href="" title="">March 29, 2017</a>
+                                                <a href="" title="">0 Comments</a>
                                             </div>
                                         </div>
                                         <div class="blog-details">
-                                            <h3><a href="#" title="">An Overworked Newspaper
+                                            <h3><a href="" title="">An Overworked Newspaper
                                                     Editor</a></h3>
                                             <p>A job is a regular activity performed in exchange becoming an
                                                 employee, volunteering, </p>
-                                            <a href="#" title="">Read More <i
+                                            <a href="" title="">Read More <i
                                                     class="la la-long-arrow-right"></i></a>
                                         </div>
                                     </div>
@@ -424,8 +424,8 @@
             <div class="extra-login">
                 <span>Or</span>
                 <div class="login-social">
-                    <a class="fb-login" href="#" title=""><i class="fa fa-facebook"></i></a>
-                    <a class="tw-login" href="#" title=""><i class="fa fa-twitter"></i></a>
+                    <a class="fb-login" href="" title=""><i class="fa fa-facebook"></i></a>
+                    <a class="tw-login" href="" title=""><i class="fa fa-twitter"></i></a>
                 </div>
             </div>
         </div>

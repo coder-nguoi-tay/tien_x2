@@ -117,7 +117,7 @@
                                 <span class="timeline-badge-border d-block flex-shrink-0"></span>
                             </div>
                             <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">New sale recorded
-                                <a href="javascript:void(0)" class="text-primary d-block fw-normal">#ML-3467</a>
+                                <a href="" class="text-primary d-block fw-normal">#ML-3467</a>
                             </div>
                         </li>
                         <li class="timeline-item d-flex position-relative overflow-hidden">
@@ -136,7 +136,7 @@
                                 <span class="timeline-badge-border d-block flex-shrink-0"></span>
                             </div>
                             <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">New sale recorded
-                                <a href="javascript:void(0)" class="text-primary d-block fw-normal">#ML-3467</a>
+                                <a href="" class="text-primary d-block fw-normal">#ML-3467</a>
                             </div>
                         </li>
                         <li class="timeline-item d-flex position-relative overflow-hidden">
@@ -277,9 +277,9 @@
         <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
                 <div class="position-relative">
-                    <a href="javascript:void(0)"><img src="{{ asset('employer/images/products/s4.jpg') }}"
+                    <a href=""><img src="{{ asset('employer/images/products/s4.jpg') }}"
                             class="card-img-top rounded-0" alt="..."></a>
-                    <a href="javascript:void(0)"
+                    <a href=""
                         class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
                         data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
                             class="ti ti-basket fs-4"></i></a>
@@ -290,15 +290,15 @@
                         <h6 class="fw-semibold fs-4 mb-0">$50 <span
                                 class="ms-2 fw-normal text-muted fs-3"><del>$65</del></span></h6>
                         <ul class="list-unstyled d-flex align-items-center mb-0">
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -308,9 +308,9 @@
         <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
                 <div class="position-relative">
-                    <a href="javascript:void(0)"><img src="{{ asset('employer/images/products/s5.jpg') }}"
+                    <a href=""><img src="{{ asset('employer/images/products/s5.jpg') }}"
                             class="card-img-top rounded-0" alt="..."></a>
-                    <a href="javascript:void(0)"
+                    <a href=""
                         class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
                         data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
                             class="ti ti-basket fs-4"></i></a>
@@ -321,15 +321,15 @@
                         <h6 class="fw-semibold fs-4 mb-0">$650 <span
                                 class="ms-2 fw-normal text-muted fs-3"><del>$900</del></span></h6>
                         <ul class="list-unstyled d-flex align-items-center mb-0">
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -339,9 +339,9 @@
         <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
                 <div class="position-relative">
-                    <a href="javascript:void(0)"><img src="{{ asset('employer/images/products/s7.jpg') }}"
+                    <a href=""><img src="{{ asset('employer/images/products/s7.jpg') }}"
                             class="card-img-top rounded-0" alt="..."></a>
-                    <a href="javascript:void(0)"
+                    <a href=""
                         class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
                         data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
                             class="ti ti-basket fs-4"></i></a>
@@ -352,15 +352,15 @@
                         <h6 class="fw-semibold fs-4 mb-0">$150 <span
                                 class="ms-2 fw-normal text-muted fs-3"><del>$200</del></span></h6>
                         <ul class="list-unstyled d-flex align-items-center mb-0">
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -370,9 +370,9 @@
         <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
                 <div class="position-relative">
-                    <a href="javascript:void(0)"><img src="{{ asset('employer/images/products/s11.jpg') }}"
+                    <a href=""><img src="{{ asset('employer/images/products/s11.jpg') }}"
                             class="card-img-top rounded-0" alt="..."></a>
-                    <a href="javascript:void(0)"
+                    <a href=""
                         class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
                         data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
                             class="ti ti-basket fs-4"></i></a>
@@ -383,15 +383,15 @@
                         <h6 class="fw-semibold fs-4 mb-0">$285 <span
                                 class="ms-2 fw-normal text-muted fs-3"><del>$345</del></span></h6>
                         <ul class="list-unstyled d-flex align-items-center mb-0">
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="me-1" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
-                            <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a>
+                            <li><a class="" href=""><i class="ti ti-star text-warning"></i></a>
                             </li>
                         </ul>
                     </div>
