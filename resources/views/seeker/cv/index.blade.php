@@ -9,7 +9,7 @@
                         <img src="https://dxwd4tssreb4w.cloudfront.net/image/3c049c5a64e59f365cd7ca1724a326b6" alt="">
                     </div>
                     <div class="box-info">
-                        <h4 class="title-cv mt-2"><a href="{{ $item->file_cv }}" target="_blank">{{ $item->title }}</a>
+                        <h4 class="title-cv mt-2"><a href="/{{ $item->file_cv }}" target="_blank">{{ $item->title }}</a>
                         </h4>
                         <ul class="action d-flex">
                             <li><a href="" class="btn btn-sm btn-primary bold tcv-tooltip"><i

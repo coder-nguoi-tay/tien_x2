@@ -53,6 +53,7 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::prefix('file')->name('file.')->group(function () {
         Route::get('destroy/{id}', [ManageController::class, 'destroy'])->name('destroy');
         Route::get('/cv/create-cv', [ManageController::class, 'createCv'])->name('createCv');
+        Route::post('/cv/create-cv', [ManageController::class, 'createFormCv'])->name('createFormCv');
     });
     Route::get('apply', [ManageController::class, 'apply'])->name('apply');
     Route::get('love', [ManageController::class, 'love'])->name('love');

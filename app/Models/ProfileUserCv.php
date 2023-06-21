@@ -42,7 +42,7 @@ class ProfileUserCv extends Model
     /**
      * @var array
      */
-    protected $fillable = ['images', 'status_profile', 'majors', 'user_id', 'status', 'email', 'address', 'phone', 'skill', 'certificate', 'target', 'work', 'work_detail', 'project', 'project_detail', 'created_at', 'updated_at'];
+    protected $fillable = ['email', 'address', 'phone', 'skill', 'about', 'level', 'project', 'user_id', 'status', 'link_fb', 'majors', 'status_profile', 'images', 'title', 'link_inta', 'created_at', 'updated_at', 'link_sky', 'link_tw'];
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
