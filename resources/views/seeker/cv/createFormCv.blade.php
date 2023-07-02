@@ -2,8 +2,13 @@
 @section('main-seeker')
     <link rel="stylesheet" href="{{ asset('asset/formCv/style.css') }}">
     <create-form-cv
-        :data="{{ json_encode([
+        :model="{{ json_encode([
             'urlStore' => route('users.file.createFormCv'),
+            'skill' => $skill,
+            'project' => $project,
+            'user' => $user,
+            'user_name' => $user_name,
+            'level' => $level,
         ]) }}">
     </create-form-cv>
 @endsection

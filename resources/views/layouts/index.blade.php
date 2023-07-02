@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/bootstrap-grid.css') }}" />
     <link rel="stylesheet" href="{{ asset('home/css/icons.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('home/css/animate.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/responsive.css') }}" />

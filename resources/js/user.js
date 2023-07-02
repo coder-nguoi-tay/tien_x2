@@ -117,6 +117,10 @@ $(document).ready(function () {
 })
 
 const app = createApp({});
+
+// ckediter 
+import CKEditor from '@ckeditor/ckeditor5-vue';
+app.component("ck-editer", CKEditor);
 // noty
 import Notyf from "./components/common/notyf.vue";
 app.component("notyf", Notyf);

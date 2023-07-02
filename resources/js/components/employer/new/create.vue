@@ -322,7 +322,6 @@ import Multiselect from '@vueform/multiselect'
 import { localize } from '@vee-validate/i18n'
 import * as rules from '@vee-validate/rules'
 import Editor from '@tinymce/tinymce-vue'
-import { Notyf } from 'notyf'
 export default {
   setup() {
     Object.keys(rules).forEach((rule) => {

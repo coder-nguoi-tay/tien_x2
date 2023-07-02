@@ -8,6 +8,7 @@ use App\Models\Favourite;
 use App\Models\ProfileUserCv;
 use App\Models\SaveCv;
 use App\Models\UploadCv;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -140,6 +141,15 @@ class ManageController extends BaseController
     }
     public function createCv()
     {
+        $skill = ProfileUserCv::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+        return view('seeker.cv.createFormCv', [
+            'title' => 'Tạo mới CV',
+            'user' => ProfileUserCv::query()->where('user_id', Auth::guard('user')->user()->id)->first() ?? null,
+            'skill' => $skill ?  $skill->skill : null,
+            'project' => $skill ? $skill->project : null,
+            'level' => $skill ? json_decode($skill->level) : null,
+            'user_name' => User::query()->find(Auth::guard('user')->user()->id)->name,
+        ]);
         return view('seeker.cv.createFormCv');
     }
     public function deleteLoveCv($id)
@@ -147,11 +157,10 @@ class ManageController extends BaseController
     }
     public function createFormCv(Request $request)
     {
-        dd($request->all());
         try {
             $user = ProfileUserCv::query()->where('user_id', Auth::guard('user')->user()->id)->first();
             if ($user) {
-                $profileUserCv = ProfileUserCv::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+                $profileUserCv = $user;
             } else {
                 $profileUserCv = new ProfileUserCv();
             }
@@ -161,8 +170,8 @@ class ManageController extends BaseController
             }
             // kỹ năng
             $arr_skill = [];
-            foreach ($request->skill as $i => $skill) {
-                foreach ($request->title_skill as $key => $value) {
+            foreach ($request->nameSkill as $i => $skill) {
+                foreach (explode(',', $request->valueSkill) as $key => $value) {
                     if ($i == $key) {
                         $arr_skill[] = [
                             'name' => $skill,
@@ -173,8 +182,8 @@ class ManageController extends BaseController
             }
             // dự án
             $array_project = [];
-            foreach ($request->project as $i => $project) {
-                foreach ($request->project_detail as $key => $value) {
+            foreach ($request->nameProject as $i => $project) {
+                foreach ($request->deseProject as $key => $value) {
                     if ($i == $key) {
                         $array_project[] = [
                             'name' => $project,
@@ -185,20 +194,33 @@ class ManageController extends BaseController
             }
             // học vẫn
             $array_lever = [];
+            foreach ($request->timeDucation as $i => $ducation) {
+                foreach ($request->nameDucation as $key => $value) {
+                    if ($i == $key) {
+                        $array_lever[] = [
+                            'name' => $ducation,
+                            'value' => $value
+                        ];
+                    }
+                }
+            }
 
-            $profileUserCv->majors = $request->majors;
-            $profileUserCv->title = $request->title;
-            $profileUserCv->link_fb = $request->link_fb;
-            $profileUserCv->user_id = Auth::guard('user')->user()->id;
+            $profileUserCv->email = $request->email;
             $profileUserCv->address = $request->address;
             $profileUserCv->phone = $request->phone;
-            $profileUserCv->skill = json_encode($arr_skill);
-            $profileUserCv->certificate = $request->certificate;
-            $profileUserCv->target = $request->target;
-            $profileUserCv->work = '';
-            $profileUserCv->work_detail = '';
-            $profileUserCv->project = json_encode($array_project);
-            $profileUserCv->project_detail = '';
+            $profileUserCv->skill = $arr_skill;
+            $profileUserCv->about = $request->about;
+            $profileUserCv->level = json_encode($array_lever);
+            $profileUserCv->project = $array_project;
+            $profileUserCv->user_id = Auth::guard('user')->user()->id;
+            $profileUserCv->status = 1;
+            $profileUserCv->link_fb = $request->link_fb;
+            $profileUserCv->majors = $request->majors;
+            $profileUserCv->status_profile = 1;
+            $profileUserCv->title =  '';
+            $profileUserCv->link_inta =  $request->link_inta;
+            $profileUserCv->link_sky =  $request->link_sky;
+            $profileUserCv->link_tw =  $request->link_tw;
             $profileUserCv->save();
             $this->setFlash(__('Cập nhật thành công !'));
             return redirect()->back();

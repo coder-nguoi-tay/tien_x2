@@ -38,6 +38,13 @@ class ProfileUserCv extends Model
      * @var string
      */
     protected $keyType = 'integer';
+    /**
+     * @var array
+     */
+    protected $casts  = [
+        'skill' => 'array',
+        'project' => 'array',
+    ];
 
     /**
      * @var array
