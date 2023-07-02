@@ -23,8 +23,11 @@ class ManageController extends BaseController
     public function index()
     {
         $cv = UploadCv::query()->where('user_id', '=', Auth::guard('user')->user()->id)->get();
+        $profileCv = ProfileUserCv::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+
         return view('seeker.cv.index', [
-            'cv' => $cv
+            'cv' => $cv,
+            'profileCv' => $profileCv ?? null,
         ]);
     }
 
@@ -164,7 +167,6 @@ class ManageController extends BaseController
             } else {
                 $profileUserCv = new ProfileUserCv();
             }
-            $profileUserCv->email = $request->email;
             if ($request->hasFile('images')) {
                 $profileUserCv->images = $request->images->storeAs('images/cv', $request->images->hashName());
             }
@@ -205,22 +207,22 @@ class ManageController extends BaseController
                 }
             }
 
-            $profileUserCv->email = $request->email;
-            $profileUserCv->address = $request->address;
-            $profileUserCv->phone = $request->phone;
-            $profileUserCv->skill = $arr_skill;
-            $profileUserCv->about = $request->about;
-            $profileUserCv->level = json_encode($array_lever);
-            $profileUserCv->project = $array_project;
+            $profileUserCv->email = $request->email ?? '';
+            $profileUserCv->address = $request->address ?? '';
+            $profileUserCv->phone = $request->phone ?? '';
+            $profileUserCv->skill = $arr_skill ?? '';
+            $profileUserCv->about = $request->about ?? '';
+            $profileUserCv->level = json_encode($array_lever) ?? '';
+            $profileUserCv->project = $array_project ?? '';
             $profileUserCv->user_id = Auth::guard('user')->user()->id;
-            $profileUserCv->status = 1;
-            $profileUserCv->link_fb = $request->link_fb;
-            $profileUserCv->majors = $request->majors;
-            $profileUserCv->status_profile = 1;
-            $profileUserCv->title =  '';
-            $profileUserCv->link_inta =  $request->link_inta;
-            $profileUserCv->link_sky =  $request->link_sky;
-            $profileUserCv->link_tw =  $request->link_tw;
+            $profileUserCv->status = 0;
+            $profileUserCv->link_fb = $request->link_fb ?? '';
+            $profileUserCv->majors = $request->majors ?? '';
+            $profileUserCv->status_profile = 0;
+            $profileUserCv->title =  $request->title ?? '';
+            $profileUserCv->link_inta =  $request->link_inta ?? '';
+            $profileUserCv->link_sky =  $request->link_sky ?? '';
+            $profileUserCv->link_tw =  $request->link_tw ?? '';
             $profileUserCv->save();
             $this->setFlash(__('Cập nhật thành công !'));
             return redirect()->back();
