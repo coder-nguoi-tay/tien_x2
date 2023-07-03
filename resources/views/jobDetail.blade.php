@@ -77,48 +77,70 @@
                         </div>
                     </div>
                     <div class="col-lg-4 column">
-                        <a class="apply-thisjob" href="#" data-toggle="modal" data-target="#exampleModal"><i class="la la-paper-plane"></i>Nộp đơn</a>
-                        <div class="apply-alternative" style="cursor: pointer">
-                            <span><i class="fa fa-heart"></i>Lưu</span>
-                        </div>
-                        <div class="job-overview">
-                            <h3>Tổng quan về công việc</h3>
-                            <ul>
-                                <li><i class="la la-money"></i>
-                                    <h3>Mức lương đề xuất</h3><span>{{ $job->getWage->name }}</span>
-                                </li>
-                                <li><i class="la la-mars-double"></i>
-                                    <h3>Giới tính</h3>
-                                    @if ($job->sex == 0)
-                                        <span>Tất cả</span>
+                        <div class="apply-job-for-checker">
+                            @if (Auth::guard('user')->check())
+                                @if ($checkJobTrue == 1)
+                                    <a class="apply-thisjob" href="#" style="background: #8b91dd; color: #fff"><i
+                                            class="la la-paper-plane"></i>Đã ứng tuyển</a>
+                                @else
+                                    <a class="apply-thisjob" href="#" data-toggle="modal"
+                                        data-target="#exampleModal"><i class="la la-paper-plane"></i>Nộp đơn</a>
+                                @endif
+                                {{-- @if ($checklove)
+                                    <div class="apply-alternative btn-like" style="cursor: pointer">
+                                        <span><i class="fa fa-heart icon-save-cv"
+                                                id="{{ $job->id . ',' . $checklove }}"></i>Đã lưu</span>
                                     @else
-                                        <span>{{ $job->sex }}</span>
-                                    @endif
-                                </li>
-                                <li><i class="la la-puzzle-piece"></i>
-                                    <h3>Hình thức làm việc</h3><span>{{ $job->getwk_form->name }}</span>
-                                </li>
-                                <li><i class="la la-shield"></i>
-                                    <h3>Kinh nghiệm</h3><span>{{ $job->getExperience->name }}</span>
-                                </li>
-                                <li><i class="la la-line-chart "></i>
-                                    <h3>Trình độ học vẫn</h3><span>{{ $job->getLevel->name }}</span>
-                                </li>
-                                <li><i class="la la-calendar-o"></i>
-                                    <h3>Hạn nộp hồ sơ</h3><span>{{ $job->end_job_time }}</span>
-                                </li>
-                            </ul>
-                        </div><!-- Job Overview -->
-                        <div class="job-location">
-                            <h3>Nơi làm việc</h3>
-                            <div class="job-lctn-map">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d926917.0482572999!2d-104.57738594649922!3d40.26036964524562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2s!4v1513784737244"></iframe>
-                            </div>
+                                        <div class="apply-alternative btn-like" style="cursor: pointer">
+                                            <span><i class="fa fa-heart icon-save-cv"
+                                                    id="{{ $job->id . ',' . $checklove }}"></i>Lưu</span>
+                                @endif --}}
+                                <div class="apply-alternative btn-like" style="cursor: pointer">
+                                    <span><i class="fa fa-heart icon-save-cv"
+                                            id="{{ $job->id . ',' . $checklove }}"></i>Lưu</span>
+                                @else
+                                    <a class="apply-thisjob" href="#"><i class="la la-paper-plane"></i>Nộp đơn</a>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="job-overview">
+                        <h3>Tổng quan về công việc</h3>
+                        <ul>
+                            <li><i class="la la-money"></i>
+                                <h3>Mức lương đề xuất</h3><span>{{ $job->getWage->name }}</span>
+                            </li>
+                            <li><i class="la la-mars-double"></i>
+                                <h3>Giới tính</h3>
+                                @if ($job->sex == 0)
+                                    <span>Tất cả</span>
+                                @else
+                                    <span>{{ $job->sex }}</span>
+                                @endif
+                            </li>
+                            <li><i class="la la-puzzle-piece"></i>
+                                <h3>Hình thức làm việc</h3><span>{{ $job->getwk_form->name }}</span>
+                            </li>
+                            <li><i class="la la-shield"></i>
+                                <h3>Kinh nghiệm</h3><span>{{ $job->getExperience->name }}</span>
+                            </li>
+                            <li><i class="la la-line-chart "></i>
+                                <h3>Trình độ học vẫn</h3><span>{{ $job->getLevel->name }}</span>
+                            </li>
+                            <li><i class="la la-calendar-o"></i>
+                                <h3>Hạn nộp hồ sơ</h3><span>{{ $job->end_job_time }}</span>
+                            </li>
+                        </ul>
+                    </div><!-- Job Overview -->
+                    <div class="job-location">
+                        <h3>Nơi làm việc</h3>
+                        <div class="job-lctn-map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d926917.0482572999!2d-104.57738594649922!3d40.26036964524562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2s!4v1513784737244"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
     <!-- Modal -->

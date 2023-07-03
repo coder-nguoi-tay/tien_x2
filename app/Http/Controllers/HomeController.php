@@ -155,7 +155,6 @@ class HomeController extends BaseController
                 $checkJobTrue = 0;
             }
         }
-        // dd($checkJobTrue);
         return view('jobDetail', [
             'job' => $job,
             'rules' => $relate,

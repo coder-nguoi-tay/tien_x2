@@ -122,7 +122,7 @@
         function Reason(id) {
             const url = 'get-data-reason/' + id.cv_id;
             axios.get(url).then(function(res) {
-                $('#dataReasonCv').text(res.data.content);
+                $('#dataReasonCv').text(res.data.data.content);
                 $('#modalReasonCv').modal('show');
             }).catch(function(error) {
                 console.log(error);
