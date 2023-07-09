@@ -44,6 +44,7 @@ class ProfileUserCv extends Model
     protected $casts  = [
         'skill' => 'array',
         'project' => 'array',
+        'level' => 'array',
     ];
 
     /**

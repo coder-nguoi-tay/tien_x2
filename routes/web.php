@@ -88,5 +88,8 @@ Route::prefix('employers')->name('employer.')->group(function () {
     });
     // search cv
     Route::get('search-cv', [SearchCvController::class, 'index'])->name('search.cv');
+    Route::get('search-cv/{id}', [SearchCvController::class, 'show'])->name('search.show');
+    Route::post('payment-cv', [SearchCvController::class, 'paymentCv'])->name('search.paymentCv');
+    Route::post('search-cv/feedback', [SearchCvController::class, 'feedback'])->name('search.feedback');
     Route::get('cv-bought', [SearchCvController::class, 'showCvBought'])->name('cvbought');
 });

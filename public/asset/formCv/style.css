@@ -13,7 +13,6 @@
 }
 
 .resume-box {
-    width: 800px;
     height: auto;
     margin: 100px auto;
     background: var(--white);
@@ -22,7 +21,7 @@
 
 .left-section {
     background: var(--black);
-    width: 250px;
+    width: 248px;
     height: 1423px;
     float: left;
 }

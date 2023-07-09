@@ -30,6 +30,7 @@
         "@vueform/toggle": "^2.1.1",
         "@vuepic/vue-datepicker": "^5.2.1",
         "jquery": "^3.7.0",
+        "moment": "^2.29.4",
         "notyf": "^3.10.0",
         "vee-validate": "^4.9.6",
         "vue": "^3.2.45",

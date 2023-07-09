@@ -69,7 +69,7 @@
                                         <span>{{ $item->nameCompany }}</span>
                                     </div>
                                     <span class="job-lctn"><i class="la la-map-marker"></i>{{ $item->address }}</span>
-                                    <span class="fav-job"><i class="fa fa-heart"></i></span>
+                                    <span class="fav-job">{{ $item->end_job_time }}</span>
                                     <span class="job-is ft">{{ $item->getTime_work->name }}</span>
                                 </div><!-- Job -->
                             @endforeach
@@ -163,7 +163,8 @@
                                             <span>{{ $item->nameCompany }}</span>
                                         </div>
                                         <span class="job-lctn"><i class="la la-map-marker"></i>{{ $item->address }}</span>
-                                        <span class="fav-job"><i class="fa fa-heart"></i></span>
+                                        <span class="fav-job job-user" id="{{ $item->id }}"><i
+                                                class="fa fa-heart"></i></span>
                                         <span class="job-is ft">{{ $item->getTime_work->name }}</span>
                                     </div><!-- Job -->
                                 @endforeach

@@ -1970,7 +1970,7 @@ input[type=radio] + label::after {
      font-size: 13px;
      color: #888888;
      line-height: 23px;
-     width: 25%;
+     width: 20%;
  }
 
  .job-lctn i {
@@ -1980,9 +1980,10 @@ input[type=radio] + label::after {
  }
 
  .fav-job {
+     width: 150px;
      display: table-cell;
      vertical-align: middle;
-     font-size: 25px;
+     font-size: 15px;
      color: #888888;
      line-height: 10px;
      text-align: center;
