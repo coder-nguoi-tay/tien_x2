@@ -45,7 +45,7 @@
                                     <h3 class="sb-title open">Mức lương</h3>
                                     <div class="specialism_widget">
                                         <div class="simple-checkbox">
-                                            <p v-for="item in data.wage" :key="item.id" @change="changeQuery(item.id)">
+                                            <p v-for="item in data.wage" :key="item.id">
                                                 <input type="radio" :checked="item.id == data.request.wage"
                                                     v-model="item.id" :value="item.id" :id="'luong' + item.id" name="wage">
                                                 <label :for="'luong' + item.id">{{ item.label }}</label>
