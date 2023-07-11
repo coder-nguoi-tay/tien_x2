@@ -48,6 +48,7 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::resource('login', LoginController::class);
     Route::prefix('profile')->name('profile.')->group(function () {
         Route::get('/{slug}', [ProfileController::class, 'index'])->name('index');
+        Route::post('/on-status-profile', [ProfileController::class, 'onStatus'])->name('onStatus');
     });
     Route::resource('file', ManageController::class);
     Route::prefix('file')->name('file.')->group(function () {

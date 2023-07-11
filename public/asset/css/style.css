@@ -3968,7 +3968,8 @@ html .ui-button.ui-state-disabled:active {
     .title-job-mobile {
         width: 289px !important;
     }
-    .name-company-search{
+
+    .name-company-search {
         margin-right: 35px;
     }
 
@@ -4986,4 +4987,12 @@ a.button:active {
     left: 0;
     bottom: 0;
     z-index: 1;
+}
+
+/* profile user */
+.profile-avatar img {
+    border-radius: 50%;
+    height: 83px;
+    max-width: 150px;
+    width: 83px;
 }

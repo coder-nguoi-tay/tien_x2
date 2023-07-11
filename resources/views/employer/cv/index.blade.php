@@ -77,7 +77,6 @@
                             </div>
                         </div>
                     @endforeach
-
                     <!-- end col -->
                 </div>
             </div>

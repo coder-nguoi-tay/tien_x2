@@ -11,23 +11,16 @@ class Jobseeker extends Model
     protected $table = 'job-seeker';
     protected $fillable = [
         'id',
-        'address',
-        'phone',
-        'images',
-        'user_role',
-        'skill_id',
+        'user_id',
         'experience_id',
-        'lever_id',
         'wage_id',
         'profession_id',
-        'time_work_id',
         'location_id',
         'majors_id',
-        'workingform_id',
     ];
     public function user()
     {
-        return $this->hasOne(User::class, 'id', 'user_role');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
     public function getskill()
     {
@@ -71,6 +64,6 @@ class Jobseeker extends Model
     }
     public function Profile()
     {
-        return $this->hasOne(ProfileUserCv::class, 'user_id', 'user_role');
+        return $this->hasOne(ProfileUserCv::class, 'user_id', 'user_id');
     }
 }

@@ -57,7 +57,7 @@ class ProfileUserCv extends Model
     }
     public function Profile()
     {
-        return $this->hasOne(Jobseeker::class, 'user_role', 'user_id');
+        return $this->hasOne(Jobseeker::class, 'user_id', 'user_id');
     }
     public function employerPayment()
     {

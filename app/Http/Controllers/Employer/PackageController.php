@@ -131,7 +131,7 @@ class PackageController extends Controller
     public function payment(Request $request)
     {
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = route('employer.package.payment.return');
+        $vnp_Returnurl = route('employer.package.create');
         $vnp_TmnCode = "S50PEHFY"; //Mã website tại VNPAY 
         $vnp_HashSecret = 'KNAREAARTPBAELKXTPLZKBUMSTCJHIYE'; //Chuỗi bí mật
         $vnp_TxnRef = rand(0000, 9999);

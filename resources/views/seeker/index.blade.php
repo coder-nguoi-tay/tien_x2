@@ -27,34 +27,73 @@
                     <!-- Yearly Breakup -->
                     <div class="card overflow-hidden">
                         <div class="card-body p-4">
-                            <h5 class="card-title mb-9 fw-semibold">Yearly Breakup</h5>
+                            <h5 class="card-title mb-9 fw-semibold">Thông tin cá nhân</h5>
                             <div class="row align-items-center">
-                                <div class="col-8">
-                                    <h4 class="fw-semibold mb-3">$36,358</h4>
-                                    <div class="d-flex align-items-center mb-3">
-                                        <span
-                                            class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-arrow-up-left text-success"></i>
-                                        </span>
-                                        <p class="text-dark me-1 fs-3 mb-0">+9%</p>
-                                        <p class="fs-3 mb-0">last year</p>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div class="me-4">
-                                            <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                                            <span class="fs-2">2023</span>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="profile-avatar">
+                                            <img src="https://static.topcv.vn/user_avatars/GBuiDN3gtGAPnJ8T1qMa_62bf0bfd93b8f_av.jpg"
+                                                alt=""
+                                                style=" border-radius: 50%;
+                                                height: 83px;
+                                                max-width: 150px;
+                                                width: 83px;">
                                         </div>
-                                        <div>
+                                        <div class="text-center">
+                                            <input type="file" name="avatar" style="display: none;" id="img-avatar">
+                                            <a href="javascript:void(0)"
+                                                style="font-size: 11px; padding: 3px 5px;margin: 6px 0px; color: #777; font-style: italic;"
+                                                data-target="#upload-profile-avatar" data-toggle="modal"
+                                                id="btn-upload-avatar">
+                                                Cập nhật ảnh
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div>Chào bạn trở lại,</div>
+                                        <h4 class="profile-fullname"
+                                            style="-webkit-line-clamp: 2;
+                                        -webkit-box-orient: vertical;
+                                        color: #212f3f;
+                                        font-size: 20px;
+                                        font-weight: 700;
+                                        margin-bottom: 10px;
+                                        margin-top: 0;
+                                        overflow: hidden;
+                                        overflow-wrap: break-word;
+                                        position: relative;
+                                        text-overflow: ellipsis;">
+                                            Trieu Viet Duc PH 1 4 8 3 3</h4>
+                                        <div class="account-type vip">
                                             <span
-                                                class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
-                                            <span class="fs-2">2023</span>
+                                                style="background-color: gray;    border-radius: 2px;
+                                            color: #fff;
+                                            display: inline-block;
+                                            font-size: 12px;
+                                            padding: 3px 7px;">
+                                                Tài khoản đã xác thực
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4">
-                                    <div class="d-flex justify-content-center">
-                                        <div id="breakup"></div>
-                                    </div>
+                                <div class="col-xs-12">
+                                    <btn-toggle
+                                        :data="{{ json_encode([
+                                            'profileCv' => $profileCv,
+                                            'lever' => $lever,
+                                            'experience' => $experience,
+                                            'wage' => $wage,
+                                            'skill' => $skill,
+                                            'timework' => $timework,
+                                            'profession' => $profession,
+                                            'majors' => $majors,
+                                            'location' => $location,
+                                            'workingform' => $workingform,
+                                        ]) }}">
+                                    </btn-toggle>
+                                    <span class="job-waiting-status-text job-off-show ml-2">
+                                        <strong class="text-red">Trạng thái tìm việc</strong>
+                                    </span>
                                 </div>
                             </div>
                         </div>

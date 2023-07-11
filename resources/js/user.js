@@ -82,39 +82,39 @@ configure({
 //         });
 //     }
 // });
-// $(document).ready(function () {
-//     if ($('.icon-save-cv').length) {
-//         const id = $('.icon-save-cv')[0].id.split(',')[0];
+$(document).ready(function () {
+    if ($('.icon-save-cv').length) {
+        const id = $('.icon-save-cv')[0].id.split(',')[0];
 
-//         axios.get('/viec-lam/favourite-love/' + id)
-//             .then((x) => {
-//                 if (x.data.data) {
-//                     if (x.data.data.job_id == id) {
-//                         $('.icon-save-cv').addClass('btn-icon-love')
-//                         const btnLike = document.querySelector('.icon-save-cv')
-//                         btnLike.addEventListener("click", function (e) {
-//                             axios.post('/viec-lam/favourite/' + id)
-//                                 .then((a) => {
-//                                 }).catch((y) => {
-//                                 })
-//                             e.currentTarget.classList.toggle('btn-icon-love')
-//                         })
-//                     }
-//                 } else {
-//                     const btnLike = document.querySelector('.icon-save-cv')
-//                     btnLike.addEventListener("click", function (e) {
-//                         axios.post('/viec-lam/favourite/' + id)
-//                             .then((a) => {
-//                             }).catch((y) => {
-//                             })
-//                         e.currentTarget.classList.toggle('btn-icon-love')
-//                     })
-//                 }
-//             }).catch((y) => {
-//                 console.log(y);
-//             })
-//     }
-// })
+        axios.get('/viec-lam/favourite-love/' + id)
+            .then((x) => {
+                if (x.data.data) {
+                    if (x.data.data.job_id == id) {
+                        $('.icon-save-cv').addClass('btn-icon-love')
+                        const btnLike = $('.icon-save-cv')
+                        btnLike.click(function (e) {
+                            axios.post('/viec-lam/favourite/' + id)
+                                .then((a) => {
+                                }).catch((y) => {
+                                })
+                            e.currentTarget.classList.toggle('btn-icon-love')
+                        })
+                    }
+                } else {
+                    const btnLike = $('.icon-save-cv')
+                    btnLike.click(function (e) {
+                        axios.post('/viec-lam/favourite/' + id)
+                            .then((a) => {
+                            }).catch((y) => {
+                            })
+                        e.currentTarget.classList.toggle('btn-icon-love')
+                    })
+                }
+            }).catch((y) => {
+                console.log(y);
+            })
+    }
+})
 
 const app = createApp({});
 
@@ -129,7 +129,9 @@ app.component("form-search-home", FormSearch);
 import Login from './components/login/login.vue';
 app.component('login-user', Login);
 
-
+// toggle button
+import btnToggel from './components/common/btnToggel.vue';
+app.component('btn-toggle', btnToggel);
 
 
 // cv

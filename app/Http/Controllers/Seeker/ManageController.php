@@ -150,7 +150,7 @@ class ManageController extends BaseController
             'user' => ProfileUserCv::query()->where('user_id', Auth::guard('user')->user()->id)->first() ?? null,
             'skill' => $skill ?  $skill->skill : null,
             'project' => $skill ? $skill->project : null,
-            'level' => $skill ? json_decode($skill->level) : null,
+            'level' => $skill ? $skill->level : null,
             'user_name' => User::query()->find(Auth::guard('user')->user()->id)->name,
         ]);
         return view('seeker.cv.createFormCv');

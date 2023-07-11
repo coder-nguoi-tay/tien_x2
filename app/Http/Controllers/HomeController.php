@@ -50,7 +50,7 @@ class HomeController extends BaseController
             $user = User::query()->with('getProfileUse')->where('id', Auth::guard('user')->user()->id)->first();
 
             if ($user->getProfileUse) {
-                $getskill = Jobseeker::query()->with('getskill')->where('user_role', Auth::guard('user')->user()->id)->first();
+                $getskill = Jobseeker::query()->with('getskill')->where('user_id', Auth::guard('user')->user()->id)->first();
                 $skill_id = $getskill->getskill->pluck('id');
                 $getProfile = $user->getProfileUse;
                 $job = Job::query()
