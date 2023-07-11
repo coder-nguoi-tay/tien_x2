@@ -260,6 +260,7 @@ export default {
         }
     },
     created() {
+        console.log(this.skill);
         if (this.model.user != null) {
             if (this.model.skill && this.model.skill.length) {
                 this.model.skill.map((x) => {
@@ -269,21 +270,36 @@ export default {
                     })
                     this.setRatings.push(x.value)
                 })
+            }else {
+                this.skill.push({
+                    nameSkill: '',
+                    valueSkill: ''
+                })
             }
-            if (this.model.project.length > 0 && this.model.project.length) {
+            if (this.model.project && this.model.project.length) {
                 this.model.project.map((x) => {
                     this.experience.push({
                         nameProject: x.name,
                         deseProject: x.value
                     })
                 })
+            }else {
+                this.experience.push({
+                    nameProject: '',
+                    deseProject: ''
+                })
             }
-            if (this.model.level.length > 0 && this.model.level.length) {
+            if (this.model.level && this.model.level.length) {
                 this.model.level.map((x) => {
                     this.ducation.push({
                         timeDucation: x.name,
                         nameDucation: x.value
                     })
+                })
+            }else {
+                this.ducation.push({
+                    timeDucation: '',
+                    nameDucation: ''
                 })
             }
         } else {

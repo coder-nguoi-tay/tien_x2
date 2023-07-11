@@ -59,7 +59,8 @@
                                                     <div class="c-logo"> <img src="{{ asset($rule->logo) }}"
                                                             alt="" />
                                                     </div>
-                                                    <h3><a href="#" title="">{{ $rule->title }}</a></h3>
+                                                    <h3><a href="{{ route('client.detail', [$rule->slug, $rule->id]) }}"
+                                                            title="">{{ $rule->title }}</a></h3>
                                                     <div class="job-lctn"><i
                                                             class="la la-map-marker"></i>{{ $rule->address }}
                                                     </div>
@@ -140,7 +141,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
     <!-- Modal -->

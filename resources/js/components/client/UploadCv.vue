@@ -96,7 +96,8 @@
                                         <button v-if="visibleLiveDemo" type="submit" class="btn btn-success text-white">
                                             Tải CV
                                         </button>
-                                        <div class="modal fade" id="exampleModal1" aria-labelledby="exampleModalLabel"
+                                        <!-- t đel biết ai code đoạn này -->
+                                        <!-- <div class="modal fade" id="exampleModal1" aria-labelledby="exampleModalLabel"
                                             aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -110,7 +111,7 @@
                                                             <span aria-hidden="true">x</span>
                                                         </button>
                                                     </div>
-                                                    <!-- profile cv -->
+                                                   
                                                     <form class="p-4" method="POST" :action="data.urlStore">
                                                         <input type="hidden" :value="csrfToken" name="_token" />
                                                         <input type="hidden" :value="data.jobId" name="id_job" />
@@ -121,7 +122,7 @@
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="float-left">
                                         <ul class="cv-choosen justify-content-center border p-4">

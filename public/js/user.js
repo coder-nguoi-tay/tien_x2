@@ -23880,6 +23880,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     var _this = this;
+    console.log(this.skill);
     if (this.model.user != null) {
       if (this.model.skill && this.model.skill.length) {
         this.model.skill.map(function (x) {
@@ -23889,21 +23890,36 @@ __webpack_require__.r(__webpack_exports__);
           });
           _this.setRatings.push(x.value);
         });
+      } else {
+        this.skill.push({
+          nameSkill: '',
+          valueSkill: ''
+        });
       }
-      if (this.model.project.length > 0 && this.model.project.length) {
+      if (this.model.project && this.model.project.length) {
         this.model.project.map(function (x) {
           _this.experience.push({
             nameProject: x.name,
             deseProject: x.value
           });
         });
+      } else {
+        this.experience.push({
+          nameProject: '',
+          deseProject: ''
+        });
       }
-      if (this.model.level.length > 0 && this.model.level.length) {
+      if (this.model.level && this.model.level.length) {
         this.model.level.map(function (x) {
           _this.ducation.push({
             timeDucation: x.name,
             nameDucation: x.value
           });
+        });
+      } else {
+        this.ducation.push({
+          timeDucation: '',
+          nameDucation: ''
         });
       }
     } else {
@@ -24077,39 +24093,7 @@ var _hoisted_32 = {
   type: "submit",
   "class": "btn btn-success text-white"
 };
-var _hoisted_33 = {
-  "class": "modal fade",
-  id: "exampleModal1",
-  "aria-labelledby": "exampleModalLabel",
-  "aria-hidden": "true"
-};
-var _hoisted_34 = {
-  "class": "modal-dialog modal-lg"
-};
-var _hoisted_35 = {
-  "class": "modal-content"
-};
-var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "modal-header"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
-  "class": "modal-title",
-  id: "exampleModalLabel"
-}, " Hãy điền thông tin cá nhân của bạn để nhà tuyển dụng chú ý đến bạn hơn "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  type: "button",
-  "class": "close",
-  "data-dismiss": "modal",
-  "aria-label": "Close"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "aria-hidden": "true"
-}, "x")])], -1 /* HOISTED */);
-var _hoisted_37 = ["action"];
-var _hoisted_38 = ["value"];
-var _hoisted_39 = ["value"];
-var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  type: "submit",
-  "class": "btn btn-primary"
-}, " Submit ", -1 /* HOISTED */);
-var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "float-left"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
   "class": "cv-choosen justify-content-center border p-4"
@@ -24206,19 +24190,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           target: "_blank",
           href: _ctx.url + '/' + cvs.file_cv
         }, "(Xem)", 8 /* PROPS */, _hoisted_26)], 8 /* PROPS */, _hoisted_25), _hoisted_27]);
-      }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_28, _ctx.cv.length == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bạn chưa có cv nào, hãy bắt đầu "), _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" hoặc tải cv từ máy tính cá nhân ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_ctx.visibleLiveDemo ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_32, " Tải CV ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [_hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" profile cv "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-        "class": "p-4",
-        method: "POST",
-        action: $props.data.urlStore
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-        type: "hidden",
-        value: _ctx.csrfToken,
-        name: "_token"
-      }, null, 8 /* PROPS */, _hoisted_38), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-        type: "hidden",
-        value: $props.data.jobId,
-        name: "id_job"
-      }, null, 8 /* PROPS */, _hoisted_39), _hoisted_40], 8 /* PROPS */, _hoisted_37)])])])]), _hoisted_41])])])])], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_4)];
+      }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_28, _ctx.cv.length == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bạn chưa có cv nào, hãy bắt đầu "), _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" hoặc tải cv từ máy tính cá nhân ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_ctx.visibleLiveDemo ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_32, " Tải CV ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" t đel biết ai code đoạn này "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"modal fade\" id=\"exampleModal1\" aria-labelledby=\"exampleModalLabel\"\r\n                                            aria-hidden=\"true\">\r\n                                            <div class=\"modal-dialog modal-lg\">\r\n                                                <div class=\"modal-content\">\r\n                                                    <div class=\"modal-header\">\r\n                                                        <h5 class=\"modal-title\" id=\"exampleModalLabel\">\r\n                                                            Hãy điền thông tin cá nhân của bạn để nhà tuyển\r\n                                                            dụng chú ý đến bạn hơn\r\n                                                        </h5>\r\n                                                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\"\r\n                                                            aria-label=\"Close\">\r\n                                                            <span aria-hidden=\"true\">x</span>\r\n                                                        </button>\r\n                                                    </div>\r\n                                                   \r\n                                                    <form class=\"p-4\" method=\"POST\" :action=\"data.urlStore\">\r\n                                                        <input type=\"hidden\" :value=\"csrfToken\" name=\"_token\" />\r\n                                                        <input type=\"hidden\" :value=\"data.jobId\" name=\"id_job\" />\r\n\r\n                                                        <button type=\"submit\" class=\"btn btn-primary\">\r\n                                                            Submit\r\n                                                        </button>\r\n                                                    </form>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div> ")]), _hoisted_33])])])])], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_4)];
     }),
     _: 1 /* STABLE */
   })])]);
