@@ -63,7 +63,7 @@ class ProfileCompanyController extends BaseController
             $this->setFlash(__('Cập nhật thông tin thành công!'));
             return redirect()->route('employer.company.index');
         } catch (\Throwable $th) {
-            dd($th);
+            dd($th->getMessage());
             DB::rollBack();
             $this->setFlash(__('Đã có một lỗi không các định xảy ra'), 'error');
             return redirect()->back();
@@ -100,17 +100,6 @@ class ProfileCompanyController extends BaseController
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
     {
         //
     }
