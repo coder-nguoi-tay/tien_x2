@@ -23490,8 +23490,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       valueChecked: [],
-      showAllSkills: true,
-      showAllLocation: true,
       url: Laravel.baseUrl
     };
   },

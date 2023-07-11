@@ -177,8 +177,6 @@ export default {
     data() {
         return {
             valueChecked: [],
-            showAllSkills: true,
-            showAllLocation: true,
             url: Laravel.baseUrl,
         }
     },
