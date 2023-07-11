@@ -23492,7 +23492,8 @@ __webpack_require__.r(__webpack_exports__);
       testValue: [],
       showAllSkills: true,
       showAllLocation: true,
-      url: Laravel.baseUrl
+      url: Laravel.baseUrl,
+      abc: []
     };
   },
   created: function created() {
@@ -23502,13 +23503,8 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    test: function test(request, item) {
-      console.log(request, item);
-      if (request === item) {
-        return true;
-      } else {
-        return false;
-      }
+    checkedInput: function checkedInput(item) {
+      return this.testValue.includes(item);
     }
   }
 });
@@ -24528,9 +24524,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: item.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "checkbox",
-      checked: $data.testValue.filter(function (x) {
-        return $options.test(x, item.id);
-      }),
+      checked: $options.checkedInput(item.id),
       name: "skill[]",
       value: item.id,
       id: 'skill' + item.id

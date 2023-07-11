@@ -57,13 +57,10 @@
 
 
                                             <p v-for="item in data.skill" :key="item.id">
-                                                <input type="checkbox" :checked="testValue.filter(x => {
-                                                    return test(x, item.id)
-                                                })" name="skill[]" :value="item.id" :id="'skill' + item.id" />
+                                                <input type="checkbox" :checked="checkedInput(item.id)" name="skill[]"
+                                                    :value="item.id" :id="'skill' + item.id" />
                                                 <label :for="'skill' + item.id">{{ item.label }}</label>
                                             </p>
-
-
 
                                         </div>
                                     </div>
@@ -180,6 +177,7 @@ export default {
             showAllSkills: true,
             showAllLocation: true,
             url: Laravel.baseUrl,
+            abc: []
         }
     },
     created() {
@@ -189,18 +187,8 @@ export default {
 
     },
     methods: {
-        test(request, item) {
-
-            console.log(request, item)
-           if(request === item)
-           {
-            return true
-           }
-           else {
-            return false;
-           }
-
-
+        checkedInput(item) {
+            return this.testValue.includes(item)
         }
     }
 }
