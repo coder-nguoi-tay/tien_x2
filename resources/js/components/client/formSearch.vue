@@ -145,7 +145,8 @@
                                             <img :src="url + '/' + item.logo" alt="" />
                                         </div>
                                         <div class="emply-resume-info">
-                                            <h3><a href="#" title="" v-html="item.title"></a></h3>
+                                            <h3><a :href="url + '/viec-lam/' + item.slug + '.' + item.id" title=""
+                                                    v-html="item.title"></a></h3>
                                             <span><i v-html="item.get_majors.name"></i></span>
                                             <p><i class="la la-map-marker"></i>{{ item.address }}</p>
                                         </div>

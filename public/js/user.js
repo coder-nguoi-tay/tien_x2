@@ -23436,8 +23436,10 @@ __webpack_require__.r(__webpack_exports__);
     Field: vee_validate__WEBPACK_IMPORTED_MODULE_1__.Field,
     ErrorMessage: vee_validate__WEBPACK_IMPORTED_MODULE_1__.ErrorMessage
   },
-  mounted: function mounted() {},
   created: function created() {
+    if (this.cv.length > 0) {
+      this.visibleLiveDemo = true;
+    }
     var messError = {
       en: {
         fields: {
@@ -23463,6 +23465,7 @@ __webpack_require__.r(__webpack_exports__);
       if (id == 1) {
         this.active = 1;
       } else {
+        this.visibleLiveDemo = true;
         this.active = 2;
       }
     },
@@ -24013,19 +24016,20 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "for": "title",
   "class": "form-lable"
 }, "Tiêu Đề", -1 /* HOISTED */);
-var _hoisted_15 = {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_16 = {
   "class": "box-upload text-center"
 };
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "icon"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-cloud-upload-alt"
 })], -1 /* HOISTED */);
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "not-cv"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, " Kéo CV của bạn vào đây hoặc bấm để chọn file CV của bạn ")], -1 /* HOISTED */);
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col-xs-12"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "form-group align-center"
@@ -24041,50 +24045,51 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "text-highlight",
   href: ""
 }, "Hồ Sơ CV"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" và giúp nhà tuyển dụng tiếp cận bạn)")])])], -1 /* HOISTED */);
-var _hoisted_20 = {
+var _hoisted_21 = {
   key: 1
 };
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "custom-text"
 }, "Chọn Cv Đã Tải Lên"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(": "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "italic text-primary text-small"
 }, " Khuyên Dùng")], -1 /* HOISTED */);
-var _hoisted_22 = {
+var _hoisted_23 = {
   key: 0,
   "class": "cv-choosen"
 };
-var _hoisted_23 = ["id", "value"];
-var _hoisted_24 = ["htmlFor"];
-var _hoisted_25 = ["href"];
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_24 = ["id", "value"];
+var _hoisted_25 = ["htmlFor"];
+var _hoisted_26 = ["href"];
 var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_28 = {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_29 = {
   key: 1,
   "class": "text-danger"
 };
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "#"
 }, "Tạo mới Cv", -1 /* HOISTED */);
-var _hoisted_30 = {
+var _hoisted_31 = {
   "class": "modal-footer"
 };
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+var _hoisted_32 = {
+  key: 0,
   type: "submit",
   "class": "btn btn-success text-white"
-}, " Tải CV ", -1 /* HOISTED */);
-var _hoisted_32 = {
+};
+var _hoisted_33 = {
   "class": "modal fade",
   id: "exampleModal1",
   "aria-labelledby": "exampleModalLabel",
   "aria-hidden": "true"
 };
-var _hoisted_33 = {
+var _hoisted_34 = {
   "class": "modal-dialog modal-lg"
 };
-var _hoisted_34 = {
+var _hoisted_35 = {
   "class": "modal-content"
 };
-var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "modal-header"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
   "class": "modal-title",
@@ -24097,14 +24102,14 @@ var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "aria-hidden": "true"
 }, "x")])], -1 /* HOISTED */);
-var _hoisted_36 = ["action"];
-var _hoisted_37 = ["value"];
+var _hoisted_37 = ["action"];
 var _hoisted_38 = ["value"];
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+var _hoisted_39 = ["value"];
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
   "class": "btn btn-primary"
 }, " Submit ", -1 /* HOISTED */);
-var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "float-left"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
   "class": "cv-choosen justify-content-center border p-4"
@@ -24171,19 +24176,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "title",
         "class": "form-control",
         rules: "required|max:255"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ErrorMessage, {
+      }), _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ErrorMessage, {
         "class": "error",
         name: "title"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Field, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Field, {
         type: "file",
         name: "file_cv",
         "class": "file-upload-cv",
         id: "file-upload-cv",
         rules: "required|mimes:jpeg,png,jpg,gif,svg,pdf,doc,docx|max:2048"
-      }), _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ErrorMessage, {
+      }), _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ErrorMessage, {
         "class": "error",
         name: "file_cv"
-      })]), _hoisted_19])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end "), _ctx.active == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [_hoisted_21, _ctx.cv.length != 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_22, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.cv, function (cvs, index) {
+      })]), _hoisted_20])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end "), _ctx.active == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [_hoisted_22, _ctx.cv.length != 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_23, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.cv, function (cvs, index) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
           "class": "radio-choose-active",
           key: index
@@ -24193,15 +24198,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           name: "cv_for_save",
           value: cvs.id,
           checked: ""
-        }, null, 8 /* PROPS */, _hoisted_23), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" v-if=\"cvs.id == this.cv[0].id\" "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+        }, null, 8 /* PROPS */, _hoisted_24), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
           htmlFor: 'html' + cvs.id,
           "class": "ml-4"
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(cvs.title), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
           "class": "text-highlight",
           target: "_blank",
           href: _ctx.url + '/' + cvs.file_cv
-        }, "(Xem)", 8 /* PROPS */, _hoisted_25)], 8 /* PROPS */, _hoisted_24), _hoisted_26]);
-      }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_27, _ctx.cv.length == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bạn chưa có cv nào, hãy bắt đầu "), _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" hoặc tải cv từ máy tính cá nhân ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" profile cv "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+        }, "(Xem)", 8 /* PROPS */, _hoisted_26)], 8 /* PROPS */, _hoisted_25), _hoisted_27]);
+      }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_28, _ctx.cv.length == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bạn chưa có cv nào, hãy bắt đầu "), _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" hoặc tải cv từ máy tính cá nhân ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_ctx.visibleLiveDemo ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_32, " Tải CV ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [_hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" profile cv "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
         "class": "p-4",
         method: "POST",
         action: $props.data.urlStore
@@ -24209,11 +24214,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "hidden",
         value: _ctx.csrfToken,
         name: "_token"
-      }, null, 8 /* PROPS */, _hoisted_37), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      }, null, 8 /* PROPS */, _hoisted_38), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         type: "hidden",
         value: $props.data.jobId,
         name: "id_job"
-      }, null, 8 /* PROPS */, _hoisted_38), _hoisted_39], 8 /* PROPS */, _hoisted_36)])])])]), _hoisted_40])])])])], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_4)];
+      }, null, 8 /* PROPS */, _hoisted_39), _hoisted_40], 8 /* PROPS */, _hoisted_37)])])])]), _hoisted_41])])])])], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_4)];
     }),
     _: 1 /* STABLE */
   })])]);
@@ -24453,7 +24458,7 @@ var _hoisted_69 = ["src"];
 var _hoisted_70 = {
   "class": "emply-resume-info"
 };
-var _hoisted_71 = ["innerHTML"];
+var _hoisted_71 = ["href", "innerHTML"];
 var _hoisted_72 = ["innerHTML"];
 var _hoisted_73 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
@@ -24603,7 +24608,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       src: $data.url + '/' + item.logo,
       alt: ""
     }, null, 8 /* PROPS */, _hoisted_69)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_70, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-      href: "#",
+      href: $data.url + '/viec-lam/' + item.slug + '.' + item.id,
       title: "",
       innerHTML: item.title
     }, null, 8 /* PROPS */, _hoisted_71)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
@@ -32411,7 +32416,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".form-upload-check-cv .custom-input .form-control {\n  padding: 10px !important;\n  height: 45px !important;\n}\n.form-upload-check-cv .custom-check-cv {\n  margin-left: 50%;\n}\n.form-upload-check-cv .active {\n  color: #fff !important;\n  background-color: blue !important;\n}\n.form-upload-check-cv .btn-custom-cv {\n  border: 1px solid #ccc;\n}\n.form-upload-check-cv label ::before {\n  content: none !important;\n}\n.form-upload-check-cv .checkbok {\n  opacity: 1;\n  position: inherit;\n}\n.form-upload-check-cv .border {\n  border: 1px solid #ccc !important;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form-upload-check-cv .custom-input .form-control {\n  padding: 10px !important;\n  height: 45px !important;\n  border: 1px dashed #abf390;\n  background: #fff;\n}\n.form-upload-check-cv .custom-check-cv {\n  margin-left: 50%;\n}\n.form-upload-check-cv .active {\n  color: #fff !important;\n  background-color: blue !important;\n}\n.form-upload-check-cv .btn-custom-cv {\n  border: 1px solid #ccc;\n}\n.form-upload-check-cv label ::before {\n  content: none !important;\n}\n.form-upload-check-cv .checkbok {\n  opacity: 1;\n  position: inherit;\n}\n.form-upload-check-cv .border {\n  border: 1px solid #ccc !important;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

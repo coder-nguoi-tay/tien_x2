@@ -44,6 +44,7 @@
                                             <label for="title" class="form-lable">Tiêu Đề</label>
                                             <Field type="text" name="title" id="title" class="form-control"
                                                 rules="required|max:255" />
+                                            <br>
                                             <ErrorMessage class="error" name="title" />
                                             <div class="box-upload text-center">
                                                 <p class="icon">
@@ -80,7 +81,6 @@
                                             <li class="radio-choose-active" v-for="(cvs, index) in cv" :key="index">
                                                 <input type="radio" :id="'html' + cvs.id" name="cv_for_save" :value="cvs.id"
                                                     checked />
-                                                <!-- v-if="cvs.id == this.cv[0].id" -->
                                                 <label :htmlFor="'html' + cvs.id" class="ml-4">{{ cvs.title
                                                 }}<a class="text-highlight" target="_blank"
                                                         :href="url + '/' + cvs.file_cv">(Xem)</a></label><br />
@@ -93,7 +93,7 @@
                                         </span>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-success text-white">
+                                        <button v-if="visibleLiveDemo" type="submit" class="btn btn-success text-white">
                                             Tải CV
                                         </button>
                                         <div class="modal fade" id="exampleModal1" aria-labelledby="exampleModalLabel"
@@ -195,9 +195,10 @@ export default {
         Field,
         ErrorMessage
     },
-    mounted() {
-    },
     created() {
+        if (this.cv.length > 0) {
+            this.visibleLiveDemo = true
+        }
         let messError = {
             en: {
                 fields: {
@@ -224,6 +225,7 @@ export default {
             if (id == 1) {
                 this.active = 1
             } else {
+                this.visibleLiveDemo = true
                 this.active = 2
             }
         },
@@ -240,6 +242,8 @@ export default {
         .form-control {
             padding: 10px !important;
             height: 45px !important;
+            border: 1px dashed #abf390;
+            background: #fff;
         }
     }
 
