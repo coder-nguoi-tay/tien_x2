@@ -26,12 +26,15 @@
                                 <div class="widget">
                                     <div class="search_widget_job">
                                         <div class="field_w_search">
-                                            <input type="text" name="key" :value="data.key" placeholder="Search Keywords" />
+                                            <input type="text" name="key" v-model="data.request.key"
+                                                placeholder="Search Keywords" />
                                             <i class="la la-search"></i>
                                         </div><!-- Search Widget -->
                                         <div class="field_w_search">
                                             <select class="form-control" name="location" style="height: 62px;">
-                                                <option v-for="item in data.location" :key="item.id" :value="item.id">
+                                                <option v-for="item in data.location"
+                                                    :selected="data.request.location == item.id" :key="item.id"
+                                                    :value="item.id">
                                                     {{ item.label }}</option>
                                             </select>
                                             <i class="la la-map-marker"></i>
@@ -57,8 +60,8 @@
 
 
                                             <p v-for="item in data.skill" :key="item.id">
-                                                <input type="checkbox" :checked="checkedInput(item.id)" name="skill[]"
-                                                    :value="item.id" :id="'skill' + item.id" />
+                                                <input type="checkbox" :checked="valueChecked.includes(item.id)"
+                                                    name="skill[]" :value="item.id" :id="'skill' + item.id" />
                                                 <label :for="'skill' + item.id">{{ item.label }}</label>
                                             </p>
 
@@ -173,24 +176,20 @@ export default {
     props: ['data'],
     data() {
         return {
-            testValue: [],
+            valueChecked: [],
             showAllSkills: true,
             showAllLocation: true,
             url: Laravel.baseUrl,
-            abc: []
         }
     },
     created() {
-        this.data.request.skill.map(x => {
-            this.testValue.push(Number(x))
-        })
+        if (this.data.request.skill && this.data.request.skill.length) {
+            this.data.request.skill.map(x => {
+                this.valueChecked.push(Number(x))
+            })
+        }
 
     },
-    methods: {
-        checkedInput(item) {
-            return this.testValue.includes(item)
-        }
-    }
 }
 </script>
 
