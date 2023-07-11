@@ -54,12 +54,17 @@
                                     <h3 class="sb-title open">Kỹ năng</h3>
                                     <div class="specialism_widget" style="overflow: auto;">
                                         <div class="simple-checkbox scrollbar ss-container" style="height: 366px;">
+
+
                                             <p v-for="item in data.skill" :key="item.id">
-                                                <input type="checkbox" :checked="item.id == data.request.skill"
-                                                    @change="changeQuery(item.id)" name="skill[]" :value="item.id"
-                                                    :id="'skill' + item.id">
+                                                <input type="checkbox" :checked="testValue.filter(x => {
+                                                    return test(x, item.id)
+                                                })" name="skill[]" :value="item.id" :id="'skill' + item.id" />
                                                 <label :for="'skill' + item.id">{{ item.label }}</label>
                                             </p>
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -171,11 +176,33 @@ export default {
     props: ['data'],
     data() {
         return {
+            testValue: [],
             showAllSkills: true,
             showAllLocation: true,
             url: Laravel.baseUrl,
         }
     },
+    created() {
+        this.data.request.skill.map(x => {
+            this.testValue.push(Number(x))
+        })
+
+    },
+    methods: {
+        test(request, item) {
+
+            console.log(request, item)
+           if(request === item)
+           {
+            return true
+           }
+           else {
+            return false;
+           }
+
+
+        }
+    }
 }
 </script>
 

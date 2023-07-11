@@ -23489,10 +23489,27 @@ __webpack_require__.r(__webpack_exports__);
   props: ['data'],
   data: function data() {
     return {
+      testValue: [],
       showAllSkills: true,
       showAllLocation: true,
       url: Laravel.baseUrl
     };
+  },
+  created: function created() {
+    var _this = this;
+    this.data.request.skill.map(function (x) {
+      _this.testValue.push(Number(x));
+    });
+  },
+  methods: {
+    test: function test(request, item) {
+      console.log(request, item);
+      if (request === item) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 });
 
@@ -24343,7 +24360,7 @@ var _hoisted_33 = {
     "height": "366px"
   }
 };
-var _hoisted_34 = ["checked", "onChange", "value", "id"];
+var _hoisted_34 = ["checked", "value", "id"];
 var _hoisted_35 = ["for"];
 var _hoisted_36 = {
   "class": "widget"
@@ -24511,14 +24528,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: item.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "checkbox",
-      checked: item.id == $props.data.request.skill,
-      onChange: function onChange($event) {
-        return _ctx.changeQuery(item.id);
-      },
+      checked: $data.testValue.filter(function (x) {
+        return $options.test(x, item.id);
+      }),
       name: "skill[]",
       value: item.id,
       id: 'skill' + item.id
-    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_34), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    }, null, 8 /* PROPS */, _hoisted_34), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
       "for": 'skill' + item.id
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.label), 9 /* TEXT, PROPS */, _hoisted_35)]);
   }), 128 /* KEYED_FRAGMENT */))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [_hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.data.experience, function (item) {

@@ -82,6 +82,7 @@ class PackageController extends Controller
         $vnp_TxnRef = rand(0000, 9999);
         $vnp_OrderInfo = $request->name . ',' . $request->lever_package . ',' . $request->id;
         $vnp_OrderType = 'billpayment';
+        $vnp_BankCode = 'NCB';
         $vnp_Amount =  $request->price * 100;
         $vnp_Locale = 'vn';
         $vnp_IpAddr = '192.168.1.6';

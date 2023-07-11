@@ -276,6 +276,7 @@ class HomeController extends BaseController
     }
     public function search(Request $request)
     {
+        // dd($request->all());
         $that = $request;
         $data = Job::query()
             ->join('job_skill', 'job_skill.job_id', '=', 'job.id')
