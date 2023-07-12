@@ -84,7 +84,7 @@ class ManageController extends BaseController
             ->join('employer', 'employer.id', '=', 'job.employer_id')
             ->join('company', 'company.id', '=', 'employer.id_company')
             ->Orderby('save_cv.created_at', 'DESC')
-            ->select('job.id as id', 'job.slug as slug', 'job.title as title', 'company.id as idCompany', 'company.logo as logo', 'company.name as nameCompany', 'save_cv.created_at as created_at', 'save_cv.status as status', 'save_cv.file_cv as file')
+            ->select('job.id as id', 'job.slug as slug', 'job.title as title', 'company.id as idCompany', 'company.logo as logo', 'company.name as nameCompany', 'save_cv.created_at as created_at', 'save_cv.status as status', 'save_cv.file_cv as file','save_cv.id as id_save_cv')
             ->get();
 
         return view('seeker.apply.index', [
@@ -171,13 +171,13 @@ class ManageController extends BaseController
                     }
                 }
             }
-
             $profileUserCv->email = $request->email ?? '';
+            $profileUserCv->images = '';
             $profileUserCv->address = $request->address ?? '';
             $profileUserCv->phone = $request->phone ?? '';
             $profileUserCv->skill = $arr_skill ?? '';
             $profileUserCv->about = $request->about ?? '';
-            $profileUserCv->level = json_encode($array_lever) ?? '';
+            $profileUserCv->level = $array_lever ?? '';
             $profileUserCv->project = $array_project ?? '';
             $profileUserCv->user_id = Auth::guard('user')->user()->id;
             $profileUserCv->status = 0;
@@ -192,6 +192,7 @@ class ManageController extends BaseController
             $this->setFlash(__('Cập nhật thành công !'));
             return redirect()->back();
         } catch (\Throwable $th) {
+            dd($th->getMessage());
             DB::rollBack();
             $this->setFlash(__('Cập nhật thất bại !'), 'error');
             return redirect()->back();

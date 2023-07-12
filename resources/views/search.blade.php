@@ -13,7 +13,6 @@
             'workingform' => $workingform,
             'request' => $request,
             'job' => $job,
-            'datalq' => $datalq,
         ]) }}">
     </form-search-home>
 @endsection

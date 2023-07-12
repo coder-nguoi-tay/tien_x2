@@ -85,7 +85,7 @@
     </div>
     <script>
         async function Reason(id) {
-            const url = '/employers/new/get-data-reason/' + id.id;
+            const url = '/employers/new/get-data-reason/' + id.id_save_cv;
             await axios.get(url).then(function(res) {
                 $('#dataReasonCv').text(res.data.data.content);
             })
