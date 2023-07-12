@@ -122,17 +122,20 @@
                     <div class="mb-4">
                         <h5 class="card-title fw-semibold">Lịch sử tìm kiếm</h5>
                     </div>
-                    <ul class="timeline-widget mb-0 position-relative mb-n5">
-                        <li class="timeline-item d-flex position-relative overflow-hidden">
-                            <div class="timeline-desc fs-3 text-dark mt-n1 p-2">
-                                @foreach ($keySearch as $item)
-                                    <a href="{{ route('home.search') }}?key={{ $item->key }}" class="border"
-                                        style="margin-left: 10px">{{ $item->key }}({{ $item->count }})</a>
-                                @endforeach
+                    @if ($keySearch)
+                        <ul class="timeline-widget mb-0 position-relative mb-n5">
+                            <li class="timeline-item d-flex position-relative overflow-hidden">
+                                <div class="timeline-desc fs-3 text-dark mt-n1 p-2">
+                                    @foreach ($keySearch as $item)
+                                        <a href="{{ route('home.search') }}?key={{ $item->key }}" class="border"
+                                            style="margin-left: 10px">{{ $item->key }}({{ $item->count }})</a>
+                                    @endforeach
 
-                            </div>
-                        </li>
-                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    @endif
+
                 </div>
             </div>
         </div>
