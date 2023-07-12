@@ -47,7 +47,7 @@ class ProfileController extends BaseController
             'location' => $this->getlocation(),
             'workingform' => $this->getworkingform(),
             'apply' => $apply,
-            'keySearch' => $keySearch,
+            'keySearch' => $keySearch ?? [],
         ]);
     }
     public function onStatus(Request $request)
