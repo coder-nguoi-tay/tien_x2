@@ -1,5 +1,5 @@
 <template>
-    <Toggle v-model="model" name="status" class="toggle-flag" data-bs-toggle="modal" data-bs-target="#modalChangeStatus" />
+    <Toggle v-model="model" name="status" class="toggle-flag" :data-bs-toggle="'modal'" :data-bs-target="'#modalChangeStatus'" />
 
     <!-- Modal -->
     <div class="modal fade" id="modalChangeStatus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
