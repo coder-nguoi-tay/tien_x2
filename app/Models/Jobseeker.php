@@ -12,6 +12,7 @@ class Jobseeker extends Model
     protected $fillable = [
         'id',
         'user_id',
+        
         'experience_id',
         'wage_id',
         'profession_id',

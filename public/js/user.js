@@ -24739,8 +24739,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     name: "status",
     "class": "toggle-flag",
-    "data-bs-toggle": "modal",
-    "data-bs-target": "#modalChangeStatus"
+    "data-bs-toggle": 'modal',
+    "data-bs-target": '#modalChangeStatus'
   }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn-close",
