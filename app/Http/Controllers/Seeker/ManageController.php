@@ -24,7 +24,6 @@ class ManageController extends BaseController
     {
         $cv = UploadCv::query()->where('user_id', '=', Auth::guard('user')->user()->id)->get();
         $profileCv = ProfileUserCv::query()->where('user_id', Auth::guard('user')->user()->id)->first();
-
         return view('seeker.cv.index', [
             'cv' => $cv,
             'profileCv' => $profileCv ?? null,
