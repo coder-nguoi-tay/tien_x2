@@ -41,7 +41,7 @@ class SearchCvController extends BaseController
                 $q->where('feedback_id', 3);
             }])
             ->first();
-        $countFeedBackEmployer = FeedbackCv::query()->where('employer_id', Auth::guard('user')->user()->id)->first();
+        $countFeedBackEmployer = FeedbackCv::query()->where('employer_id', Auth::guard('user')->user()->id)->where('profile_cv_id', $id)->first();
         $paymentCv = EmployerPaymentCv::query()->where('employer_id', $employer)->first();
         $feedback_cv = FeedbackCv::where('profile_cv_id', $id)->with('employer.getCompany')->with('feedback')->get();
         return view('employer.cv.show', [

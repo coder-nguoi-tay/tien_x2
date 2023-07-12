@@ -8,7 +8,7 @@
             <button class="btn btn-primary mt-5 ml-2" data-bs-toggle="modal" data-bs-target="#ModalViewFeedBack">xem đánh
                 giá hồ
                 sơ</button>
-            <button class="btn btn-primary mt-5 ml-2" v-if="data.countFeedBackEmployer == 0" data-bs-toggle="modal"
+            <button class="btn btn-primary mt-5 ml-2" v-if="data.countFeedBackEmployer === 0" data-bs-toggle="modal"
                 data-bs-target="#ModalDoneFeedback">đánh giá hồ
                 sơ</button>
         </div>
@@ -212,7 +212,7 @@
                         }).format(price) }}
                     </div>
                     <input type="hidden" name="price" :value="price">
-                    <input type="hidden" name="profile_id" :value="data.id">
+                    <input type="hidden" name="profile_id" :value="data.cv.id">
                     <button class="btn btn-primary" type="submit">Tiếp tục</button>
                 </form>
             </div>
@@ -231,7 +231,7 @@
                     <div class="modal-body">
                         <textarea name="comment" class="form-control" cols="30" rows="10"></textarea>
                         <select name="feedback" class="form-control">
-                            <option v-for="item in data.feedback" :key="item.id" :value="item.id">
+                            <option v-for="item in data.feedbackAll" :key="item.id" :value="item.id">
                                 {{ item.name }}
                             </option>
                         </select>
@@ -261,6 +261,7 @@ export default {
         }
     },
     created() {
+        console.log(this.data);
         // công thức tính tiền cv
         // mỗi skill là 5k à mỗi dữ án là 5k
         this.price = ((this.data.cv.skill.length + this.data.cv.project.length) * 5000)

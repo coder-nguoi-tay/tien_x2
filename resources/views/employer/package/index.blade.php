@@ -29,9 +29,6 @@
                                         class="badge  p-1 {{ $item->status == 1 ? 'bg-success text-white' : 'bg-secondary text-white' }}">{{ $item->status_package }}</span>
                                 </td>
                                 <td>
-                                    <a href="{{ route('employer.package.edit', $item->id) }}"><i
-                                            class="fas fa-edit"></i></a>
-                                    |
                                     <a href="{{ route('employer.package.destroy', $item->id) }}"><i
                                             class="fas fa-trash-alt"></i></a>
                                 </td>

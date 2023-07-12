@@ -4,6 +4,7 @@ use App\Http\Controllers\Client\CompanyController;
 use App\Http\Controllers\Employer\HomeController;
 use App\Http\Controllers\Employer\NewEmployerController;
 use App\Http\Controllers\Employer\PackageController;
+use App\Http\Controllers\Employer\PaymentForEmployerController;
 use App\Http\Controllers\Employer\ProfileCompanyController;
 use App\Http\Controllers\Employer\ProfileEmployerController;
 use App\Http\Controllers\Employer\SearchCvController;
@@ -49,6 +50,7 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::prefix('profile')->name('profile.')->group(function () {
         Route::get('/{slug}', [ProfileController::class, 'index'])->name('index');
         Route::post('/on-status-profile', [ProfileController::class, 'onStatus'])->name('onStatus');
+        Route::post('/off-status-profile', [ProfileController::class, 'offStatus'])->name('offStatus');
     });
     Route::resource('file', ManageController::class);
     Route::prefix('file')->name('file.')->group(function () {
@@ -85,7 +87,8 @@ Route::prefix('employers')->name('employer.')->group(function () {
     Route::resource('/company', ProfileCompanyController::class);
     Route::prefix('/package')->name('package.')->group(function () {
         Route::post('/payment', [PackageController::class, 'payment'])->name('payment');
-        Route::get('package/payment/return', [PackageController::class, 'vnpayReturn'])->name('payment.return');
+        Route::get('package/payment/return', [PackageController::class, 'vnpayReturn'])->name('return');
+        Route::get('package/payment/output', [PackageController::class, 'vnpayOutput'])->name('output');
     });
     // search cv
     Route::get('search-cv', [SearchCvController::class, 'index'])->name('search.cv');
@@ -93,4 +96,9 @@ Route::prefix('employers')->name('employer.')->group(function () {
     Route::post('payment-cv', [SearchCvController::class, 'paymentCv'])->name('search.paymentCv');
     Route::post('search-cv/feedback', [SearchCvController::class, 'feedback'])->name('search.feedback');
     Route::get('cv-bought', [SearchCvController::class, 'showCvBought'])->name('cvbought');
+    // nap  tiền
+    Route::resource('payment-for-emplyer', PaymentForEmployerController::class);
+    Route::prefix('/payment-for-emplyer')->name('payment-for-emplyer.')->group(function () {
+        Route::get('payment/vnpay-return', [PaymentForEmployerController::class, 'vnpayReturn'])->name('vnpayReturn');
+    });
 });

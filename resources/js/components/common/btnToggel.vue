@@ -1,8 +1,8 @@
 <template>
-    <Toggle v-model="model" name="status" class="toggle-flag" :data-bs-toggle="'modal'" :data-bs-target="'#modalChangeStatus'" />
+    <Toggle v-model="model" name="status" class="toggle-flag" @change="showModal" />
 
     <!-- Modal -->
-    <div class="modal fade" id="modalChangeStatus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" ref="modalChangeStatus" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -124,8 +124,10 @@ import {
 import { localize } from '@vee-validate/i18n'
 import * as rules from '@vee-validate/rules'
 import Toggle from '@vueform/toggle'
+import axios from 'axios'
 import '@vueform/toggle/themes/default.css'
 import Multiselect from '@vueform/multiselect'
+import { Notyf } from 'notyf'
 export default {
     setup() {
         Object.keys(rules).forEach((rule) => {
@@ -151,10 +153,10 @@ export default {
             category: {},
             value: [],
             test: true,
+            abc: true,
         }
     },
     created() {
-        console.log(this.data.profileCv);
         this.data.skill.map((e) => {
             this.options.push({
                 value: e.id,
@@ -205,6 +207,33 @@ export default {
         },
         onSubmit() {
             this.$refs.formData.submit()
+        },
+        showModal(value) {
+            if (value) {
+                window.$(this.$refs.modalChangeStatus).modal('show')
+            } else {
+                console.log(1);
+                let url = '/users/profile/off-status-profile'
+                axios.post(url).then((a) => {
+                    const notyf = new Notyf({
+                        duration: 6000,
+                        position: {
+                            x: 'right',
+                            y: 'bottom'
+                        },
+                        types: [
+                            {
+                                type: 'error',
+                                duration: 8000,
+                                dismissible: true
+                            }
+                        ]
+                    })
+                    return notyf.success(a.data.message)
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
         }
     }
 }

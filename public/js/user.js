@@ -23519,12 +23519,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
-/* harmony import */ var _vee_validate_i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @vee-validate/i18n */ "./node_modules/@vee-validate/i18n/dist/vee-validate-i18n.esm.js");
-/* harmony import */ var _vee_validate_rules__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @vee-validate/rules */ "./node_modules/@vee-validate/rules/dist/vee-validate-rules.esm.js");
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+/* harmony import */ var _vee_validate_i18n__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @vee-validate/i18n */ "./node_modules/@vee-validate/i18n/dist/vee-validate-i18n.esm.js");
+/* harmony import */ var _vee_validate_rules__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @vee-validate/rules */ "./node_modules/@vee-validate/rules/dist/vee-validate-rules.esm.js");
 /* harmony import */ var _vueform_toggle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vueform/toggle */ "./node_modules/@vueform/toggle/dist/toggle.js");
-/* harmony import */ var _vueform_toggle_themes_default_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vueform/toggle/themes/default.css */ "./node_modules/@vueform/toggle/themes/default.css");
-/* harmony import */ var _vueform_multiselect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vueform/multiselect */ "./node_modules/@vueform/multiselect/dist/multiselect.mjs");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _vueform_toggle_themes_default_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vueform/toggle/themes/default.css */ "./node_modules/@vueform/toggle/themes/default.css");
+/* harmony import */ var _vueform_multiselect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @vueform/multiselect */ "./node_modules/@vueform/multiselect/dist/multiselect.mjs");
+/* harmony import */ var notyf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! notyf */ "./node_modules/notyf/notyf.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -23541,21 +23544,23 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup() {
-    Object.keys(_vee_validate_rules__WEBPACK_IMPORTED_MODULE_3__).forEach(function (rule) {
+    Object.keys(_vee_validate_rules__WEBPACK_IMPORTED_MODULE_5__).forEach(function (rule) {
       if (rule != 'default') {
-        (0,vee_validate__WEBPACK_IMPORTED_MODULE_4__.defineRule)(rule, _vee_validate_rules__WEBPACK_IMPORTED_MODULE_3__[rule]);
+        (0,vee_validate__WEBPACK_IMPORTED_MODULE_6__.defineRule)(rule, _vee_validate_rules__WEBPACK_IMPORTED_MODULE_5__[rule]);
       }
     });
   },
   components: _defineProperty({
     Toggle: _vueform_toggle__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Multiselect: _vueform_multiselect__WEBPACK_IMPORTED_MODULE_2__["default"],
-    VeeForm: vee_validate__WEBPACK_IMPORTED_MODULE_4__.Form,
-    Field: vee_validate__WEBPACK_IMPORTED_MODULE_4__.Field,
-    ErrorMessage: vee_validate__WEBPACK_IMPORTED_MODULE_4__.ErrorMessage
-  }, "Multiselect", _vueform_multiselect__WEBPACK_IMPORTED_MODULE_2__["default"]),
+    Multiselect: _vueform_multiselect__WEBPACK_IMPORTED_MODULE_3__["default"],
+    VeeForm: vee_validate__WEBPACK_IMPORTED_MODULE_6__.Form,
+    Field: vee_validate__WEBPACK_IMPORTED_MODULE_6__.Field,
+    ErrorMessage: vee_validate__WEBPACK_IMPORTED_MODULE_6__.ErrorMessage
+  }, "Multiselect", _vueform_multiselect__WEBPACK_IMPORTED_MODULE_3__["default"]),
   data: function data() {
     return {
       csrfToken: Laravel.csrfToken,
@@ -23564,12 +23569,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       skill: [],
       category: {},
       value: [],
-      test: true
+      test: true,
+      abc: true
     };
   },
   created: function created() {
     var _this = this;
-    console.log(this.data.profileCv);
     this.data.skill.map(function (e) {
       _this.options.push({
         value: e.id,
@@ -23601,8 +23606,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         }
       }
     };
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_4__.configure)({
-      generateMessage: (0,_vee_validate_i18n__WEBPACK_IMPORTED_MODULE_5__.localize)(messError)
+    (0,vee_validate__WEBPACK_IMPORTED_MODULE_6__.configure)({
+      generateMessage: (0,_vee_validate_i18n__WEBPACK_IMPORTED_MODULE_7__.localize)(messError)
     });
   },
   props: ['data'],
@@ -23620,6 +23625,31 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     },
     onSubmit: function onSubmit() {
       this.$refs.formData.submit();
+    },
+    showModal: function showModal(value) {
+      if (value) {
+        window.$(this.$refs.modalChangeStatus).modal('show');
+      } else {
+        console.log(1);
+        var url = '/users/profile/off-status-profile';
+        axios__WEBPACK_IMPORTED_MODULE_1___default().post(url).then(function (a) {
+          var notyf = new notyf__WEBPACK_IMPORTED_MODULE_4__.Notyf({
+            duration: 6000,
+            position: {
+              x: 'right',
+              y: 'bottom'
+            },
+            types: [{
+              type: 'error',
+              duration: 8000,
+              dismissible: true
+            }]
+          });
+          return notyf.success(a.data.message);
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      }
     }
   }
 });
@@ -24606,7 +24636,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = {
   "class": "modal fade",
-  id: "modalChangeStatus",
+  ref: "modalChangeStatus",
   "data-bs-backdrop": "static",
   "data-bs-keyboard": "false",
   tabindex: "-1",
@@ -24739,9 +24769,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     name: "status",
     "class": "toggle-flag",
-    "data-bs-toggle": 'modal',
-    "data-bs-target": '#modalChangeStatus'
-  }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onChange: $options.showModal
+  }, null, 8 /* PROPS */, ["modelValue", "onChange"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn-close",
     "data-bs-dismiss": "modal",
@@ -24926,7 +24955,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, "Bật tìm việc làm", 8 /* PROPS */, _hoisted_35)])], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_7)];
     }),
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["onInvalidSubmit"]), _hoisted_36, _hoisted_37])])])])], 64 /* STABLE_FRAGMENT */);
+  }, 8 /* PROPS */, ["onInvalidSubmit"]), _hoisted_36, _hoisted_37])])])], 512 /* NEED_PATCH */)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
