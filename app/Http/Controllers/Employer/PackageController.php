@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Employer;
 
 use App\Enums\LeverPackageCompany;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 use App\Models\AccountPayment;
 use App\Models\Employer;
 use App\Models\jobAttractive;
-use App\Models\Packageoffer;
 use App\Models\packageofferbought;
 use App\Models\PaymentHistoryEmployer;
 use Carbon\Carbon;
@@ -15,7 +14,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PackageController extends Controller
+class PackageController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -24,18 +23,16 @@ class PackageController extends Controller
      */
     public function index()
     {
+        $employer =  Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
         $pachageForEmployer = packageofferbought::query()
             ->leftjoin('job_attractive', 'job_attractive.id', '=', 'package_offer_bought.package_offer_id')
             ->leftjoin('users', 'users.id', '=', 'package_offer_bought.company_id')
             ->leftjoin('employer', 'employer.user_id', '=', 'users.id')
             ->select('job_attractive.name as name_package', 'job_attractive.price as price', 'package_offer_bought.id as id', 'package_offer_bought.package_offer_id as package_id', 'package_offer_bought.start_time as start_time', 'package_offer_bought.end_time as end_time', 'package_offer_bought.lever', 'package_offer_bought.status')
             ->orderby('package_offer_bought.status', 'ASC')
-            ->where('package_offer_bought.company_id', Auth::guard('user')->user()->id)
+            ->where('package_offer_bought.company_id', $employer->id)
             ->get();
-        // dd($pachageForEmployer);
         $accPayment = AccountPayment::query()->where('user_id', Auth::guard('user')->user()->id)->first();
-
-        $package = jobAttractive::query()->whereNotIn('id', $pachageForEmployer->pluck('package_id'))->get();
 
         $checkPackage = packageofferbought::query()->where('company_id', Auth::guard('user')->user()->id)
             ->leftjoin('job_attractive', 'job_attractive.id', 'package_offer_bought.package_offer_id')
@@ -44,7 +41,6 @@ class PackageController extends Controller
         $packageAttractive = jobAttractive::query()->whereNotIn('id', $pachageForEmployer->pluck('package_id'))->where('price', '>', $checkPackage->price ?? '')->get();
 
         return view('employer.package.index', [
-            'data' => $package,
             'checkPackage' => $checkPackage,
             'accPayment' => $accPayment,
             'pachageForEmployer' => $pachageForEmployer,
@@ -72,21 +68,20 @@ class PackageController extends Controller
             'package' => $package
         ]);
     }
-
     public function payment(Request $request)
     {
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = route('employer.package.create');
+        $vnp_Returnurl = route('employer.package.return');
         $vnp_TmnCode = "S50PEHFY"; //Mã website tại VNPAY 
         $vnp_HashSecret = 'KNAREAARTPBAELKXTPLZKBUMSTCJHIYE'; //Chuỗi bí mật
-        $vnp_TxnRef = rand(0000, 9999);
-        $vnp_OrderInfo = $request->name . ',' . $request->lever_package . ',' . $request->id;
-        $vnp_OrderType = 'billpayment';
-        $vnp_BankCode = 'NCB';
-        $vnp_Amount =  $request->price * 100;
-        $vnp_Locale = 'vn';
-        $vnp_IpAddr = '192.168.1.6';
 
+        $vnp_TxnRef = rand(0000, 9999); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        $vnp_OrderInfo =  $vnp_OrderInfo = $request->name . ',' . $request->lever_package . ',' . $request->id;
+        $vnp_OrderType = 'billpayment';
+        $vnp_Amount = $request->price * 100;
+        $vnp_Locale = 'vn';
+        $vnp_BankCode = 'NCB';
+        $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
         $inputData = array(
             "vnp_Version" => "2.1.0",
             "vnp_TmnCode" => $vnp_TmnCode,
@@ -100,15 +95,12 @@ class PackageController extends Controller
             "vnp_OrderType" => $vnp_OrderType,
             "vnp_ReturnUrl" => $vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef,
+
         );
 
         if (isset($vnp_BankCode) && $vnp_BankCode != "") {
             $inputData['vnp_BankCode'] = $vnp_BankCode;
         }
-        if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
-            $inputData['vnp_Bill_State'] = $vnp_Bill_State;
-        }
-
 
         ksort($inputData);
         $query = "";
@@ -138,6 +130,7 @@ class PackageController extends Controller
         } else {
             echo json_encode($returnData);
         }
+        // vui lòng tham khảo thêm tại code demo
     }
     public function execPostRequest($url, $data)
     {
@@ -185,7 +178,7 @@ class PackageController extends Controller
         }
         // $url_ipn = $request->getRequestUri();
         // dd($request->getRequestUri());
-        $url_ipn = route('employer.package.payment.output', $_GET);
+        $url_ipn = route('employer.package.output', $_GET);
         // dd($url_ipn);
         $secureHash = hash_hmac('sha512', $hashData,  'KNAREAARTPBAELKXTPLZKBUMSTCJHIYE');
         if ($secureHash == $vnp_SecureHash) {
@@ -221,6 +214,7 @@ class PackageController extends Controller
     }
     public function vnpayOutput(Request $request)
     {
+        $employer =  Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
         $inputData = array();
         $returnData = array();
         foreach ($_GET as $key => $value) {
@@ -253,8 +247,10 @@ class PackageController extends Controller
             //Check Orderid    
             //Kiểm tra checksum của dữ liệu
             if ($secureHash == $vnp_SecureHash) {
-                $invoice = jobAttractive::where('id', $lever_package)->first();
-                $checkPackage = packageofferbought::where('company_id', Auth::guard('user')->user()->id)
+
+                $invoice = jobAttractive::where('lever_package', $lever_package)->first();
+
+                $checkPackage = packageofferbought::where('company_id', $employer->id)
                     ->leftjoin('job_attractive', 'job_attractive.id', 'package_offer_bought.package_offer_id')
                     ->select('job_attractive.price as price')
                     ->first();
@@ -273,7 +269,7 @@ class PackageController extends Controller
                                 $Status = 2; // Trạng thái thanh toán thất bại / lỗi
                             }
                             //
-                            $checkPackage = packageofferbought::where('company_id', Auth::guard('user')->user()->id)->first();
+                            $checkPackage = packageofferbought::where('company_id', $employer->id)->first();
                             if ($checkPackage) {
                                 $package = $checkPackage;
                                 if ($lever_package == LeverPackageCompany::VIP1) {
@@ -293,8 +289,8 @@ class PackageController extends Controller
                                     $package->end_time = Carbon::parse(Carbon::now())->addDay(30)->format('Y-m-d');
                                 }
                             }
-                            $package->company_id = Auth::guard('user')->user()->id;
-                            $package->package_offer_id = $lever_package;
+                            $package->company_id = $employer->id;
+                            $package->package_offer_id = $invoice->id;
                             $package->status = $Status;
                             $package->start_time = Carbon::parse(Carbon::now());
 
@@ -310,7 +306,6 @@ class PackageController extends Controller
                             $paymentHistory->save();
 
                             //
-                            $employer = Employer::where('user_id', Auth::guard('user')->user()->id)->first();
                             $employer->prioritize = $lever_package;
                             $employer->amount_job = $lever_package;
                             $employer->position = 1;

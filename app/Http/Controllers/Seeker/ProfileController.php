@@ -87,4 +87,23 @@ class ProfileController extends BaseController
             return back();
         }
     }
+    public function offStatus(Request $request)
+    {
+        try {
+            $profile = ProfileUserCv::where('user_id', Auth::guard('user')->user()->id)->first();
+            $profile->status = 0;
+            $profile->save();
+            return response()->json([
+                'message' => 'Cập nhật thành công',
+                'status' => StatusCode::OK
+            ], StatusCode::OK);
+        } catch (\Throwable $th) {
+            dd($th->getMessage());
+            DB::rollback();
+            return response()->json([
+                'message' => 'Đã có một lỗi xảy ra',
+                'status' => StatusCode::FORBIDDEN,
+            ], StatusCode::FORBIDDEN);
+        }
+    }
 }
