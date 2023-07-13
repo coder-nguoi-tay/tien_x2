@@ -50,6 +50,10 @@ app.component('char-employer', CharEmployer)
 // date 
 import DateYear from './components/common/datePickerYear.vue'
 app.component('date-year-employer', DateYear)
+
+// form-search-cv
+import FormSearchCv from './components/employer/cv/formSearchCv.vue'
+app.component('form-search-cv', FormSearchCv)
 app.mount('#app');
 
 

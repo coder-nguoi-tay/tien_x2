@@ -55,6 +55,19 @@
         <div class="card-body">
             <h5 class="card-title fw-semibold mb-4">Danh sách ứng viên</h5>
         </div>
+        <div class="form-search-cv">
+            <form-search-cv
+                :data="{{ json_encode([
+                    'wage' => $wage,
+                    'skill' => $skill,
+                    'experience' => $experience,
+                    'majors' => $majors,
+                    'location' => $location,
+                    'request' => $request,
+                    'skillSearch' => $skillSearch,
+                ]) }}">
+            </form-search-cv>
+        </div>
         <div class="content">
             <div class="container">
                 <div class="row">
@@ -62,16 +75,18 @@
                         <div class="col-lg-4">
                             <div class="text-center card-box">
                                 <div class="member-card pt-2 pb-2">
-                                    <div class="thumb-lg member-thumb mx-auto"><img src="{{ asset($item->user->images) }}"
-                                            class="rounded-circle img-thumbnail" alt="profile-image"></div>
-                                    <div class="">
+                                    <div class="thumb-lg member-thumb mx-auto" style="width: 200px;">
+                                        <img src="{{ asset($item->user->images) }}" class="rounded-circle img-thumbnail"
+                                            alt="profile-image">
+                                    </div>
+                                    <div class="mt-2">
                                         <h4>{{ $item->user->name }}</h4>
                                         <p class="text-muted"> </span><span><a
                                                     href="{{ route('employer.search.show', $item->id) }}"
                                                     class="text-pink">{{ $item->majors }}</a></span></p>
                                     </div>
                                     <a href="{{ route('employer.search.show', $item->id) }}"
-                                        class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light">Xem chi
+                                        class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light mb-4">Xem chi
                                         tiết</a>
                                 </div>
                             </div>

@@ -11,6 +11,7 @@ use App\Models\Feedback;
 use App\Models\FeedbackCv;
 use App\Models\PaymentHistoryEmployer;
 use App\Models\ProfileUserCv;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -22,11 +23,48 @@ class SearchCvController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cv = ProfileUserCv::query()->where('status', 1)->get();
+        $cv = ProfileUserCv::query()
+            ->leftjoin('job-seeker', 'job-seeker.user_id', '=', 'profile_user_cv.user_id')
+            ->leftjoin('seeker_skill', 'seeker_skill.job-seeker_id', '=', 'job-seeker.id')
+            ->leftjoin('skill', 'skill.id', '=', 'seeker_skill.skill_id')
+            ->where([
+                ['profile_user_cv.status', 1],
+            ])
+            ->where(function ($q) use ($request) {
+                if (!empty($request['name'])) {
+                    $q->Where($this->escapeLikeSentence('majors', $request['free_word']));
+                }
+                if (!empty($request['location'])) {
+                    $q->Where('job-seeker.location_id', $request['location']);
+                }
+                if (!empty($request['majors'])) {
+                    $q->Where('job-seeker.majors_id', $request['majors']);
+                }
+                if (!empty($request['experience'])) {
+                    $q->Where('job-seeker.experience_id', $request['experience']);
+                }
+                if (!empty($request['skill'])) {
+                    $q->WhereIn('seeker_skill.skill_id', $request['skill']);
+                }
+            })
+            ->select('profile_user_cv.*')
+            ->distinct()
+            ->with('user')->get();
+        if ($request->skill != null) {
+            $skill = explode(',', $request->skill[0]);
+            $skillSearch = Skill::query()->whereIn('id', $skill)->get();
+        }
         return view('employer.cv.index', [
-            'cv' => $cv
+            'cv' => $cv,
+            'wage' => $this->getwage(),
+            'skill' => $this->getskill(),
+            'majors' => $this->getmajors(),
+            'location' => $this->getlocation(),
+            'experience' => $this->getexperience(),
+            'request' => $request->all(),
+            'skillSearch' => $skillSearch ?? null,
         ]);
     }
     public function show($id)
