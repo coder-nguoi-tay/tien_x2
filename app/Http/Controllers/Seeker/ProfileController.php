@@ -11,6 +11,8 @@ use App\Models\KeyUserSearch;
 use App\Models\ProfileUserCv;
 use App\Models\SaveCv;
 use App\Models\SeekerSkill;
+use App\Models\Skill;
+use Database\Seeders\SkillSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -35,19 +37,24 @@ class ProfileController extends BaseController
             ->select('job.id as id', 'job.location_id', 'job.majors_id', 'job.slug as slug', 'job.title as title', 'company.id as idCompany', 'company.logo as logo', 'company.name as nameCompany', 'save_cv.created_at as created_at', 'save_cv.status as status', 'save_cv.file_cv as file')
             ->get();
         $keySearch = KeyUserSearch::query()->where('user_id', Auth::guard('user')->user()->id)->orderBy('count', 'desc')->get();
+
+        // 
+        $jobSeeker = Jobseeker::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+        // skill seeeker
+        $SeekerId = SeekerSkill::query()->where('job-seeker_id', $jobSeeker->id)->pluck('skill_id');
+        $skillSeeker = Skill::query()->whereIn('id', $SeekerId)->get();
         return view('seeker.index', [
             'profileCv' => $profileCv,
             'lever' => $this->getlever(),
             'experience' => $this->getexperience(),
             'wage' => $this->getwage(),
             'skill' => $this->getskill(),
-            'timework' => $this->gettimework(),
-            'profession' => $this->getprofession(),
             'majors' => $this->getmajors(),
             'location' => $this->getlocation(),
-            'workingform' => $this->getworkingform(),
             'apply' => $apply,
             'keySearch' => $keySearch ?? [],
+            'jobSeeker' => $jobSeeker ?? [],
+            'skillSeeker' => $skillSeeker ?? [],
         ]);
     }
     public function onStatus(Request $request)

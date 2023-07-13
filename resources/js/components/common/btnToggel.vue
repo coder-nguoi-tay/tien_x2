@@ -21,7 +21,7 @@
                                     <div class="opption">
                                         <div class="form-group">
                                             <label for="">Chọn Ngành/Nghề bạn quan tâm*</label>
-                                            <Field name="majors" as="select" v-model="category.majors" rules="required"
+                                            <Field name="majors" as="select" v-model="category.majors_id" rules="required"
                                                 class="form-control mt-2">
                                                 <option v-for="item in data.majors" :key="item.id" :value="item.id">
                                                     {{ item.label }}
@@ -31,7 +31,7 @@
                                         </div>
                                         <div class="form-group mt-2">
                                             <label for="">Địa điểm làm việc *</label>
-                                            <Field name="location" as="select" v-model="category.location"
+                                            <Field name="location" as="select" v-model="category.location_id"
                                                 class="form-control mt-2" rules="required">
                                                 <option v-for="item in data.location" :key="item.id" :value="item.id">
                                                     {{ item.label }}
@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="form-group mt-2">
                                             <label for="">Kinh nghiệm ngành/nghề đã chọn*</label>
-                                            <Field name="experience" as="select" v-model="category.experience"
+                                            <Field name="experience" as="select" v-model="category.experience_id"
                                                 class="form-control mt-2" rules="required">
                                                 <option v-for="item in data.experience" :key="item.id" :value="item.id">
                                                     {{ item.label }}
@@ -62,7 +62,7 @@
                                         </div>
                                         <div class="form-group mt-2">
                                             <label for="">Mức lương mong muốn*</label>
-                                            <Field name="wage" as="select" v-model="category.wage" rules="required"
+                                            <Field name="wage" as="select" v-model="category.wage_id" rules="required"
                                                 class="form-control mt-2">
                                                 <option v-for="item in data.wage" :key="item.id" :value="item.id">
                                                     {{ item.label }}
@@ -80,7 +80,7 @@
                                         style="padding: 16px 4px 28px 10px; border: 1px dashed #ccc; border-radius: 3px;">
                                         <div class="box-child-cv" v-if="data.profileCv">
                                             <Field type="checkbox" name="profile_cv_id" rules="required"
-                                                @click="test = !test" :value="data.profileCv.id" />
+                                                @click="changeDisabled = !changeDisabled" :value="data.profileCv.id" />
                                             <span style="margin-left: 5px;">{{ data.profileCv.title }}</span>
                                             <a href="">(xem cv)</a>
                                             <br>
@@ -95,7 +95,7 @@
                                 <button class="btn btn-dark col-3" data-bs-dismiss="modal" aria-label="Close"
                                     @click="changeToggel" type="button" style="margin-right: 10px;">Không có nhu
                                     cầu</button>
-                                <button class="btn btn-primary col-3" type="submit" :disabled="test">Bật tìm việc
+                                <button class="btn btn-primary col-3" type="submit" :disabled="changeDisabled">Bật tìm việc
                                     làm</button>
                             </div>
                         </form>
@@ -150,13 +150,21 @@ export default {
             model: this.data.profileCv && this.data.profileCv.status === 1 ? true : false,
             options: [],
             skill: [],
-            category: {},
+            category: this.data.jobSeeker ?? {},
             value: [],
-            test: true,
+            changeDisabled: true,
             abc: true,
         }
     },
     created() {
+        if (this.data.skillSeeker) {
+            this.data.skillSeeker.map((e) => {
+                this.value.push({
+                    value: e.id,
+                    label: e.name
+                })
+            })
+        }
         this.data.skill.map((e) => {
             this.options.push({
                 value: e.id,

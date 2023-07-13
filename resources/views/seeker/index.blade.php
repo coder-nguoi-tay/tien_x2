@@ -32,8 +32,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="profile-avatar">
-                                            <img src="https://static.topcv.vn/user_avatars/GBuiDN3gtGAPnJ8T1qMa_62bf0bfd93b8f_av.jpg"
-                                                alt=""
+                                            <img src="{{ asset(Auth::guard('user')->user()->images) }}" alt=""
                                                 style=" border-radius: 50%;
                                                 height: 83px;
                                                 max-width: 150px;
@@ -80,15 +79,13 @@
                                     <btn-toggle
                                         :data="{{ json_encode([
                                             'profileCv' => $profileCv,
-                                            'lever' => $lever,
                                             'experience' => $experience,
                                             'wage' => $wage,
                                             'skill' => $skill,
-                                            'timework' => $timework,
-                                            'profession' => $profession,
                                             'majors' => $majors,
                                             'location' => $location,
-                                            'workingform' => $workingform,
+                                            'jobSeeker' => $jobSeeker,
+                                            'skillSeeker' => $skillSeeker,
                                         ]) }}">
                                     </btn-toggle>
                                     <span class="job-waiting-status-text job-off-show ml-2">
@@ -191,7 +188,8 @@
                                                     <span class="badge bg-dark rounded-3 fw-semibold mb-2"
                                                         style="font-size: 12px;">bị hủy</span>
                                                     <br>
-                                                    <a href="#" onclick="Reason(JSON.parse('{{ $item }}'))">Lý
+                                                    <a href="#"
+                                                        onclick="Reason(JSON.parse('{{ $item }}'))">Lý
                                                         do từ chối</a>
                                                 @endif
                                             </div>

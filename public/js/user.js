@@ -23562,19 +23562,28 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     ErrorMessage: vee_validate__WEBPACK_IMPORTED_MODULE_6__.ErrorMessage
   }, "Multiselect", _vueform_multiselect__WEBPACK_IMPORTED_MODULE_3__["default"]),
   data: function data() {
+    var _this$data$jobSeeker;
     return {
       csrfToken: Laravel.csrfToken,
       model: this.data.profileCv && this.data.profileCv.status === 1 ? true : false,
       options: [],
       skill: [],
-      category: {},
+      category: (_this$data$jobSeeker = this.data.jobSeeker) !== null && _this$data$jobSeeker !== void 0 ? _this$data$jobSeeker : {},
       value: [],
-      test: true,
+      changeDisabled: true,
       abc: true
     };
   },
   created: function created() {
     var _this = this;
+    if (this.data.skillSeeker) {
+      this.data.skillSeeker.map(function (e) {
+        _this.value.push({
+          value: e.id,
+          label: e.name
+        });
+      });
+    }
     this.data.skill.map(function (e) {
       _this.options.push({
         value: e.id,
@@ -24798,9 +24807,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8 /* PROPS */, _hoisted_8), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Field, {
         name: "majors",
         as: "select",
-        modelValue: $data.category.majors,
+        modelValue: $data.category.majors_id,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $data.category.majors = $event;
+          return $data.category.majors_id = $event;
         }),
         rules: "required",
         "class": "form-control mt-2"
@@ -24821,9 +24830,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Field, {
         name: "location",
         as: "select",
-        modelValue: $data.category.location,
+        modelValue: $data.category.location_id,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return $data.category.location = $event;
+          return $data.category.location_id = $event;
         }),
         "class": "form-control mt-2",
         rules: "required"
@@ -24844,9 +24853,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Field, {
         name: "experience",
         as: "select",
-        modelValue: $data.category.experience,
+        modelValue: $data.category.experience_id,
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-          return $data.category.experience = $event;
+          return $data.category.experience_id = $event;
         }),
         "class": "form-control mt-2",
         rules: "required"
@@ -24906,9 +24915,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Field, {
         name: "wage",
         as: "select",
-        modelValue: $data.category.wage,
+        modelValue: $data.category.wage_id,
         "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-          return $data.category.wage = $event;
+          return $data.category.wage_id = $event;
         }),
         rules: "required",
         "class": "form-control mt-2"
@@ -24931,7 +24940,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: "profile_cv_id",
         rules: "required",
         onClick: _cache[9] || (_cache[9] = function ($event) {
-          return $data.test = !$data.test;
+          return $data.changeDisabled = !$data.changeDisabled;
         }),
         value: $props.data.profileCv.id
       }, null, 8 /* PROPS */, ["value"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.data.profileCv.title), 1 /* TEXT */), _hoisted_31, _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ErrorMessage, {
@@ -24951,7 +24960,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, "Không có nhu cầu"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         "class": "btn btn-primary col-3",
         type: "submit",
-        disabled: $data.test
+        disabled: $data.changeDisabled
       }, "Bật tìm việc làm", 8 /* PROPS */, _hoisted_35)])], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_7)];
     }),
     _: 1 /* STABLE */
