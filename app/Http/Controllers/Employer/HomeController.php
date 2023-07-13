@@ -22,7 +22,6 @@ class HomeController extends BaseController
      */
     public function index(Request $request)
     {
-        $test = [];
         $checkCompany = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
         // số  lượng bài viết đã đăng
         $job = Job::query()->where('employer_id', $checkCompany->id)->count();
@@ -53,14 +52,13 @@ class HomeController extends BaseController
             ->select('job.id as job_id', 'users.name as user_name', 'users.images as images', 'save_cv.status as status', 'save_cv.id as cv_id', 'save_cv.file_cv as file_cv', 'save_cv.user_id as user_id', 'majors.name as majors_name', 'save_cv.created_at as create_at_sv', 'save_cv.token as token', 'time_work.name  as time_work_name')
             ->get();
         return view('employer.home', [
-            'test' => $test,
             'request' => $request->all(),
-            'cv' => $cv,
+            'cv' => $cv ?? 0,
             'totalPayment' => $totalPayment ?? 0,
-            'tatalecv' => $tatalecv,
-            'job' => $job,
-            'paymentHistory' => $paymentHistory,
-            'cvApplyNew' => $cvApplyNew,
+            'tatalecv' => $tatalecv ?? 0,
+            'job' => $job ?? 0,
+            'paymentHistory' => $paymentHistory ?? 0,
+            'cvApplyNew' => $cvApplyNew ?? 0,
             'countCvMoth1' => $this->getDataMouth(1, $checkCompany->id, $request->all()),
             'countCvMoth2' => $this->getDataMouth(2, $checkCompany->id, $request->all()),
             'countCvMoth3' => $this->getDataMouth(3, $checkCompany->id, $request->all()),
