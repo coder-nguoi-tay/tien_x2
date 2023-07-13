@@ -5,6 +5,7 @@ use App\Http\Controllers\Employer\HomeController;
 use App\Http\Controllers\Employer\NewEmployerController;
 use App\Http\Controllers\Employer\PackageController;
 use App\Http\Controllers\Employer\PaymentForEmployerController;
+use App\Http\Controllers\Employer\PaymentHistoryController;
 use App\Http\Controllers\Employer\ProfileCompanyController;
 use App\Http\Controllers\Employer\ProfileEmployerController;
 use App\Http\Controllers\Employer\SearchCvController;
@@ -101,4 +102,5 @@ Route::prefix('employers')->name('employer.')->group(function () {
     Route::prefix('/payment-for-emplyer')->name('payment-for-emplyer.')->group(function () {
         Route::get('payment/vnpay-return', [PaymentForEmployerController::class, 'vnpayReturn'])->name('vnpayReturn');
     });
+    Route::resource('payment-history', PaymentHistoryController::class);
 });

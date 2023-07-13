@@ -42,6 +42,14 @@ app.component("form-show-cv", showCv);
 // rating
 import RatingCv from 'vue-star-rating'
 app.component('rating-cv', RatingCv)
+
+// chart 
+import CharEmployer from './components/common/chart.vue'
+app.component('char-employer', CharEmployer)
+
+// date 
+import DateYear from './components/common/datePickerYear.vue'
+app.component('date-year-employer', DateYear)
 app.mount('#app');
 
 

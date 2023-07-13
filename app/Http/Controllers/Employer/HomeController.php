@@ -3,7 +3,14 @@
 namespace App\Http\Controllers\Employer;
 
 use App\Http\Controllers\Controller;
+use App\Models\AccountPayment;
+use App\Models\Employer;
+use App\Models\Job;
+use App\Models\PaymentHistoryEmployer;
+use App\Models\ProfileUserCv;
+use App\Models\SaveCv;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -12,8 +19,47 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('employer.home');
+        $test = [];
+        $checkCompany = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+        // số  lượng bài viết đã đăng
+        $job = Job::query()->where('employer_id', $checkCompany->id)->count();
+        // số lương hồ sơ đã nhận
+        $cv = SaveCv::query()
+            ->join('job', 'job.id', '=', 'save_cv.id_job')
+            ->join('employer', 'employer.id', '=', 'job.employer_id')
+            ->where('job.employer_id', $checkCompany->id)
+            ->count();
+        // số lượng cv đã  mua
+        $tatalecv = ProfileUserCv::query()->where('status', Auth::guard('user')->user()->id)->count();
+        // tổng số tiền
+        $totalPayment = AccountPayment::where('user_id', Auth::guard('user')->user()->id)->first();
+        // lịch sử giao dịch
+        $paymentHistory = PaymentHistoryEmployer::query()->where('user_id', $checkCompany->id)->limit(5)->orderBy('created_at', 'desc')->get();
+        // Hồ sơ mới nhận gần đây
+        $cvApplyNew = SaveCv::query()
+            ->join('job', 'job.id', '=', 'save_cv.id_job')
+            ->leftjoin('users', 'users.id', '=', 'save_cv.user_id')
+            ->join('employer', 'employer.id', '=', 'job.employer_id')
+            ->leftjoin('majors', 'majors.id', '=', 'job.majors_id')
+            ->leftjoin('time_work', 'time_work.id', '=', 'job.time_work_id')
+            ->where([
+                ['employer.user_id', Auth::guard('user')->user()->id],
+                // ['save_cv.status', 0],
+            ])
+            ->orderBy('save_cv.created_at', 'desc')
+            ->select('job.id as job_id', 'users.name as user_name', 'users.images as images', 'save_cv.status as status', 'save_cv.id as cv_id', 'save_cv.file_cv as file_cv', 'save_cv.user_id as user_id', 'majors.name as majors_name', 'save_cv.created_at as create_at_sv', 'save_cv.token as token','time_work.name  as time_work_name')
+            ->get();
+        return view('employer.home', [
+            'test' => $test,
+            'request' => $request->all(),
+            'cv' => $cv,
+            'totalPayment' => $totalPayment,
+            'tatalecv' => $tatalecv,
+            'job' => $job,
+            'paymentHistory' => $paymentHistory,
+            'cvApplyNew' => $cvApplyNew,
+        ]);
     }
 }

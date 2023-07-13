@@ -1,36 +1,34 @@
 <template>
-  <datepicker
-    autoApply
-    v-model="date"
-    :monthChangeOnScroll="false"
-    locale="vi"
-    year-picker
-    :name="NameDate"
-    :maxDate="new Date()"
-    selectText="chọn"
-    cancelText="đóng lại"
-    format="yyyy"
-  />
+  <form ref="form" method="get">
+    <datepicker autoApply v-model="date" :monthChangeOnScroll="false" locale="vi" year-picker name="year"
+      :maxDate="new Date()" @update:model-value="handleDateUpdate" selectText="chọn" style="width: 120px;"
+      cancelText="đóng lại" format="yyyy" />
+  </form>
 </template>
 
 <script>
 import Datepicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 export default {
-  props: {
-    NameDate: {
-      type: String
-    }
-  },
+  props: ['data'],
   data() {
     return {
-      date: new Date()
+      date: this.data ? this.data.year : new Date()
     }
   },
-  created() {},
+  created() {
+
+  },
   components: {
     Datepicker
   },
-  methods: {}
+  methods: {
+    handleDateUpdate(value) {
+      this.$nextTick(() => {
+        this.$refs.form.submit();
+      });
+    },
+
+  }
 }
 </script>

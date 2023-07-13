@@ -102,6 +102,15 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('employer.payment-history.index') }}"
+                        aria-expanded="false">
+                        <span>
+                            <i class="ti ti-mood-happy"></i>
+                        </span>
+                        <span class="hide-menu">Lịch sử giao dịch</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('logout') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-aperture"></i>
