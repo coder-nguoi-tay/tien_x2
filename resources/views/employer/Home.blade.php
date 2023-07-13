@@ -1,5 +1,7 @@
 @php
     use Carbon\Carbon;
+    
+    $totalCv = $countCvMoth1 + $countCvMoth2 + $countCvMoth3 + $countCvMoth4 + $countCvMoth5 + $countCvMoth6 + $countCvMoth7 + $countCvMoth8 + $countCvMoth9 + $countCvMoth10 + $countCvMoth11 + $countCvMoth12;
 @endphp
 @extends('employer.layout.index')
 @section('main-employer')
@@ -62,19 +64,19 @@
                         <div class="col-8">
                             <h4 class="fw-semibold mb-3 fs-8">{{ $cv }}</h4>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="height: 500px">
         <div class="col-lg-12 d-flex align-items-strech">
             <div class="card w-100">
                 <div class="card-body">
                     <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                         <div class="mb-3 mb-sm-0">
-                            <h5 class="card-title fw-semibold">Số lượng ứng viên đã ứng tuyển</h5>
+                            <h5 class="card-title fw-semibold">Tổng số lượng ứng viên đã ứng tuyển: {{ $totalCv }} hồ
+                                sơ</h5>
                         </div>
                         <div>
                             <date-year-employer :data="{{ json_encode($request) }}">
@@ -82,7 +84,22 @@
                         </div>
                     </div>
                     {{-- biểu đồ --}}
-                    <char-employer :name-date="{{ json_encode($test) }}"></char-employer>
+                    <char-employer
+                        :chart="{{ json_encode([
+                            'countCvMoth1' => $countCvMoth1,
+                            'countCvMoth2' => $countCvMoth2,
+                            'countCvMoth3' => $countCvMoth3,
+                            'countCvMoth4' => $countCvMoth4,
+                            'countCvMoth5' => $countCvMoth5,
+                            'countCvMoth6' => $countCvMoth6,
+                            'countCvMoth7' => $countCvMoth7,
+                            'countCvMoth8' => $countCvMoth8,
+                            'countCvMoth9' => $countCvMoth9,
+                            'countCvMoth10' => $countCvMoth10,
+                            'countCvMoth11' => $countCvMoth11,
+                            'countCvMoth12' => $countCvMoth12,
+                        ]) }}">
+                    </char-employer>
                 </div>
             </div>
         </div>
@@ -111,7 +128,6 @@
                             </li>
                         </ul>
                     @endforeach
-
                 </div>
                 <a href="{{ route('employer.payment-history.index') }}" class="text-center pb-2 fs-3">xem tất cả</a>
             </div>

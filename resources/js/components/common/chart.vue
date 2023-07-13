@@ -9,6 +9,7 @@ import { CChart } from '@coreui/vue-chartjs'
 export default {
     created() {
         this.setup()
+        console.log(this.chart);
     },
     data: function () {
         return {
@@ -16,7 +17,7 @@ export default {
             options: ''
         }
     },
-    props: ['NameDate'],
+    props: ['chart'],
     name: 'chart',
     components: {
         CChart
@@ -47,19 +48,18 @@ export default {
                         pointHoverBackgroundColor: 'red',
                         borderWidth: 2,
                         data: [
-                            // this.NameDate.countCvMoth1,
-                            // this.NameDate.countCvMoth2,
-                            // this.NameDate.countCvMoth3,
-                            // this.NameDate.countCvMoth4,
-                            // this.NameDate.countCvMoth5,
-                            // this.NameDate.countCvMoth6,
-                            // this.NameDate.countCvMoth7,
-                            // this.NameDate.countCvMoth8,
-                            // this.NameDate.countCvMoth9,
-                            // this.NameDate.countCvMoth10,
-                            // this.NameDate.countCvMoth11,
-                            // this.NameDate.countCvMoth12
-                            5, 2, 3, 5, 7, 1, 12, 15, 6, 7, 10, 5
+                            this.chart.countCvMoth1,
+                            this.chart.countCvMoth2,
+                            this.chart.countCvMoth3,
+                            this.chart.countCvMoth4,
+                            this.chart.countCvMoth5,
+                            this.chart.countCvMoth6,
+                            this.chart.countCvMoth7,
+                            this.chart.countCvMoth8,
+                            this.chart.countCvMoth9,
+                            this.chart.countCvMoth10,
+                            this.chart.countCvMoth11,
+                            this.chart.countCvMoth12
                         ],
                         fill: true
                     }

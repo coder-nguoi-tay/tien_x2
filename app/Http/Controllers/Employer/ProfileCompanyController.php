@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Employer;
 
 use App\Http\Controllers\BaseController;
-use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Employer;
 use Illuminate\Http\Request;
@@ -19,7 +18,13 @@ class ProfileCompanyController extends BaseController
      */
     public function index()
     {
-        return view('employer.company.index');
+        $employer =  Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+        if ($employer->id_company) {
+            $company = Company::query()->find($employer->id_company);
+        }
+        return view('employer.company.index', [
+            'company' => $company ?? null
+        ]);
     }
 
     /**

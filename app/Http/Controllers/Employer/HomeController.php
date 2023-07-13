@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Employer;
 
+use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Models\AccountPayment;
 use App\Models\Employer;
@@ -12,7 +13,7 @@ use App\Models\SaveCv;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
+class HomeController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -49,17 +50,29 @@ class HomeController extends Controller
                 // ['save_cv.status', 0],
             ])
             ->orderBy('save_cv.created_at', 'desc')
-            ->select('job.id as job_id', 'users.name as user_name', 'users.images as images', 'save_cv.status as status', 'save_cv.id as cv_id', 'save_cv.file_cv as file_cv', 'save_cv.user_id as user_id', 'majors.name as majors_name', 'save_cv.created_at as create_at_sv', 'save_cv.token as token','time_work.name  as time_work_name')
+            ->select('job.id as job_id', 'users.name as user_name', 'users.images as images', 'save_cv.status as status', 'save_cv.id as cv_id', 'save_cv.file_cv as file_cv', 'save_cv.user_id as user_id', 'majors.name as majors_name', 'save_cv.created_at as create_at_sv', 'save_cv.token as token', 'time_work.name  as time_work_name')
             ->get();
         return view('employer.home', [
             'test' => $test,
             'request' => $request->all(),
             'cv' => $cv,
-            'totalPayment' => $totalPayment,
+            'totalPayment' => $totalPayment ?? 0,
             'tatalecv' => $tatalecv,
             'job' => $job,
             'paymentHistory' => $paymentHistory,
             'cvApplyNew' => $cvApplyNew,
+            'countCvMoth1' => $this->getDataMouth(1, $checkCompany->id, $request->all()),
+            'countCvMoth2' => $this->getDataMouth(2, $checkCompany->id, $request->all()),
+            'countCvMoth3' => $this->getDataMouth(3, $checkCompany->id, $request->all()),
+            'countCvMoth4' => $this->getDataMouth(4, $checkCompany->id, $request->all()),
+            'countCvMoth5' => $this->getDataMouth(5, $checkCompany->id, $request->all()),
+            'countCvMoth6' =>  $this->getDataMouth(6, $checkCompany->id, $request->all()),
+            'countCvMoth7' => $this->getDataMouth(7, $checkCompany->id, $request->all()),
+            'countCvMoth8' => $this->getDataMouth(8, $checkCompany->id, $request->all()),
+            'countCvMoth9' => $this->getDataMouth(9, $checkCompany->id, $request->all()),
+            'countCvMoth10' => $this->getDataMouth(10, $checkCompany->id, $request->all()),
+            'countCvMoth11' => $this->getDataMouth(11, $checkCompany->id, $request->all()),
+            'countCvMoth12' => $this->getDataMouth(12, $checkCompany->id, $request->all()),
         ]);
     }
 }

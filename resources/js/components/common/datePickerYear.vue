@@ -13,17 +13,21 @@ export default {
   props: ['data'],
   data() {
     return {
-      date: this.data ? this.data.year : new Date()
+      date: ''
     }
   },
   created() {
-
+    if (!Object.keys(this.data).length == 0) {
+      this.date = this.data.year
+    } else {
+      this.date = '2023'
+    }
   },
   components: {
     Datepicker
   },
   methods: {
-    handleDateUpdate(value) {
+    handleDateUpdate() {
       this.$nextTick(() => {
         this.$refs.form.submit();
       });

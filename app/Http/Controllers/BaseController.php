@@ -7,11 +7,13 @@ use App\Models\Lever;
 use App\Models\location;
 use App\Models\Majors;
 use App\Models\Profession;
+use App\Models\SaveCv;
 use App\Models\Skill;
 use App\Models\Timeoffer;
 use App\Models\Timework;
 use App\Models\Wage;
 use App\Models\WorkingForm;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -86,5 +88,18 @@ class BaseController extends Controller
         $hyphenatedText = str_replace(' ', '-', $normalizedText);
 
         return $hyphenatedText;
+    }
+    public function getDataMouth($request, $employer, $year)
+    {
+        $date = $year['year'] ?? Carbon::parse(Carbon::now())->format('Y');
+        return SaveCv::query()
+            ->join('job', 'job.id', '=', 'save_cv.id_job')
+            ->join('employer', 'employer.id', '=', 'job.employer_id')
+            ->where('job.employer_id', $employer)
+            ->where(function ($q) use ($request, $date) {
+                $q->whereMonth('save_cv.created_at', $request)
+                    ->whereYear('save_cv.created_at', $date);
+            })
+            ->count();
     }
 }
