@@ -4,15 +4,12 @@ namespace App\Http\Controllers\Seeker;
 
 use App\Enums\StatusCode;
 use App\Http\Controllers\BaseController;
-use App\Http\Controllers\Controller;
 use App\Models\Job;
 use App\Models\Jobseeker;
 use App\Models\KeyUserSearch;
 use App\Models\ProfileUserCv;
-use App\Models\SaveCv;
 use App\Models\SeekerSkill;
 use App\Models\Skill;
-use Database\Seeders\SkillSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -77,6 +74,9 @@ class ProfileController extends BaseController
             $profile->status = 1;
             $profile->save();
             // kỹ năng
+            if ($checkSeeker) {
+                SeekerSkill::query()->where('job-seeker_id', $checkSeeker->id)->delete();
+            }
             $array = [];
             foreach ($skill as $item) {
                 $array[] = [

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Client\CompanyController;
+use App\Http\Controllers\Client\MajorsController;
 use App\Http\Controllers\Employer\HomeController;
 use App\Http\Controllers\Employer\NewEmployerController;
 use App\Http\Controllers\Employer\PackageController;
@@ -32,13 +33,15 @@ Route::prefix('viec-lam')->name('client.')->group(function () {
     Route::post('/up-cv', [ControllersHomeController::class, 'upCv'])->name('upcv');
     // love cv
     Route::get('/favourite-love/{id}', [ControllersHomeController::class, 'getDatalove']); // api
-    Route::post('/favourite/{id}', [ControllersHomeController::class, 'userFavouriteId']); // api
+    Route::post('/favourite/{id}', [ControllersHomeController::class, 'userFavouriteId']); // api\
+
+    // nganh nghe
+    Route::resource('nganh-nghe', MajorsController::class);
 });
-// ứng viên
 
 // client company
 Route::prefix('cong-ty')->name('company.')->group(function () {
-    Route::get('/{slug}', [CompanyController::class, 'detail'])->name('detail');
+    Route::get('/{id}', [CompanyController::class, 'detail'])->name('detail');
     Route::get('/', [CompanyController::class, 'index'])->name('index');
 });
 

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
+use App\Models\Job;
+use App\Models\Majors;
 use Illuminate\Http\Request;
 
-class CompanyController extends Controller
+class MajorsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +16,6 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $company = Company::query()->with('employer.job')->get();
-        return view('client.company.index', [
-            'company' => $company
-        ]);
     }
 
     /**
@@ -50,7 +47,15 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $majors =  Majors::query()->find($id);
+        $job  = Job::query()->where('majors_id', $majors->id)
+            ->join('employer', 'employer.id', '=', 'job.employer_id')
+            ->join('company', 'company.id', '=', 'employer.id_company')
+            ->select('job.id as id', 'job.time_work_id', 'job.location_id', 'job.majors_id', 'job.slug as slug', 'job.title as title', 'company.id as idCompany', 'company.logo as logo', 'company.name as nameCompany', 'job.end_job_time')
+            ->get();
+        return view('client.majors.show', [
+            'job' => $job
+        ]);
     }
 
     /**
@@ -85,12 +90,5 @@ class CompanyController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function detail($id)
-    {
-        $company = Company::query()->with('employer.job')->find($id);
-        return view('client.company.show', [
-            'company' => $company
-        ]);
     }
 }

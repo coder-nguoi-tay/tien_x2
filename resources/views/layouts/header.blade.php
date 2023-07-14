@@ -1,4 +1,8 @@
 {{-- menu mobile --}}
+@php
+    use App\Models\Majors;
+    $majors = Majors::query()->get();
+@endphp
 <div class="responsive-header">
     <div class="responsive-menubar">
         <div class="res-logo"><a href="{{ route('home') }}" title=""><img
@@ -114,13 +118,22 @@
             <nav>
                 <ul>
                     <li class="menu-item-has-children">
-                        <a href="#" title="">Trang chủ</a>
+                        <a href="{{ route('home') }}" title="">Trang chủ</a>
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#" title="">Ngành nghề</a>
+                        <ul>
+                            @foreach ($majors as $item)
+                                <li>
+                                    <a href="{{ route('client.nganh-nghe.show', $item->id) }}"
+                                        title="">{{ $item->name }}</a>
+                                </li>
+                            @endforeach
+
+                        </ul>
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="#" title="">Nhà tuyển dụng</a>
+                        <a href="{{ route('company.index') }}" title="">Nhà tuyển dụng</a>
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#" title="">Câu hỏi thường hỏi</a>
