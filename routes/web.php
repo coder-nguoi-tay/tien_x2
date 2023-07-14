@@ -82,6 +82,8 @@ Route::prefix('employers')->name('employer.')->group(function () {
         Route::get('change-status-cv/{id}', [NewEmployerController::class, 'changeStatusCv'])->name('changeStatusCv');
         Route::post('update-reason-cv', [NewEmployerController::class, 'reasonCv'])->name('reasonCv');
         Route::get('get-data-reason/{id}', [NewEmployerController::class, 'getDataReason'])->name('getDataReason');
+        Route::get('job/top-new', [NewEmployerController::class, 'topNew'])->name('topNew');
+        Route::post('job/top-new', [NewEmployerController::class, 'upTopNew'])->name('upTopNew');
     });
     // submitted work
     Route::get('submitted-work', [NewEmployerController::class, 'submittedWork'])->name('submittedWork');
@@ -89,6 +91,10 @@ Route::prefix('employers')->name('employer.')->group(function () {
     Route::resource('/package', PackageController::class);
     Route::resource('/profile', ProfileEmployerController::class);
     Route::resource('/company', ProfileCompanyController::class);
+    Route::prefix('/company')->name('company.')->group(function () {
+        Route::get('new/business', [ProfileCompanyController::class, 'business'])->name('business');
+        Route::post('new/business', [ProfileCompanyController::class, 'ImageAccuracy'])->name('ImageAccuracy');
+    });
     Route::prefix('/package')->name('package.')->group(function () {
         Route::post('/payment', [PackageController::class, 'payment'])->name('payment');
         Route::get('package/payment/return', [PackageController::class, 'vnpayReturn'])->name('return');

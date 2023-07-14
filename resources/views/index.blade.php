@@ -126,7 +126,7 @@
                                 @foreach ($majors as $value)
                                     <div class="col-lg-3 col-md-3 col-sm-6">
                                         <div class="p-category">
-                                            <a href="" title="">
+                                            <a href="{{ route('client.nganh-nghe.show', $value->id) }}" title="">
                                                 <i class="{{ $value->image_majors }}"></i>
                                                 <span>{{ $value->name }}</span>
                                                 <p>({{ count($value->majors) }} Việc làm)</p>
@@ -142,50 +142,47 @@
             </div>
         </div>
     </section>
-    @if (Auth::guard('user')->check())
-        <section id="scroll-here">
-            <div class="block">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="heading">
-                                <h2>Việc làm dành cho bạn</h2>
-                                <span>Các nhà tuyển dụng hàng đầu đã sử dụng công việc và nhân tài.</span>
-                            </div><!-- Heading -->
-                            <div class="job-listings-sec" id="paginated-list">
-                                @foreach ($job as $item)
-                                    <div class="job-listing render-job-search">
-                                        <div class="job-title-sec">
-                                            <div class="c-logo"> <img src="/{{ asset($item->logo) }}" alt="" />
-                                            </div>
-                                            <h3><a href="{{ route('client.detail', [$item->slug, $item->id]) }}"
-                                                    title="">{{ $item->title }}</a></h3>
-                                            <span>{{ $item->nameCompany }}</span>
+    <section id="scroll-here">
+        <div class="block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="heading">
+                            <h2>Việc làm hấp dẫn</h2>
+                            <span>Các nhà tuyển dụng hàng đầu đã sử dụng công việc và nhân tài.</span>
+                        </div><!-- Heading -->
+                        <div class="job-listings-sec" id="paginated-list">
+                            @foreach ($jobAttractive as $item)
+                                <div class="job-listing render-job-search">
+                                    <div class="job-title-sec">
+                                        <div class="c-logo"> <img src="/{{ asset($item->logo) }}" alt="" />
                                         </div>
-                                        <span class="job-lctn"><i class="la la-map-marker"></i>{{ $item->address }}</span>
-                                        <span class="fav-job job-user" id="{{ $item->id }}"><i
-                                                class="fa fa-heart"></i></span>
-                                        <span class="job-is ft">{{ $item->getTime_work->name }}</span>
-                                    </div><!-- Job -->
-                                @endforeach
-                            </div>
-                            {{-- paginate --}}
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 job-list browse-all-cat">
-                                    <span class="text-center p-3 ">
-                                        <div id="pagination-numbers" style="margin-bottom: 20px">
-                                        </div>
-                                    </span>
-                                </div>
-                            </div>
-                            {{-- end paginate --}}
+                                        <h3><a href="{{ route('client.detail', [$item->slug, $item->id]) }}"
+                                                title="">{{ $item->title }}</a></h3>
+                                        <span>{{ $item->nameCompany }}</span>
+                                    </div>
+                                    <span class="job-lctn"><i class="la la-map-marker"></i>{{ $item->address }}</span>
+                                    <span class="fav-job job-user" id="{{ $item->id }}"><i class="fa fa-heart"></i></span>
+                                    <span class="job-is ft">{{ $item->getTime_work->name }}</span>
+                                </div><!-- Job -->
+                            @endforeach
                         </div>
-
+                        {{-- paginate --}}
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 job-list browse-all-cat">
+                                <span class="text-center p-3 ">
+                                    <div id="pagination-numbers" style="margin-bottom: 20px">
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        {{-- end paginate --}}
                     </div>
+
                 </div>
             </div>
-        </section>
-    @endif
+        </div>
+    </section>
     <section>
         <div class="block">
             <div class="container">
@@ -234,8 +231,6 @@
                     <div class="col-lg-12">
                         <div class="heading">
                             <h2>Tin tức nổi bật</h2>
-                            <span>Found by employers communicate directly with hiring managers and
-                                recruiters.</span>
                         </div><!-- Heading -->
                         <div class="blog-sec">
                             <div class="row">

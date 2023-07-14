@@ -88,6 +88,14 @@
                         <span class="hide-menu">Thông tin doanh nghiệp</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('employer.company.business') }}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-user-plus"></i>
+                        </span>
+                        <span class="hide-menu">Giấy phép kinh doanh</span>
+                    </a>
+                </li>
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Chức năng</span>
@@ -102,8 +110,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('employer.payment-history.index') }}"
-                        aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('employer.payment-history.index') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-mood-happy"></i>
                         </span>

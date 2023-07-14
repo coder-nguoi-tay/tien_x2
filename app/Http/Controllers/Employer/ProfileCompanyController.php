@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Employer;
 
 use App\Http\Controllers\BaseController;
+use App\Models\Accuracy;
 use App\Models\Company;
 use App\Models\Employer;
 use Illuminate\Http\Request;
@@ -107,5 +108,42 @@ class ProfileCompanyController extends BaseController
     public function update(Request $request, $id)
     {
         //
+    }
+    public function business()
+    {
+        $employer = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+        $ImageAccuracy = Accuracy::query()->where('user_id', $employer->id)->first();
+        return view('employer.company.business', [
+            'accuracy' => $ImageAccuracy
+        ]);
+    }
+    public function ImageAccuracy(Request $request)
+    {
+        $employer = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+        if (!$employer->id_company) {
+            $this->setFlash(__('Bạn chưa cập nhật thông tin công ty!'), 'error');
+            return redirect()->back();
+        }
+        try {
+            $company = Company::where('id', $employer->id_company)->first();
+            if ($company->accuracy) {
+                $accy = $company->accuracy;
+            } else {
+                $accy = new Accuracy();
+            }
+            $accy->user_id = $company->id;
+            $accy->status = 0;
+            if ($request->hasFile('images')) {
+                $accy->images = $request->images->storeAs('images/cv', $request->images->hashName());
+            }
+            $accy->save();
+            $this->setFlash(__('Chúng tôi sẽ xác nhận cho bạn sớm nhất có thể'));
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            dd($th->getMessage());
+            DB::rollBack();
+            $this->setFlash(__('Đã có một lỗi không xác định xảy ra'), 'error');
+            return redirect()->back();
+        }
     }
 }

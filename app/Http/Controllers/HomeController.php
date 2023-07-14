@@ -34,7 +34,7 @@ class HomeController extends BaseController
         $location = location::query()->get();
 
         $allJob = Job::query()->get();
-
+        // Việc làm nổi bật
         $jobForUser = Job::query()
             ->join('employer', 'employer.id', '=', 'job.employer_id')
             ->join('company', 'company.id', '=', 'employer.id_company')
@@ -47,67 +47,28 @@ class HomeController extends BaseController
             ->select('job.*', 'company.logo as logo', 'company.id as idCompany', 'company.name as nameCompany', 'company.address as addressCompany')
             ->orderBy('employer.prioritize', 'desc')
             ->get();
-        if (Auth::guard('user')->check()) {
-            $user = User::query()->with('getProfileUse')->where('id', Auth::guard('user')->user()->id)->first();
-
-            if ($user->getProfileUse) {
-                $getskill = Jobseeker::query()->with('getskill')->where('user_id', Auth::guard('user')->user()->id)->first();
-                $skill_id = $getskill->getskill->pluck('id');
-                $getProfile = $user->getProfileUse;
-                $job = Job::query()
-                    ->join('job_skill', 'job_skill.job_id', '=', 'job.id')
-                    ->join('skill', 'job_skill.skill_id', '=', 'skill.id')
-                    ->join('employer', 'employer.id', '=', 'job.employer_id')
-                    ->join('company', 'company.id', '=', 'employer.id_company')
-                    ->where([
-                        ['job.status', 1],
-                        ['job.expired', 0],
-                        ['job.package_id_position', 1],
-                        ['employer.position', 1],
-                    ])
-                    ->where(function ($query) use ($getProfile, $skill_id) {
-                        $query->orWhere(function ($q) use ($skill_id) {
-                            $q->whereIn('job_skill.skill_id', $skill_id);
-                        })
-                            ->orWhere(
-                                'job.location_id',
-                                $getProfile->location_id
-                            )
-                            ->orWhere(
-                                'job.profession_id',
-                                $getProfile->profession
-                            )
-                            ->orWhere(
-                                'job.experience_id',
-                                $getProfile->experience
-                            )
-                            ->orWhere(
-                                'job.time_work_id',
-                                $getProfile->time_work_id
-                            )
-                            ->orWhere(
-                                'job.level_id',
-                                $getProfile->lever_id
-                            );
-                    })
-                    ->distinct()
-                    ->select('job.*', 'company.logo as logo', 'company.id as idCompany', 'company.name as nameCompany')
-                    ->orderBy('employer.prioritize', 'desc')
-                    ->get();
-            } else {
-                $job = $jobForUser;
-            }
-        } else {
-            $job = $jobForUser;
-        }
+        // việc làm hấp dẫn
+        $jobAttractive = Job::query()
+            ->join('employer', 'employer.id', '=', 'job.employer_id')
+            ->join('company', 'company.id', '=', 'employer.id_company')
+            ->where([
+                ['job.status', 1],
+                ['job.expired', 0],
+                ['job.package_id_position', 1],
+                ['employer.position', 0],
+            ])
+            ->select('job.*', 'company.logo as logo', 'company.id as idCompany', 'company.name as nameCompany', 'company.address as addressCompany')
+            ->orderBy('employer.prioritize', 'desc')
+            ->get();
         // company
         $company = Company::query()->with('employer.job')->get();
         return view('index', [
             'majors' => $majors,
-            'job' => $job,
+            'job' => $jobForUser,
             'location' => $location,
             'company' => $company,
             'countJob' => $allJob->count(),
+            'jobAttractive' => $jobAttractive,
         ]);
     }
 

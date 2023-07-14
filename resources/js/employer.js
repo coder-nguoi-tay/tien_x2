@@ -54,6 +54,9 @@ app.component('date-year-employer', DateYear)
 // form-search-cv
 import FormSearchCv from './components/employer/cv/formSearchCv.vue'
 app.component('form-search-cv', FormSearchCv)
+// giấy phép kinh doanh
+import BusinessLicense from "./components/employer/company/business.vue";
+app.component('business-license', BusinessLicense);
 app.mount('#app');
 
 

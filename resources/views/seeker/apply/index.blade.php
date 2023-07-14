@@ -21,6 +21,9 @@
                                     <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Ngày nộp đơn</h6>
                                     </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0"></h6>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,6 +60,9 @@
                                         </td>
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0 fs-4">{{ $item->created_at }}</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <a href="/{{ asset($item->file) }}">Xem Cv</a>
                                         </td>
                                     </tr>
                                 @endforeach

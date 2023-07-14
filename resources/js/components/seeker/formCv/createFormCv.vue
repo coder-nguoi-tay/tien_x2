@@ -1,12 +1,28 @@
 <template>
     <div class="resume-box mb-5">
         <VeeForm as="div" v-slot="{ handleSubmit }" @invalid-submit="onInvalidSubmit">
-            <form @submit="handleSubmit($event, onSubmit)" ref="formData" :action="data.urlStore" method="POST">
+            <form @submit="handleSubmit($event, onSubmit)" ref="formData" :action="data.urlStore" method="POST"
+                enctype="multipart/form-data">
                 <input type="text" class="form-control" name="title" v-model="data.title" placeholder="Tiêu đề">
                 <input type="hidden" :value="csrfToken" name="_token" />
                 <div class="left-section">
                     <div class="profile">
-                        <img src="/asset/formCv/image/profile.png" class="profile-img">
+                        <!-- <img src="/asset/formCv/image/profile.png" class="profile-img"> -->
+                        <div class="img-fluid custum-box-image-cv box_img" id="img-preview" @click="chooseImage()"
+                            role="button">
+                            <div style="display: none">
+                                <input type="file" @change="onChange" ref="fileInput" accept="image/*" name="images" />
+                            </div>
+                            <img v-if="Imgage && !filePreview" :src="url + Imgage" class="img-fluid profile-img" />
+                            <div id="img-preview" @click="chooseImage()" role="button">
+                                <div style="display: none">
+                                    <input type="file" id="file" @change="onChange" ref="fileInput" accept="image/*"
+                                        name="images" />
+                                </div>
+                                <img v-if="filePreview" :src="filePreview" class="img-fluid p-2 profile-img" />
+                            </div>
+                            <input type="hidden" name="images" v-model="filePreview" />
+                        </div>
                         <div class="blue-box"></div>
                     </div>
                     <h2 class="name" v-html="model.user_name"></h2>
@@ -248,6 +264,7 @@ export default {
     data() {
         return {
             csrfToken: Laravel.csrfToken,
+            url: Laravel.baseUrl,
             experience: [],
             ducation: [],
             skill: [],
@@ -257,10 +274,12 @@ export default {
             data: this.model.user ?? {},
             setRatings: [],
             changeCv: false,
+            Imgage: '',
+            filePreview: ''
         }
     },
     created() {
-        console.log(this.skill);
+        console.log(this.model.user);
         if (this.model.user != null) {
             if (this.model.skill && this.model.skill.length) {
                 this.model.skill.map((x) => {
@@ -270,7 +289,7 @@ export default {
                     })
                     this.setRatings.push(x.value)
                 })
-            }else {
+            } else {
                 this.skill.push({
                     nameSkill: '',
                     valueSkill: ''
@@ -283,7 +302,7 @@ export default {
                         deseProject: x.value
                     })
                 })
-            }else {
+            } else {
                 this.experience.push({
                     nameProject: '',
                     deseProject: ''
@@ -296,11 +315,16 @@ export default {
                         nameDucation: x.value
                     })
                 })
-            }else {
+            } else {
                 this.ducation.push({
                     timeDucation: '',
                     nameDucation: ''
                 })
+            }
+            if (this.model.user.images == 0) {
+                this.Imgage = this.model.app.images
+            } else {
+                this.Imgage = this.model.user.images
             }
         } else {
             this.skill.push({
@@ -355,7 +379,37 @@ export default {
         },
         setRating(value) {
             this.setRatings.push(value)
-        }
+        },
+        chooseImage() {
+            this.$refs['fileInput'].click()
+        },
+        onChange(e) {
+            let fileInput = this.$refs.fileInput
+            let imgFile = fileInput.files
+
+            if (imgFile && imgFile[0]) {
+                let reader = new FileReader()
+                reader.onload = (e) => {
+                    this.filePreview = e.target.result
+                }
+                reader.readAsDataURL(imgFile[0])
+            }
+        },
+        chooseImage() {
+            this.$refs['fileInput'].click()
+        },
+        onChange(e) {
+            let fileInput = this.$refs.fileInput
+            let imgFile = fileInput.files
+
+            if (imgFile && imgFile[0]) {
+                let reader = new FileReader()
+                reader.onload = (e) => {
+                    this.filePreview = e.target.result
+                }
+                reader.readAsDataURL(imgFile[0])
+            }
+        },
     }
 }
 </script>

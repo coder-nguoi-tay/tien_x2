@@ -4,6 +4,8 @@
         <div class="card-body">
             <h5 class="card-title fw-semibold mb-4">Danh sách tin tuyển dụng</h5>
             <a href="{{ route('employer.new.create') }}" class="btn btn-primary">Thêm mới</a>
+            <a href="{{ route('employer.new.topNew') }}" class="btn btn-primary" style="margin-left: 10px">Đẩy tim lên Top hiển
+                thị</a>
             <div class="table-responsive mt-4">
                 <table class="table" id="dataTable" width="100%" cellspacing="0">
                     <thead>

@@ -86,7 +86,6 @@ class ManageController extends BaseController
             ->Orderby('save_cv.created_at', 'DESC')
             ->select('job.id as id', 'job.slug as slug', 'job.title as title', 'company.id as idCompany', 'company.logo as logo', 'company.name as nameCompany', 'save_cv.created_at as created_at', 'save_cv.status as status', 'save_cv.file_cv as file','save_cv.id as id_save_cv')
             ->get();
-
         return view('seeker.apply.index', [
             'apply' => $apply
         ]);
@@ -117,6 +116,7 @@ class ManageController extends BaseController
             'project' => $skill ? $skill->project : null,
             'level' => $skill ? $skill->level : null,
             'user_name' => User::query()->find(Auth::guard('user')->user()->id)->name,
+            'app' => User::query()->find(Auth::guard('user')->user()->id),
         ]);
         return view('seeker.cv.createFormCv');
     }
@@ -125,6 +125,7 @@ class ManageController extends BaseController
     }
     public function createFormCv(Request $request)
     {
+        // dd($request->all());
         try {
             $user = ProfileUserCv::query()->where('user_id', Auth::guard('user')->user()->id)->first();
             if ($user) {
@@ -172,7 +173,6 @@ class ManageController extends BaseController
                 }
             }
             $profileUserCv->email = $request->email ?? '';
-            $profileUserCv->images = '';
             $profileUserCv->address = $request->address ?? '';
             $profileUserCv->phone = $request->phone ?? '';
             $profileUserCv->skill = $arr_skill ?? '';

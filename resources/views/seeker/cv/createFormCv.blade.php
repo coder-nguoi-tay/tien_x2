@@ -9,6 +9,7 @@
             'user' => $user,
             'user_name' => $user_name,
             'level' => $level,
+            'app' => $app,
         ]) }}">
     </create-form-cv>
 @endsection

@@ -297,4 +297,57 @@ class NewEmployerController extends BaseController
             'cv' => $cv
         ]);
     }
+    public function topNew()
+    {
+        $checkCompany = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+        $job = Job::query()->where([
+            ['job.employer_id', $checkCompany->id],
+        ])->with(['AllCv'])
+            ->join('employer', 'employer.id', '=', 'job.employer_id')
+            ->where('package_id_position', 1)
+            ->select('job.*')
+            ->Orderby('job.expired', 'ASC')
+            ->get();
+        $allJob = Job::query()->where([
+            ['employer_id', $checkCompany->id],
+            ['expired', 0],
+            ['package_id_position', 0],
+        ])->select('id', 'title')
+            ->get();
+        return view('employer.new.topNew', [
+            'job' => $job,
+            'allJob' => $allJob,
+        ]);
+    }
+    public function upTopNew(Request $request)
+    {
+        $checkCompany = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+        $allJob = Job::query()->where([
+            ['employer_id', $checkCompany->id],
+            ['expired', 0],
+            ['package_id_position', 1],
+        ])->count();
+        if (count($request->job) > $checkCompany->amount_job) {
+            $this->setFlash(__('Số lượng bài viết được hiển thị trên top của bạn đã quá múc cho phép'), 'error');
+            return redirect()->back();
+        }
+        if ($allJob == $checkCompany->amount_job) {
+            $this->setFlash(__('Số lượng bài viết được hiển thị trên top của bạn đã quá múc cho phép'), 'error');
+            return redirect()->back();
+        }
+        try {
+            foreach ($request->job as $value) {
+                $job = Job::query()->where('id', $value)->first();
+                $job->package_id_position = 1;
+                $job->save();
+            }
+            $this->setFlash(__('Quá trình thực thiện thành công!'));
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            dd($th->getMessage());
+            DB::rollBack();
+            $this->setFlash(__('Có một lỗi không mong muốn đã xảy ra'), 'error');
+            return redirect()->back();
+        }
+    }
 }
