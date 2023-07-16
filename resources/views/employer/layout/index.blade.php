@@ -52,7 +52,11 @@
                     </p>
                 </div>
             </div>
+            <div class="loading-div hidden">
+                <div class="loader-img"></div>
+            </div>
         </div>
+
     </div>
     <script src="{{ asset('employer/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('employer/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>

@@ -83,9 +83,14 @@
             @if (!Auth::guard('user')->check())
                 <div class="btn-extars">
                     <ul class="account-btns">
-                        <li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
+                        <li class="signup-popup"><a title=""><i class="la la-key"></i>Đăng ký</a></li>
                         <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i>
-                                Login</a></li>
+                                Đăng nhâp</a></li>
+                        <li class="signin-popup">
+                            <a title=""><i class="la la-external-link-square"></i>
+                                Đăng ký nhà tuyển dụng
+                            </a>
+                        </li>
                     </ul>
                 </div>
             @else

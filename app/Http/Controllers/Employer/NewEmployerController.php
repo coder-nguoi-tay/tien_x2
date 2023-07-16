@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Employer;
 
+use App\Enums\StatusCode;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployerCreateRequest;
@@ -60,6 +61,18 @@ class NewEmployerController extends BaseController
      */
     public function create()
     {
+        $checkCompany = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+        if ($checkCompany->id_company) {
+            $checkCompanyXt = Accuracy::where('user_id', $checkCompany->id_company)->first();
+            if (!$checkCompanyXt) {
+                return redirect()->route('employer.new.index');
+            }
+            if ($checkCompanyXt->status == 0) {
+                return redirect()->route('employer.new.index');
+            }
+        } else {
+            return redirect()->route('employer.new.index');
+        }
         return view('employer.new.create', [
             'lever' => $this->getlever(),
             'experience' => $this->getexperience(),
@@ -232,12 +245,16 @@ class NewEmployerController extends BaseController
         try {
             Jobskill::query()->where('job_id', $id)->delete();
             Job::query()->find($id)->delete();
-            $this->setFlash(__('Xóa thành công'));
-            return redirect()->route('employer.new.index');
+            return response()->json([
+                'message' => 'Quá trình thực hiện thành công!',
+                'status' => StatusCode::OK,
+            ], StatusCode::OK);
         } catch (\Throwable $th) {
             DB::rollBack();
-            $this->setFlash(__('Đã có một lỗi sảy ra'), 'error');
-            return redirect()->route('employer.new.index');
+            return response()->json([
+                'message' => 'Có một lỗi không xác định đã xảy ra',
+                'status' => StatusCode::FORBIDDEN,
+            ], StatusCode::OK);
         }
     }
     public function changeStatusCv($id)
@@ -348,6 +365,25 @@ class NewEmployerController extends BaseController
             DB::rollBack();
             $this->setFlash(__('Có một lỗi không mong muốn đã xảy ra'), 'error');
             return redirect()->back();
+        }
+    }
+    public function deleteTopNew($id)
+    {
+        try {
+            $job = Job::query()->find($id);
+            $job->package_id_position = 0;
+            $job->save();
+            return response()->json([
+                'message' => 'Quá trình thực hiện thành công!',
+                'status' => StatusCode::OK,
+            ], StatusCode::OK);
+        } catch (\Throwable $th) {
+            dd($th->getMessage());
+            DB::rollBack();
+            return response()->json([
+                'message' => 'Có một lỗi không xác định đã xảy ra',
+                'status' => StatusCode::FORBIDDEN,
+            ], StatusCode::OK);
         }
     }
 }

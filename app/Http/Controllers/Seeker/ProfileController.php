@@ -37,9 +37,12 @@ class ProfileController extends BaseController
 
         // 
         $jobSeeker = Jobseeker::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+        if ($jobSeeker) {
+            $SeekerId = SeekerSkill::query()->where('job-seeker_id', $jobSeeker->id)->pluck('skill_id');
+            $skillSeeker = Skill::query()->whereIn('id', $SeekerId)->get();
+        }
         // skill seeeker
-        $SeekerId = SeekerSkill::query()->where('job-seeker_id', $jobSeeker->id)->pluck('skill_id');
-        $skillSeeker = Skill::query()->whereIn('id', $SeekerId)->get();
+
         return view('seeker.index', [
             'profileCv' => $profileCv,
             'lever' => $this->getlever(),

@@ -20240,7 +20240,8 @@ ul {
 .box-info .action .icon-delete-cv {
     font-size: 20px;
 }
-.ml-5{
+
+.ml-5 {
     margin-left: 350px;
     border-radius: 10px;
 }
@@ -20257,8 +20258,13 @@ ul {
         margin-top: 10px;
         margin-left: 1px;
     }
-    .ml-5{
+
+    .ml-5 {
         margin-left: 1px;
         border-radius: 10px;
     }
+}
+
+.hidden {
+    display: none !important;
 }

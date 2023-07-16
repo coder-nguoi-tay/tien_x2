@@ -54,8 +54,8 @@ class HomeController extends BaseController
             ->where([
                 ['job.status', 1],
                 ['job.expired', 0],
-                ['job.package_id_position', 1],
-                ['employer.position', 0],
+                ['job.package_id_position', 0],
+                ['employer.position', 1],
             ])
             ->select('job.*', 'company.logo as logo', 'company.id as idCompany', 'company.name as nameCompany', 'company.address as addressCompany')
             ->orderBy('employer.prioritize', 'desc')
@@ -264,7 +264,7 @@ class HomeController extends BaseController
                     $q->where('job.title', 'LIKE', '%' . $that->key . '%');
                 }
                 if (!empty($that->skill)) {
-                    if ($that->skill[0] != null) {
+                    if (!empty($that->skill[0])) {
                         $q->whereIn('job_skill.skill_id', $that->skill);
                     }
                 }
@@ -326,6 +326,7 @@ class HomeController extends BaseController
             ->with('getWage')
             ->distinct()
             ->with('getTime_work')
+            ->with('getlocation')
             ->select('job.*', 'company.logo as logo', 'company.id as idCompany', 'company.name as nameCompany')
             ->orderBy('employer.prioritize', 'desc')
             ->get();

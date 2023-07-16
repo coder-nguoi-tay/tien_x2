@@ -23,6 +23,7 @@ class HomeController extends BaseController
     public function index(Request $request)
     {
         $checkCompany = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+        // dd($checkCompany);
         // số  lượng bài viết đã đăng
         $job = Job::query()->where('employer_id', $checkCompany->id)->count();
         // số lương hồ sơ đã nhận
@@ -35,8 +36,13 @@ class HomeController extends BaseController
         $tatalecv = ProfileUserCv::query()->where('status', Auth::guard('user')->user()->id)->count();
         // tổng số tiền
         $totalPayment = AccountPayment::where('user_id', Auth::guard('user')->user()->id)->first();
+        if ($totalPayment) {
+            $totalPayment = $totalPayment->surplus;
+        } else {
+            $totalPayment = 0;
+        }
         // lịch sử giao dịch
-        $paymentHistory = PaymentHistoryEmployer::query()->where('user_id', $checkCompany->id)->limit(5)->orderBy('created_at', 'desc')->get();
+        $paymentHistory = PaymentHistoryEmployer::query()->where('user_id', $checkCompany->id)->limit(2)->orderBy('created_at', 'desc')->get();
         // Hồ sơ mới nhận gần đây
         $cvApplyNew = SaveCv::query()
             ->join('job', 'job.id', '=', 'save_cv.id_job')
@@ -54,7 +60,7 @@ class HomeController extends BaseController
         return view('employer.home', [
             'request' => $request->all(),
             'cv' => $cv ?? 0,
-            'totalPayment' => $totalPayment ?? 0,
+            'totalPayment' => $totalPayment,
             'tatalecv' => $tatalecv ?? 0,
             'job' => $job ?? 0,
             'paymentHistory' => $paymentHistory ?? 0,

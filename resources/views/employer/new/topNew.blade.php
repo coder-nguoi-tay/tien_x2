@@ -30,13 +30,13 @@
                                 <td><span
                                         class="badge p-1 {{ $item->status == 1 ? 'bg-success text-white' : 'bg-secondary text-white' }}">{{ $item->status == 0 ? 'Bản nháp' : 'Đang hoạt động' }}</span>
                                 </td>
-                                <td>
+                                <td class="d-flex text-center">
                                     <a href="{{ route('employer.new.edit', $item->id) }}">
                                         <i class="fas fa-edit"></i></a>
-                                    |
-                                    <a href="{{ route('employer.new.destroy', $item->id) }}">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
+                                    <btn-delete-job-top
+                                        :message-confirm="{{ json_encode('Bạn có chắc muốn xóa bài viết ra khỏi Top?') }}"
+                                        :delete-action="{{ json_encode(route('employer.new.deleteTopNew', $item->id)) }}">
+                                    </btn-delete-job-top>
                                 </td>
                             </tr>
                         @endforeach

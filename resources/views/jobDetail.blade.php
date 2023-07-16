@@ -31,8 +31,9 @@
                             <div class="job-single-head">
                                 <div class="job-thumb"> <img src="{{ asset($job->logo) }}" alt="" /> </div>
                                 <div class="job-head-info">
-                                    <h4>{{ $job->nameCompany }}</h4>
-                                    <span>{{ $job->address }}</span>
+                                    <h4>{{ $job->title }}</h4>
+                                    <span><a
+                                            href="{{ route('company.detail', $job->idCompany) }}">{{ $job->nameCompany }}</a></span>
                                     <p><i class="la la-envelope-o"></i> {{ $job->emailCompany }}</p>
                                 </div>
                             </div><!-- Job Head -->

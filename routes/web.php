@@ -84,6 +84,7 @@ Route::prefix('employers')->name('employer.')->group(function () {
         Route::get('get-data-reason/{id}', [NewEmployerController::class, 'getDataReason'])->name('getDataReason');
         Route::get('job/top-new', [NewEmployerController::class, 'topNew'])->name('topNew');
         Route::post('job/top-new', [NewEmployerController::class, 'upTopNew'])->name('upTopNew');
+        Route::post('job/delete-top-new/{id}', [NewEmployerController::class, 'deleteTopNew'])->name('deleteTopNew');
     });
     // submitted work
     Route::get('submitted-work', [NewEmployerController::class, 'submittedWork'])->name('submittedWork');

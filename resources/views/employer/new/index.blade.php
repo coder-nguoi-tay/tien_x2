@@ -34,8 +34,10 @@
                                 <td>
                                     <a href="{{ route('employer.new.edit', $item->id) }}"><i class="fas fa-edit"></i></a>
                                     |
-                                    <a href="{{ route('employer.new.destroy', $item->id) }}"><i
-                                            class="fas fa-trash-alt"></i></a>
+                                    <btn-delete
+                                        :message-confirm="{{ json_encode('Bạn có chắc muốn xóa bài viết?') }}"
+                                        :delete-action="{{ json_encode(route('employer.new.destroy', $item->id)) }}">
+                                    </btn-delete>
                                 </td>
                             </tr>
                         @endforeach

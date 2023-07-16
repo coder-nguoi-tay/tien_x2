@@ -1936,7 +1936,7 @@ input[type=radio] + label::after {
 
  .c-logo {
      float: left;
-     width: 130px;
+     width: 90px;
      text-align: center;
  }
 
@@ -4284,7 +4284,7 @@ input[type=radio] + label::after {
  }
 
  .job-is.ft {
-     margin-top: 12px;
+     margin-top: 29px;
  }
 
  .block.overlape {

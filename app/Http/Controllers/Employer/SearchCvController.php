@@ -45,7 +45,7 @@ class SearchCvController extends BaseController
                 if (!empty($request['experience'])) {
                     $q->Where('job-seeker.experience_id', $request['experience']);
                 }
-                if (!empty($request['skill'])) {
+                if (!empty($request->skill[0])) {
                     $q->WhereIn('seeker_skill.skill_id', $request['skill']);
                 }
             })
@@ -94,7 +94,7 @@ class SearchCvController extends BaseController
     public function showCvBought()
     {
         $employer = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
-        $cv = EmployerPaymentCv::query()->where('employer_id', $employer->id)->with('user')->get();
+        $cv = EmployerPaymentCv::query()->where('employer_id', $employer->id)->with('profileCv')->get();
         return view('employer.cv.cvbought', [
             'cv' => $cv
         ]);

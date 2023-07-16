@@ -173,6 +173,7 @@ class ManageController extends BaseController
                 }
             }
             $profileUserCv->email = $request->email ?? '';
+            $profileUserCv->name = $request->user_name ?? '';
             $profileUserCv->address = $request->address ?? '';
             $profileUserCv->phone = $request->phone ?? '';
             $profileUserCv->skill = $arr_skill ?? '';

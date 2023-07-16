@@ -17,7 +17,8 @@ import 'notyf/notyf.min.css';
 
 const app = createApp({});
 
-
+import 'sweetalert2/dist/sweetalert2.min.css'
+app.use(VueSweetalert2)
 // employer new
 import CreateNewEmployer from './components/employer/new/create.vue';
 app.component('create-new-employer', CreateNewEmployer);
@@ -57,6 +58,13 @@ app.component('form-search-cv', FormSearchCv)
 // giấy phép kinh doanh
 import BusinessLicense from "./components/employer/company/business.vue";
 app.component('business-license', BusinessLicense);
+// xóa jup top 
+import btnDeleteJobTop from "./components/common/btnDeleteJobTop.vue";
+import VueSweetalert2 from 'vue-sweetalert2';
+app.component('btn-delete-job-top', btnDeleteJobTop);
+// xoa job
+import btnDelete from "./components/common/btnDelete.vue";
+app.component('btn-delete', btnDelete);
 app.mount('#app');
 
 

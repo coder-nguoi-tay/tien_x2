@@ -99,7 +99,7 @@
                                         />
                                         <img
                                           v-if="Image != null && !filePreview"
-                                          :src="'/' + Image"
+                                          :src="url + '/' + Image"
                                           class="img-fluid img-show border"
                                           style="
                                             width: 200px;
@@ -120,7 +120,7 @@
                                     >
                                       <img
                                         v-if="Image != null"
-                                        :src="'/' + Image"
+                                        :src="url + '/' + Image"
                                         class="img-fluid"
                                         style="
                                           width: 200px;
@@ -181,6 +181,7 @@
           </form>
         </VeeForm>
       </div>
+      <loader :flag-show="flagShowLoader"></loader>
     </div>
   </div>
 </template>
@@ -195,7 +196,7 @@ import {
 } from "vee-validate";
 import { localize } from "@vee-validate/i18n";
 import * as rules from "@vee-validate/rules";
-
+import Loader from "./../../common/loader.vue";
 import moment from "moment";
 export default {
   setup() {
@@ -208,11 +209,12 @@ export default {
   data: function () {
     return {
       csrfToken: Laravel.csrfToken,
-      baseUrl: Laravel.baseUrl,
+      url: Laravel.baseUrl,
       model: this.data.Company ?? "",
       filePreview: "",
       Image: null,
       statusImage: 0,
+      flagShowLoader: false,
     };
   },
   props: ["data"],
@@ -248,6 +250,7 @@ export default {
     VeeForm,
     Field,
     ErrorMessage,
+    Loader,
   },
   methods: {
     moment: function () {
@@ -279,6 +282,7 @@ export default {
       );
     },
     onSubmit() {
+      this.flagShowLoader = true;
       this.$refs.formData.submit();
     },
     previewImage: function (event) {

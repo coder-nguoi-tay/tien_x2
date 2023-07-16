@@ -112,13 +112,14 @@ class ProfileCompanyController extends BaseController
     public function business()
     {
         $employer = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
-        $ImageAccuracy = Accuracy::query()->where('user_id', $employer->id)->first();
+        $ImageAccuracy = Accuracy::query()->where('user_id', $employer->id_company)->first();
         return view('employer.company.business', [
             'accuracy' => $ImageAccuracy
         ]);
     }
     public function ImageAccuracy(Request $request)
     {
+
         $employer = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
         if (!$employer->id_company) {
             $this->setFlash(__('Bạn chưa cập nhật thông tin công ty!'), 'error');

@@ -62,13 +62,15 @@
                             @foreach ($job as $item)
                                 <div class="job-listing render-job-search">
                                     <div class="job-title-sec">
-                                        <div class="c-logo"> <img src="/{{ asset($item->logo) }}" alt="" />
+                                        <div class="c-logo"> <img src="{{ asset($item->logo) }}" alt="" />
                                         </div>
                                         <h3><a href="{{ route('client.detail', [$item->slug, $item->id]) }}"
                                                 title="">{{ $item->title }}</a></h3>
-                                        <span>{{ $item->nameCompany }}</span>
+                                        <span><a
+                                                href="{{ route('company.detail', $item->id) }}">{{ $item->nameCompany }}</a></span>
                                     </div>
-                                    <span class="job-lctn"><i class="la la-map-marker"></i>{{ $item->address }}</span>
+                                    <span class="job-lctn"><i
+                                            class="la la-map-marker"></i>{{ $item->getlocation->name }}</span>
                                     <span class="fav-job">{{ $item->end_job_time }}</span>
                                     <span class="job-is ft">{{ $item->getTime_work->name }}</span>
                                 </div><!-- Job -->
@@ -155,14 +157,16 @@
                             @foreach ($jobAttractive as $item)
                                 <div class="job-listing render-job-search">
                                     <div class="job-title-sec">
-                                        <div class="c-logo"> <img src="/{{ asset($item->logo) }}" alt="" />
+                                        <div class="c-logo"> <img src="{{ asset($item->logo) }}" alt="" />
                                         </div>
                                         <h3><a href="{{ route('client.detail', [$item->slug, $item->id]) }}"
                                                 title="">{{ $item->title }}</a></h3>
-                                        <span>{{ $item->nameCompany }}</span>
+                                        <span><a
+                                                href="{{ route('company.detail', $item->id) }}">{{ $item->nameCompany }}</a></span>
                                     </div>
-                                    <span class="job-lctn"><i class="la la-map-marker"></i>{{ $item->address }}</span>
-                                    <span class="fav-job job-user" id="{{ $item->id }}"><i class="fa fa-heart"></i></span>
+                                    <span class="job-lctn"><i
+                                            class="la la-map-marker"></i>{{ $item->getlocation->name }}</span>
+                                    <span class="fav-job">{{ $item->end_job_time }}</span>
                                     <span class="job-is ft">{{ $item->getTime_work->name }}</span>
                                 </div><!-- Job -->
                             @endforeach
@@ -195,25 +199,12 @@
                         </div><!-- Heading -->
                         <div class="comp-sec">
                             <div class="company-img">
-                                <a href="" title=""><img src="{{ asset('home/images/resource/cc1.jpg') }}"
-                                        alt="" /></a>
-                            </div><!-- Client  -->
-                            <div class="company-img">
-                                <a href="" title=""><img src="{{ asset('home/images/resource/cc2.jpg') }}"
-                                        alt="" /></a>
-                            </div><!-- Client  -->
-                            <div class="company-img">
-                                <a href="" title=""><img src="{{ asset('home/images/resource/cc3.jpg') }}"
-                                        alt="" /></a>
-                            </div><!-- Client  -->
-                            <div class="company-img">
-                                <a href="" title=""><img src="{{ asset('home/images/resource/cc4.jpg') }}"
-                                        alt="" /></a>
-                            </div><!-- Client  -->
-                            <div class="company-img">
-                                <a href="" title=""><img src="{{ asset('home/images/resource/cc5.jpg') }}"
-                                        alt="" /></a>
-                            </div><!-- Client  -->
+                                @foreach ($company as $item)
+                                    <a href="" title="">
+                                        <img src="{{ asset($item->logo) }}" alt="" width="100" />
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -225,7 +216,7 @@
         <div class="block">
             <div data-velocity="-.1"
                 style="background: url({{ asset('home/images/resource/parallax3.jpg') }}) repeat scroll 50% 422.28px transparent;"
-                class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+                class="parallax scrolly-invisible no-parallax"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -329,49 +320,4 @@
             ]) }}">
         </login-user>
     </div><!-- LOGIN POPUP -->
-
-    <div class="account-popup-area signup-popup-box">
-        <div class="account-popup">
-            <span class="close-popup"><i class="la la-close"></i></span>
-            <h3>Sign Up</h3>
-            <div class="select-user">
-                <span>Candidate</span>
-                <span>Employer</span>
-            </div>
-            <form>
-                <div class="cfield">
-                    <input type="text" placeholder="Username" />
-                    <i class="la la-user"></i>
-                </div>
-                <div class="cfield">
-                    <input type="password" placeholder="********" />
-                    <i class="la la-key"></i>
-                </div>
-                <div class="cfield">
-                    <input type="text" placeholder="Email" />
-                    <i class="la la-envelope-o"></i>
-                </div>
-                <div class="dropdown-field">
-                    <select data-placeholder="Please Select Specialism" class="chosen">
-                        <option>Web Development</option>
-                        <option>Web Designing</option>
-                        <option>Art & Culture</option>
-                        <option>Reading & Writing</option>
-                    </select>
-                </div>
-                <div class="cfield">
-                    <input type="text" placeholder="Phone Number" />
-                    <i class="la la-phone"></i>
-                </div>
-                <button type="submit">Signup</button>
-            </form>
-            <div class="extra-login">
-                <span>Or</span>
-                <div class="login-social">
-                    <a class="fb-login" href="" title=""><i class="fa fa-facebook"></i></a>
-                    <a class="tw-login" href="" title=""><i class="fa fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-    </div><!-- SIGNUP POPUP -->
 @endsection

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script src="{{ asset('js/user.js') }}?t={{ time() }}" defer></script>
-    
+
 
     <script>
         window.Laravel = {!! json_encode(
@@ -52,6 +52,9 @@
                             class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a
                             href="https://themewagon.com">ThemeWagon</a>
                     </p>
+                </div>
+                <div class="loading-div hidden">
+                    <div class="loader-img"></div>
                 </div>
             </div>
         </div>

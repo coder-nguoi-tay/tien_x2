@@ -41,7 +41,7 @@
                     <div class="row alig n-items-start">
                         <div class="col-8">
                             <h5 class="card-title mb-9 fw-semibold" style="color: #0e4e7d">Tài khoản</h5>
-                            <h4 class="fw-semibold mb-3">{{ number_format($totalPayment->surplus) }}đ</h4>
+                            <h4 class="fw-semibold mb-3">{{ number_format($totalPayment) }}đ</h4>
                         </div>
                         <div class="col-4">
                             <div class="d-flex justify-content-end">
