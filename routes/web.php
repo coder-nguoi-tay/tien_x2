@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Client\CompanyController;
+use App\Http\Controllers\Client\EmployerController;
 use App\Http\Controllers\Client\MajorsController;
 use App\Http\Controllers\Employer\HomeController;
 use App\Http\Controllers\Employer\NewEmployerController;
@@ -28,6 +29,11 @@ use Illuminate\Support\Facades\Route;
 */
 // home
 Route::get('/', [ControllersHomeController::class, 'index'])->name('home');
+//register employer
+
+Route::get('nha-tuyen-dung/dang-ky',[EmployerController::class,'index'])->name('register');
+Route::post('nha-tuyen-dung/dang-ky',[EmployerController::class,'store'])->name('register.store');
+
 Route::prefix('viec-lam')->name('client.')->group(function () {
     Route::get('/{slug}.{id}', [ControllersHomeController::class, 'detail'])->name('detail');
     Route::post('/up-cv', [ControllersHomeController::class, 'upCv'])->name('upcv');

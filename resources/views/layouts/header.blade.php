@@ -21,16 +21,22 @@
         <div class="responsivemenu">
             <ul>
                 <li class="menu-item-has-children">
-                    <a href="#" title="">Home</a>
+                    <a href="{{ route('home') }}" title="">Trang chủ</a>
                 </li>
                 <li class="menu-item-has-children">
                     <a href="#" title="">Ngành nghề</a>
                     <ul>
-                        <li><a href="employer_list1.html" title=""> Employer List 1</a></li>
+                        @foreach ($majors as $item)
+                            <li>
+                                <a href="{{ route('client.nganh-nghe.show', $item->id) }}"
+                                    title="">{{ $item->name }}</a>
+                            </li>
+                        @endforeach
+
                     </ul>
                 </li>
                 <li class="menu-item-has-children">
-                    <a href="#" title="">Nhà tuyển dụng</a>
+                    <a href="{{ route('company.index') }}" title="">Nhà tuyển dụng</a>
                 </li>
                 <li class="menu-item-has-children">
                     <a href="#" title="">Câu hỏi thường hỏi</a>
@@ -39,10 +45,15 @@
         </div>
         @if (!Auth::guard('user')->check())
             <div class="btn-extars">
-                <ul class="account-btns">
-                    <li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
+                <ul class="account-btns" style="display: flex; align-items: center">
+                    <li class="signup-popup"><a title=""><i class="la la-key"></i>Đăng ký</a></li>
                     <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i>
-                            Login</a></li>
+                            Đăng nhâp</a></li>
+                    <li class="signin-popup">
+                        <a title="" class="btn btn-primary"><i class="fa fa-desktop"></i>
+                            Nhà tuyển dụng
+                        </a>
+                    </li>
                 </ul>
             </div>
         @else
@@ -82,13 +93,13 @@
             <!-- Logo -->
             @if (!Auth::guard('user')->check())
                 <div class="btn-extars">
-                    <ul class="account-btns">
+                    <ul class="account-btns" style="display: flex; align-items: center">
                         <li class="signup-popup"><a title=""><i class="la la-key"></i>Đăng ký</a></li>
                         <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i>
                                 Đăng nhâp</a></li>
                         <li class="signin-popup">
-                            <a title=""><i class="la la-external-link-square"></i>
-                                Đăng ký nhà tuyển dụng
+                            <a href="{{route('register')}}" class="btn btn-primary"><i class="fa fa-desktop"></i>
+                                Nhà tuyển dụng
                             </a>
                         </li>
                     </ul>

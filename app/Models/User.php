@@ -16,6 +16,7 @@ class User  extends Model
         'role_id',
         'status',
         'images',
+        'slug'
     ];
     protected $hidden = [
         'password',

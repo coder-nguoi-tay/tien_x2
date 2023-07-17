@@ -11,6 +11,7 @@ use App\Models\SaveCv;
 use App\Models\Skill;
 use App\Models\Timeoffer;
 use App\Models\Timework;
+use App\Models\User;
 use App\Models\Wage;
 use App\Models\WorkingForm;
 use Carbon\Carbon;
@@ -28,6 +29,18 @@ class BaseController extends Controller
             'urlRedirect' => $urlRedirect,
 
         ]);
+    }
+    public function checkMailUser($request)
+    {
+        if ($request['email'] != '') {
+            return !User::query()->where(function ($query) use ($request) {
+                if (isset($request['id'])) {
+                    $query->where('id', '!=', $request['id']);
+                }
+                $query->where(['email' => $request['email']]);
+            })->exists();
+        }
+        return true;
     }
     public function gettimeoffer()
     {
