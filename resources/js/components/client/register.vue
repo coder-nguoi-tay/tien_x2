@@ -342,6 +342,9 @@
                     >
                       Hoàn tất
                     </button>
+                    <a :href="url" class="main-button btn border btn-all ml-2">
+                      Quay lại
+                    </a>
                   </div>
                 </form>
               </VeeForm>
@@ -428,6 +431,7 @@ export default {
   data: function () {
     return {
       csrfToken: Laravel.csrfToken,
+      url: Laravel.baseUrl,
       model: {},
       value: this.data.request ?? "",
       checkActie: true,

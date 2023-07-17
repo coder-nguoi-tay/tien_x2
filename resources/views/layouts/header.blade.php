@@ -97,8 +97,8 @@
                         <li class="signup-popup"><a title=""><i class="la la-key"></i>Đăng ký</a></li>
                         <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i>
                                 Đăng nhâp</a></li>
-                        <li class="signin-popup">
-                            <a href="{{route('register')}}" class="btn btn-primary"><i class="fa fa-desktop"></i>
+                        <li>
+                            <a href="{{ route('register') }}" class="btn btn-primary"><i class="fa fa-desktop"></i>
                                 Nhà tuyển dụng
                             </a>
                         </li>
@@ -159,3 +159,11 @@
         </div>
     </div>
 </header>
+<div class="account-popup-area signin-popup-box">
+    <login-user
+        :data="{{ json_encode([
+            'urlStore' => route('users.login.store'),
+            'urlBack' => route('home'),
+        ]) }}">
+    </login-user>
+</div><!-- LOGIN POPUP -->

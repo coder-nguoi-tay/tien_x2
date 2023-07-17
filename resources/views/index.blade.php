@@ -311,13 +311,4 @@
             </div>
         </div>
     </section>
-    {{-- login --}}
-    <div class="account-popup-area signin-popup-box">
-        <login-user
-            :data="{{ json_encode([
-                'urlStore' => route('users.login.store'),
-                'urlBack' => route('home'),
-            ]) }}">
-        </login-user>
-    </div><!-- LOGIN POPUP -->
 @endsection

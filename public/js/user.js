@@ -23596,6 +23596,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this$data$request;
     return {
       csrfToken: Laravel.csrfToken,
+      url: Laravel.baseUrl,
       model: {},
       value: (_this$data$request = this.data.request) !== null && _this$data$request !== void 0 ? _this$data$request : "",
       checkActie: true
@@ -25074,6 +25075,7 @@ var _hoisted_57 = {
   "class": "text-center mb-0 mt-4 action-container"
 };
 var _hoisted_58 = ["disabled"];
+var _hoisted_59 = ["href"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Field");
   var _component_ErrorMessage = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ErrorMessage");
@@ -25271,7 +25273,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "submit",
         disabled: _ctx.checkActie,
         "class": "main-button btn border btn-all"
-      }, " Hoàn tất ", 8 /* PROPS */, _hoisted_58)])], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_11)];
+      }, " Hoàn tất ", 8 /* PROPS */, _hoisted_58), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+        href: _ctx.url,
+        "class": "main-button btn border btn-all ml-2"
+      }, " Quay lại ", 8 /* PROPS */, _hoisted_59)])], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_11)];
     }),
     _: 1 /* STABLE */
   }, 8 /* PROPS */, ["onInvalidSubmit"])])])])])])]);
