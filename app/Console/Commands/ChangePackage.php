@@ -2,16 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Company;
 use App\Models\Employer;
 use App\Models\Job;
 use App\Models\packageofferbought;
-use App\Models\PaymentHistoryEmployer;
-use App\Models\User;
-use App\Notifications\NotifyTimePackage;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Auth;
 
 class ChangePackage extends Command
 {
