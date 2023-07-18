@@ -10,8 +10,11 @@ use App\Models\Job;
 use App\Models\PaymentHistoryEmployer;
 use App\Models\ProfileUserCv;
 use App\Models\SaveCv;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends BaseController
 {
@@ -78,5 +81,23 @@ class HomeController extends BaseController
             'countCvMoth11' => $this->getDataMouth(11, $checkCompany->id, $request->all()),
             'countCvMoth12' => $this->getDataMouth(12, $checkCompany->id, $request->all()),
         ]);
+    }
+    public  function changePassword()
+    {
+        return  view('employer.changePassword');
+    }
+    public  function changePasswordSucsses(Request  $request)
+    {
+        try {
+            $user = User::query()->find(Auth::guard('user')->user()->id);
+            $user->password = Hash::make($request->password);
+            $user->save();
+            $this->setFlash(_('Đổi mật khẩu thành công'));
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            $this->setFlash(_('Đã có một lỗi xảy ra'));
+            return redirect()->back();
+        }
     }
 }

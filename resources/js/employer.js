@@ -1,24 +1,16 @@
 import './bootstrap';
 // import { configure, defineRule } from 'vee-validate'
 import { createApp } from 'vue';
-// import $ from "jquery";
-// defineRule('password_rule', (value) => {
-//     return /^[A-Za-z0-9]*$/i.test(value)
-// })
+
 import 'notyf/notyf.min.css';
 
-// configure({
-//     validateOnBlur: false,
-//     validateOnChange: false,
-//     validateOnInput: true,
-//     validateOnModelUpdate: false
-// })
 
 
 const app = createApp({});
 
 import 'sweetalert2/dist/sweetalert2.min.css'
 app.use(VueSweetalert2)
+import VueSweetalert2 from 'vue-sweetalert2';
 // employer new
 import CreateNewEmployer from './components/employer/new/create.vue';
 app.component('create-new-employer', CreateNewEmployer);
@@ -60,7 +52,6 @@ import BusinessLicense from "./components/employer/company/business.vue";
 app.component('business-license', BusinessLicense);
 // xóa jup top 
 import btnDeleteJobTop from "./components/common/btnDeleteJobTop.vue";
-import VueSweetalert2 from 'vue-sweetalert2';
 app.component('btn-delete-job-top', btnDeleteJobTop);
 // xoa job
 import btnDelete from "./components/common/btnDelete.vue";
@@ -71,6 +62,8 @@ app.component('btn-extension', btnExtension);
 // nâng cấp gói cước
 import btnUpgrade from "./components/employer/package/upgrade.vue";
 app.component('btn-upgrade', btnUpgrade);
+import changePassword from "./components/seeker/changePassword.vue";
+app.component('change-password', changePassword);
 app.mount('#app');
 
 

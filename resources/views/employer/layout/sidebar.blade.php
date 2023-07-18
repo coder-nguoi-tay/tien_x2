@@ -118,6 +118,14 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('employer.changePassword') }}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-mood-happy"></i>
+                        </span>
+                        <span class="hide-menu">Đổi mật khẩu</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('logout') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-aperture"></i>

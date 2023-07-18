@@ -130,4 +130,7 @@ Route::prefix('employers')->name('employer.')->group(function () {
         Route::get('payment/vnpay-return', [PaymentForEmployerController::class, 'vnpayReturn'])->name('vnpayReturn');
     });
     Route::resource('payment-history', PaymentHistoryController::class);
+    // đoi mk
+    Route::get('change-password', [HomeController::class, 'changePassword'])->name('changePassword');
+    Route::post('change-password', [HomeController::class, 'changePasswordSucsses'])->name('changePasswordSucsses');
 });
