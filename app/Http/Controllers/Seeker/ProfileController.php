@@ -10,9 +10,11 @@ use App\Models\KeyUserSearch;
 use App\Models\ProfileUserCv;
 use App\Models\SeekerSkill;
 use App\Models\Skill;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends BaseController
 {
@@ -114,6 +116,24 @@ class ProfileController extends BaseController
                 'message' => 'Đã có một lỗi xảy ra',
                 'status' => StatusCode::FORBIDDEN,
             ], StatusCode::FORBIDDEN);
+        }
+    }
+    public  function changePassword()
+    {
+        return  view('seeker.changePassword');
+    }
+    public  function changePasswordSucsses(Request  $request)
+    {
+        try {
+            $user = User::query()->find(Auth::guard('user')->user()->id);
+            $user->password = Hash::make($request->password);
+            $user->save();
+            $this->setFlash(_('Đổi mật khẩu thành công'));
+            return redirect()->route('user.changepass');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            $this->setFlash(_('Đã có một lỗi xảy ra'));
+            return redirect()->back();
         }
     }
 }

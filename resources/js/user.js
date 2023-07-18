@@ -154,6 +154,9 @@ app.component('form-register', formRegister);
 // đăng ký uv
 import formRegisterUser from "./components/login/register.vue";
 app.component('form-register-user', formRegisterUser);
+// đổi mật khẩu
+import changePassword from "./components/seeker/changePassword.vue";
+app.component('change-password', changePassword);
 app.mount('#app');
 
 

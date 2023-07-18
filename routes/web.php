@@ -80,6 +80,8 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::prefix('love')->group(function () {
         Route::delete('delete-love-cv', [ManageController::class, 'deleteLoveCv'])->name('deleteLoveCv');
     });
+    Route::get('change-password', [ProfileController::class, 'changePassword'])->name('changePassword');
+    Route::post('change-password', [ProfileController::class, 'changePasswordSucsses'])->name('changePasswordSucsses');
 });
 
 // logout
