@@ -29,13 +29,12 @@
                                 <td>{{ $item->job_time }}</td>
                                 <td>{{ $item->end_job_time }}</td>
                                 <td><span
-                                        class="badge p-1 {{ $item->status == 1 ? 'bg-success text-white' : 'bg-secondary text-white' }}">{{ $item->status == 0 ? 'Bản nháp' : 'Đang hoạt động' }}</span>
+                                        class="badge p-1 {{ $item->expired == 0 ? 'bg-success text-white' : 'bg-dark text-white' }}">{{ $item->expired == 1 ? 'Hết hạn' : 'Đang hoạt động' }}</span>
                                 </td>
                                 <td>
                                     <a href="{{ route('employer.new.edit', $item->id) }}"><i class="fas fa-edit"></i></a>
                                     |
-                                    <btn-delete
-                                        :message-confirm="{{ json_encode('Bạn có chắc muốn xóa bài viết?') }}"
+                                    <btn-delete :message-confirm="{{ json_encode('Bạn có chắc muốn xóa bài viết?') }}"
                                         :delete-action="{{ json_encode(route('employer.new.destroy', $item->id)) }}">
                                     </btn-delete>
                                 </td>

@@ -76,11 +76,11 @@
                             <div class="text-center card-box">
                                 <div class="member-card pt-2 pb-2">
                                     <div class="thumb-lg member-thumb mx-auto" style="width: 200px;">
-                                        <img src="{{ asset($item->user->images) }}" class="rounded-circle img-thumbnail"
+                                        <img src="{{ asset($item->images) }}" class="rounded-circle img-thumbnail"
                                             alt="profile-image">
                                     </div>
                                     <div class="mt-2">
-                                        <h4>{{ $item->user->name }}</h4>
+                                        <h4>{{ $item->name }}</h4>
                                         <p class="text-muted"> </span><span><a
                                                     href="{{ route('employer.search.show', $item->id) }}"
                                                     class="text-pink">{{ $item->majors }}</a></span></p>

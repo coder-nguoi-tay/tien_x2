@@ -528,12 +528,12 @@ export default {
         });
       }
       if (this.model.user.images == 0) {
-        this.Imgage = this.model.app.images;
+        this.Imgage = "asset/formCv/image/user.png";
       } else {
         this.Imgage = this.model.user.images;
       }
     } else {
-      this.Imgage = "/asset/formCv/image/user.png";
+      this.Imgage = "asset/formCv/image/user.png";
       this.skill.push({
         nameSkill: "",
         valueSkill: "",

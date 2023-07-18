@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\User\UserEvent;
+use App\Http\Requests\UserRegisterRequest;
 use App\Mail\MailActiveUser;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -51,7 +52,7 @@ class LoginController extends BaseController
         Auth::guard('user')->logout();
         return redirect()->route('home');
     }
-    public function register(Request $request)
+    public function register(UserRegisterRequest $request)
     {
         try {
             $user =  User::query()->create([

@@ -6,6 +6,7 @@ use App\Enums\StatusCode;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployerCreateRequest;
+use App\Http\Requests\ReasonCvRequest;
 use App\Models\Accuracy;
 use App\Models\Employer;
 use App\Models\Job;
@@ -266,8 +267,9 @@ class NewEmployerController extends BaseController
             'status' => 200
         ];
     }
-    public function reasonCv(Request $request)
+    public function reasonCv(ReasonCvRequest $request)
     {
+
         try {
             // change status
             $cv = SaveCv::query()->find($request->cv_id);
@@ -286,7 +288,8 @@ class NewEmployerController extends BaseController
             $this->setFlash(__('Phản hồi thành công'));
             return back();
         } catch (\Throwable $th) {
-            dd($th);
+            DB::rollBack();
+            dd($th->getMessage());
         }
     }
     public function getDataReason($id)

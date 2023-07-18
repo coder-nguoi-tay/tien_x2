@@ -30,10 +30,12 @@
   <div class="resume-box mb-5">
     <div class="left-section">
       <div class="profile">
-        <img src="/asset/formCv/image/profile.png" class="profile-img" />
+        <img :src="url + '/' + cv.images" class="profile-img" />
         <div class="blue-box"></div>
       </div>
-      <h2 class="name" v-html="cv.user.user_name"></h2>
+      <div class="n-p">
+        <h2 class="name" v-html="cv.name"></h2>
+      </div>
       <p class="n-p">
         <span v-html="cv.majors"></span>
       </p>
@@ -139,7 +141,7 @@
       <!--  -->
       <div
         class="lr-box"
-        v-for="(item, index) in experience"
+        v-for="item in experience"
         :key="item"
         v-if="!changeCv"
       >
@@ -160,7 +162,7 @@
       </div>
       <div class="clearfix"></div>
       <!--  -->
-      <div class="lr-box" v-for="(item, index) in ducation" :key="item">
+      <div class="lr-box" v-for="item in ducation" :key="item">
         <div class="left">
           <p class="p4">
             <span v-html="item.timeDucation"></span>
@@ -180,7 +182,7 @@
       </div>
       <div class="clearfix"></div>
       <!--  -->
-      <div class="mt-2" v-for="(item, index) in skill" :key="item">
+      <div class="mt-2" v-for="item in skill" :key="item">
         <span v-html="item.nameSkill"></span>
         <div class="d-flex mt-2" style="align-items: center">
           <rating-cv
@@ -258,7 +260,9 @@
                 </div>
                 <p class="mt-4">{{ item.comment }}</p>
                 <p>Mức độ hồ sơ: {{ item.feedback.name }}</p>
-                 <span style="font-size: 10px;">{{ formattedDate(item.created_at) }}</span>
+                <span style="font-size: 10px">{{
+                  formattedDate(item.created_at)
+                }}</span>
               </div>
             </div>
           </div>

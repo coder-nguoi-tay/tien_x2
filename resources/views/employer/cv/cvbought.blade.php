@@ -72,7 +72,7 @@
                                                     href="{{ route('employer.search.show', $item->id) }}"
                                                     class="text-pink">{{ $item->profileCv->majors }}</a></span></p>
                                     </div>
-                                    <a href="{{ route('employer.search.show', $item->id) }}"
+                                    <a href="{{ route('employer.search.show', $item->profileCv->id) }}"
                                         class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light">Xem chi
                                         tiết</a>
                                 </div>
