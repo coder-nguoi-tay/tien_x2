@@ -25,6 +25,7 @@
                                             <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
                                                 <div class="job-field">
                                                     <select class="form-control" name="location" style="height: 62px;">
+                                                        <option value="">....Chọn địa chỉ....</option>
                                                         @foreach ($location as $value)
                                                             <option value="{{ $value->id }}">{{ $value->name }}</option>
                                                         @endforeach
