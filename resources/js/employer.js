@@ -65,6 +65,12 @@ app.component('btn-delete-job-top', btnDeleteJobTop);
 // xoa job
 import btnDelete from "./components/common/btnDelete.vue";
 app.component('btn-delete', btnDelete);
+// gia hạn gói cước
+import btnExtension from "./components/common/btnPayment.vue";
+app.component('btn-extension', btnExtension);
+// nâng cấp gói cước
+import btnUpgrade from "./components/employer/package/upgrade.vue";
+app.component('btn-upgrade', btnUpgrade);
 app.mount('#app');
 
 

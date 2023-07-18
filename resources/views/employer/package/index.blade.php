@@ -19,7 +19,6 @@
                     <tbody>
                         @foreach ($pachageForEmployer as $item)
                             <tr>
-
                                 <td>{{ $item->name_package }}</td>
                                 <td>{{ number_format($item->price) }}đ</td>
                                 <td>{{ $item->lever_package }}</td>
@@ -29,8 +28,21 @@
                                         class="badge  p-1 {{ $item->status == 1 ? 'bg-success text-white' : 'bg-secondary text-white' }}">{{ $item->status_package }}</span>
                                 </td>
                                 <td>
-                                    <a href="{{ route('employer.package.destroy', $item->id) }}"><i
-                                            class="fas fa-trash-alt"></i></a>
+                                    @if ($item->status == 0)
+                                        <btn-upgrade
+                                            :message-confirm="{{ json_encode('Bạn có chắc muốn gia hạn với mức giá ' . number_format($item->price) . 'đ' . ' không ?') }}"
+                                            :delete-action="{{ json_encode(route('employer.package.updateTimePayment', $item->id)) }}"
+                                            :price="{{ json_encode($item->price) }}"
+                                            :acc-payment="{{ json_encode($accPayment) }}">
+                                            </btn-extension>
+                                    @endif
+                                    <btn-upgrade
+                                        :message-confirm="{{ json_encode('Bạn có chắc muốn nâng cấp gói cước?') }}"
+                                        :delete-action="{{ json_encode(route('employer.package.upgradePackage', $item->id)) }}"
+                                        :checkPackage="{{ json_encode($checkPackage->price) }}"
+                                        :acc-payment="{{ json_encode($accPayment) }}"
+                                        :package="{{ json_encode($package) }}">
+                                    </btn-upgrade>
                                 </td>
                             </tr>
                         @endforeach

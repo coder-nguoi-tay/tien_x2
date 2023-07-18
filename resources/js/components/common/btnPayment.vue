@@ -1,8 +1,7 @@
 <template>
   <a class="dropdown-item" @click="showAlert" style="cursor: pointer">
-    <!-- <i class="la la-eye"></i> -->
     <i
-      class="la fas fa-tools"
+      class="la fas fa-tools custom-icon-blue"
       data-toggle="tooltip"
       data-placement="top"
       title=""

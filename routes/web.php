@@ -115,6 +115,8 @@ Route::prefix('employers')->name('employer.')->group(function () {
         Route::post('/payment', [PackageController::class, 'payment'])->name('payment');
         Route::get('package/payment/return', [PackageController::class, 'vnpayReturn'])->name('return');
         Route::get('package/payment/output', [PackageController::class, 'vnpayOutput'])->name('output');
+        Route::post('package/payment/update-time/{id}', [PackageController::class, 'updateTimePayment'])->name('updateTimePayment');
+        Route::post('package/payment/upgrade-package/{id}', [PackageController::class, 'upgradePackage'])->name('upgradePackage');
     });
     // search cv
     Route::get('search-cv', [SearchCvController::class, 'index'])->name('search.cv');

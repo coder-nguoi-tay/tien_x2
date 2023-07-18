@@ -16,7 +16,7 @@ class packageofferbought extends Model
     protected $fillable = [
         'id',
         'company_id',
-        'package_offer_id',
+        'attractive_id',
         'status',
         'start_time',
         'end_time',

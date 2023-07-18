@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('package_offer_bought', function (Blueprint $table) {
             $table->id();
             $table->integer('company_id');
-            $table->integer('package_offer_id');
+            $table->integer('attractive_id');
             $table->timestamps();
         });
     }
