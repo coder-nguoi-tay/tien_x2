@@ -167,3 +167,12 @@
         ]) }}">
     </login-user>
 </div><!-- LOGIN POPUP -->
+<div class="account-popup-area signup-popup-box">
+    <form-register-user
+            :data="{{ json_encode([
+                'urlStore' => route('users.login.register'),
+                'urlBack' => route('home'),
+            ]) }}">
+        </form-register-user>
+    
+</div><!-- SIGNUP POPUP -->

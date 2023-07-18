@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\User\UserEvent;
+use App\Mail\MailActiveUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends BaseController
 {
@@ -44,5 +50,33 @@ class LoginController extends BaseController
     {
         Auth::guard('user')->logout();
         return redirect()->route('home');
+    }
+    public function register(Request $request)
+    {
+        try {
+            $user =  User::query()->create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role_id' => 1,
+                'status' => 1,
+                'slug' => $this->convertName($request->name)
+            ]);
+            $user->save();
+            event(new UserEvent($request->email));
+            $this->setFlash(__('Kiểm tra Email để kích hoạt tài khoản'));
+            return back();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            dd($th->getMessage());
+        }
+    }
+    public function activeUser(Request $request)
+    {
+        $user = User::query()->where('email', $request->email)->first();
+        $user->status = 2;
+        $user->save();
+        $this->setFlash(__('Tài khoản đã được xác thực'));
+        return back();
     }
 }

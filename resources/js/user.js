@@ -146,11 +146,14 @@ import RatingCv from 'vue-star-rating'
 app.component('rating-cv', RatingCv)
 // file cv
 import createCv from './components/seeker/cv/create.vue'
+app.component('create-cv', createCv)
 // đăng ký ntd
 import formRegister from "./components/client/register.vue";
 app.component('form-register', formRegister);
 
-app.component('create-cv', createCv)
+// đăng ký uv
+import formRegisterUser from "./components/login/register.vue";
+app.component('form-register-user', formRegisterUser);
 app.mount('#app');
 
 

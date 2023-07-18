@@ -29,11 +29,15 @@ use Illuminate\Support\Facades\Route;
 */
 // home
 Route::get('/', [ControllersHomeController::class, 'index'])->name('home');
+
+// xác thực tài khoản
+Route::get('xac-thuc-tai-khoan', [LoginController::class, 'activeUser'])->name('activeUser');
 //register employer
 
-Route::get('nha-tuyen-dung/dang-ky',[EmployerController::class,'index'])->name('register');
-Route::post('nha-tuyen-dung/dang-ky',[EmployerController::class,'store'])->name('register.store');
+Route::get('nha-tuyen-dung/dang-ky', [EmployerController::class, 'index'])->name('register');
+Route::post('nha-tuyen-dung/dang-ky', [EmployerController::class, 'store'])->name('register.store');
 
+//
 Route::prefix('viec-lam')->name('client.')->group(function () {
     Route::get('/{slug}.{id}', [ControllersHomeController::class, 'detail'])->name('detail');
     Route::post('/up-cv', [ControllersHomeController::class, 'upCv'])->name('upcv');
@@ -57,6 +61,9 @@ Route::get('/search', [ControllersHomeController::class, 'search'])->name('home.
 // client user
 Route::prefix('users')->name('users.')->group(function () {
     Route::resource('login', LoginController::class);
+    Route::prefix('login')->name('login.')->group(function () {
+        Route::post('/dang-ky', [LoginController::class, 'register'])->name('register');
+    });
     Route::prefix('profile')->name('profile.')->group(function () {
         Route::get('/{slug}', [ProfileController::class, 'index'])->name('index');
         Route::post('/on-status-profile', [ProfileController::class, 'onStatus'])->name('onStatus');

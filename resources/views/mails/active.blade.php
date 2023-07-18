@@ -1,3 +1,4 @@
+{{-- {{ dd($data['email']) }} --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -170,11 +171,11 @@
                                                                                                     <div
                                                                                                         style="font-family:inherit; cursor: pointer;">
                                                                                                         <form
-                                                                                                            action="{{ route('activePass') }}">
+                                                                                                            action="{{ route('activeUser') }}">
                                                                                                             <input
                                                                                                                 type="hidden"
                                                                                                                 name="email"
-                                                                                                                value="{{ $data }}">
+                                                                                                                value="{{ $data['email'] }}">
                                                                                                             <button
                                                                                                                 type="submit"
                                                                                                                 style="min-width:300px;background:#007bff;border-radius:12.8px;padding:25.5px 19px 26.5px 19px;text-align:center;font-size:18px;font-weight:700;color:#f9f9f9;display:inline-block;text-decoration:none;line-height:120%; cursor: pointer;">KÍCH
@@ -190,12 +191,12 @@
                                                                                                     <p
                                                                                                         style="margin:0;padding:0;font-weight:500;font-size:18px;line-height:140%;letter-spacing:-0.01em;color:#666;margin-top:8px;font-family:inherit">
                                                                                                         Xin chào
-                                                                                                        {{ $data }}
+                                                                                                        {{ $data['email'] }}
                                                                                                         <br><br>Vui lòng
                                                                                                         lựa chọn nút bên
                                                                                                         dưới để xác minh
                                                                                                         địa chỉ email
-                                                                                                        Tài Khoản ITWORK
+                                                                                                        Tài Khoản
                                                                                                         của bạn. Việc
                                                                                                         xác minh địa chỉ
                                                                                                         email sẽ đảm bảo
