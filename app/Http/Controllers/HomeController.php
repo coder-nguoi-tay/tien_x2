@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Enums\StatusCode;
-use App\Mail\MailNotifyCV;
+use App\Events\User\MailApplyJobEvent;
 use App\Models\Company;
 use App\Models\Favourite;
 use App\Models\Job;
-use App\Models\Jobseeker;
 use App\Models\Jobskill;
 use App\Models\KeyUserSearch;
 use App\Models\location;
@@ -18,7 +17,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 
 class HomeController extends BaseController
 {
@@ -197,15 +195,7 @@ class HomeController extends BaseController
                 $cvUpload->save();
             }
         }
-        $emailCompany = Job::query()->join('employer', 'employer.id', '=', 'job.employer_id')
-            ->join('users', 'users.id', '=', 'employer.user_id')
-            ->select('users.email as email')->first();
-        $firstJob = Job::query()->find($request->id_job);
-        $mailContents = [
-            'job' => $firstJob
-        ];
-        Mail::to($emailCompany->email)->send(new MailNotifyCV($mailContents));
-
+        event(new MailApplyJobEvent($request->id_job));
         $this->setFlash(__('Hãy chờ phản hồi của nhà tuyển dụng'));
         return redirect()->back();
     }

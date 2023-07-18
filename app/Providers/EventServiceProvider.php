@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\User\MailApplyJobEvent;
 use App\Events\User\UserEvent;
+use App\Listeners\User\MailApplyJobListener;
 use App\Listeners\User\UserListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserEvent::class => [
             UserListener::class,
+        ],
+        MailApplyJobEvent::class => [
+            MailApplyJobListener::class,
         ],
     ];
 

@@ -7,17 +7,17 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserEvent
+class MailApplyJobEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public $mail;
+    public $id;
 
-    public function __construct($mail)
+    public function __construct($id)
     {
-        $this->mail = $mail;
+        $this->id = $id;
     }
 }
