@@ -269,7 +269,6 @@ class NewEmployerController extends BaseController
     }
     public function reasonCv(ReasonCvRequest $request)
     {
-
         try {
             // change status
             $cv = SaveCv::query()->find($request->cv_id);

@@ -36,7 +36,7 @@ class PackageController extends BaseController
             ->get();
         $accPayment = AccountPayment::query()->where('user_id', Auth::guard('user')->user()->id)->first();
 
-        $checkPackage = packageofferbought::query()->where('company_id', Auth::guard('user')->user()->id)
+        $checkPackage = packageofferbought::query()->where('company_id', $employer->id)
             ->leftjoin('job_attractive', 'job_attractive.id', 'package_offer_bought.attractive_id')
             ->select('job_attractive.price as price')
             ->first();
@@ -44,11 +44,13 @@ class PackageController extends BaseController
         // 
         $checkpaPhageForEmployer = packageofferbought::query()
             ->where('company_id', $employer->id)
-            ->first()->pluck('attractive_id');
-        $package = jobAttractive::query()->whereNotIn('id', $checkpaPhageForEmployer)->get();
+            ->first();
+        if ($checkpaPhageForEmployer) {
+            $package = jobAttractive::query()->whereNotIn('id', $checkpaPhageForEmployer->pluck('attractive_id'))->get();
+        }
         return view('employer.package.index', [
             'checkPackage' => $checkPackage,
-            'package' => $package,
+            'package' => $package ?? null,
             'accPayment' => $accPayment,
             'pachageForEmployer' => $pachageForEmployer,
             'packageAttractive' => $packageAttractive,
@@ -64,12 +66,18 @@ class PackageController extends BaseController
     public function create()
     {
         $employer =   Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
-        $pachageForEmployer = packageofferbought::query()
+        $checkpaPhageForEmployer = packageofferbought::query()
             ->where('company_id', $employer->id)
-            ->first()->pluck('attractive_id');
-        $package = jobAttractive::query()->whereNotIn('id', $pachageForEmployer)->get();
+            ->first();
+
+        if ($checkpaPhageForEmployer) {
+            $check = $checkpaPhageForEmployer->pluck('attractive_id');
+        } else {
+            $check = [0];
+        }
+        $package = jobAttractive::query()->whereNotIn('id', $check)->get();
         return view('employer.package.allpackage', [
-            'package' => $package
+            'package' => $package ?? null
         ]);
     }
     public function payment(Request $request)
@@ -185,6 +193,7 @@ class PackageController extends BaseController
         $url_ipn = route('employer.package.output', $_GET);
         // dd($url_ipn);
         $secureHash = hash_hmac('sha512', $hashData,  'KNAREAARTPBAELKXTPLZKBUMSTCJHIYE');
+        $employer =  Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
         if ($secureHash == $vnp_SecureHash) {
             if ($_GET['vnp_ResponseCode'] == '00') {
                 $this->setFlash(__('Giao dịch thành công'));
@@ -195,7 +204,7 @@ class PackageController extends BaseController
                 $lever_package = explode(',', $request->vnp_OrderInfo)[1];
                 $checkPackage = packageofferbought::where('company_id', Auth::guard('user')->user()->id)->first();
                 $paymentHistory = new PaymentHistoryEmployer();
-                $paymentHistory->user_id = Auth::guard('user')->user()->id;
+                $paymentHistory->user_id =  $employer->id;
                 $paymentHistory->price = $request->vnp_Amount / 100;
                 $paymentHistory->status = 0;
                 $paymentHistory->desceibe = $checkPackage ? 'Nâng cấp gói cước ' . explode(',', $request->vnp_OrderInfo)[0] . 'gói VIP ' . $lever_package : 'Thanh toán mua gói cước ' . explode(',', $request->vnp_OrderInfo)[0] . 'gói VIP ' . $lever_package;
@@ -206,7 +215,7 @@ class PackageController extends BaseController
             $lever_package = explode(',', $request->vnp_OrderInfo)[1];
             $checkPackage = packageofferbought::where('company_id', Auth::guard('user')->user()->id)->first();
             $paymentHistory = new PaymentHistoryEmployer();
-            $paymentHistory->user_id = Auth::guard('user')->user()->id;
+            $paymentHistory->user_id =  $employer->id;
             $paymentHistory->price = $request->vnp_Amount;
             $paymentHistory->status = 0;
             $paymentHistory->desceibe = $checkPackage ? 'Nâng cấp gói cước ' . explode(',', $request->vnp_OrderInfo)[0] . 'gói VIP ' . $lever_package : 'Thanh toán mua gói cước ' . explode(',', $request->vnp_OrderInfo)[0] . 'gói VIP ' . $lever_package;
@@ -302,7 +311,7 @@ class PackageController extends BaseController
                             $package->save();
                             //
                             $paymentHistory = new PaymentHistoryEmployer();
-                            $paymentHistory->user_id = Auth::guard('user')->user()->id;
+                            $paymentHistory->user_id =  $employer->id;
                             $paymentHistory->price = $vnp_Amount;
                             $paymentHistory->status = 1;
                             $paymentHistory->desceibe = $checkPackage ? 'Nâng cấp gói cước Tin tuyển dụng - việc làm tốt nhất VIP ' . $lever_package  : 'Thanh toán mua gói cước Tin tuyển dụng - việc làm tốt nhất VIP ' . $lever_package;
@@ -405,7 +414,7 @@ class PackageController extends BaseController
             $employer->position = 1;
             $employer->save();
             //
-            $checkPackage = packageofferbought::where('company_id', Auth::guard('user')->user()->id)->first();
+            $checkPackage = packageofferbought::where('company_id', $employer->id)->first();
             if ($checkPackage) {
                 $package = $checkPackage;
                 if ($request['data']['lever_package'] == LeverPackageCompany::VIP1) {
@@ -425,7 +434,7 @@ class PackageController extends BaseController
                     $package->end_time = Carbon::parse(Carbon::now())->addDay(30)->format('Y-m-d');
                 }
             }
-            $package->company_id = Auth::guard('user')->user()->id;
+            $package->company_id = $employer->id;
             $package->attractive_id = $request['data']['id'];
             $package->status = 1;
             $package->lever = $request['data']['lever_package'];
@@ -437,7 +446,7 @@ class PackageController extends BaseController
             $account->save();
             //ls 
             $paymentHistory = new PaymentHistoryEmployer();
-            $paymentHistory->user_id = Auth::guard('user')->user()->id;
+            $paymentHistory->user_id =  $employer->id;
             $paymentHistory->price = $request['data']['price'];
             $paymentHistory->status = 1;
             $paymentHistory->desceibe = $checkPackage ? 'Nâng cấp gói cước Tin tuyển dụng - việc làm tốt nhất VIP ' . $request['data']['lever_package'] : 'Thanh toán mua gói cước Tin tuyển dụng - việc làm tốt nhất VIP ' . $request['data']['lever_package'];

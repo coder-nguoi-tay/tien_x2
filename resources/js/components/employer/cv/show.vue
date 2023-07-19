@@ -375,7 +375,7 @@ export default {
     };
   },
   created() {
-    console.log(this.data);
+    console.log(this.data.countFeedBackEmployer);
     // công thức tính tiền cv
     // mỗi skill là 5k à mỗi dữ án là 5k
     this.price =

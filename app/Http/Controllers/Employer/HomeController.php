@@ -26,7 +26,6 @@ class HomeController extends BaseController
     public function index(Request $request)
     {
         $checkCompany = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
-        // dd($checkCompany);
         // số  lượng bài viết đã đăng
         $job = Job::query()->where('employer_id', $checkCompany->id)->count();
         // số lương hồ sơ đã nhận

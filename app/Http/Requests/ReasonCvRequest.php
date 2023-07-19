@@ -24,7 +24,7 @@ class ReasonCvRequest extends FormRequest
     public function rules()
     {
         return [
-            'comment' => 'required|max:255',
+            'content' => 'required|max:255',
         ];
     }
 }

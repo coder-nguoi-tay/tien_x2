@@ -28,13 +28,13 @@
                                         class="badge  p-1 {{ $item->status == 1 ? 'bg-success text-white' : 'bg-secondary text-white' }}">{{ $item->status_package }}</span>
                                 </td>
                                 <td>
-                                    @if ($item->status == 0)
-                                        <btn-upgrade
+                                    @if ($item->status == 2)
+                                        <btn-extension
                                             :message-confirm="{{ json_encode('Bạn có chắc muốn gia hạn với mức giá ' . number_format($item->price) . 'đ' . ' không ?') }}"
                                             :delete-action="{{ json_encode(route('employer.package.updateTimePayment', $item->id)) }}"
                                             :price="{{ json_encode($item->price) }}"
                                             :acc-payment="{{ json_encode($accPayment) }}">
-                                            </btn-extension>
+                                        </btn-extension>
                                     @endif
                                     <btn-upgrade
                                         :message-confirm="{{ json_encode('Bạn có chắc muốn nâng cấp gói cước?') }}"
