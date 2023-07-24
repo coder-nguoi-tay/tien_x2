@@ -50,7 +50,7 @@
                 </table>
             </div>
         </div>
-    </div>  
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -112,8 +112,13 @@
             $('.js-check-all').click(function(e) {
                 $('input:checkbox').prop('checked', this.checked);
             });
-            $('#exampleModal').modal('show');
-            console.log({{ $job }});
+            console.log();
+            if ({!! json_encode($company) !!} && {!! json_encode($acctiveAccuracy) !!}) {
+                $('#exampleModal').modal('hidden');
+            } else {
+                $('#exampleModal').modal('show');
+            }
+
         })
     </script>
 @endsection

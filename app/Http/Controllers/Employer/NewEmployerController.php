@@ -31,7 +31,16 @@ class NewEmployerController extends BaseController
 
         $checkCompany = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
         $company = Company::query()->find($checkCompany->id_company);
-        $accuracy = Accuracy::query()->where('user_id', $checkCompany->id)->first();
+        $accuracy = Accuracy::query()->where('user_id', $company->id)->first();
+        $checkAcctive = true;
+        if ($accuracy) {
+            if ($accuracy->status == 1) {
+                $acctiveAccuracy = $checkAcctive;
+            } else {
+                $acctiveAccuracy = !$checkAcctive;
+            }
+        }
+
         $job = Job::query()->where([
             ['job.employer_id', $checkCompany->id],
         ])->with(['AllCv'])
@@ -46,6 +55,7 @@ class NewEmployerController extends BaseController
                 'title' => 'Tin Tuyển Dụng',
                 'company' => $company,
                 'accuracy' => $accuracy,
+                'acctiveAccuracy' => $acctiveAccuracy ?? false,
             ]
         );
     }
