@@ -15,7 +15,6 @@ use App\Models\Jobskill;
 use App\Models\Reason;
 use App\Models\SaveCv;
 use Carbon\Carbon;
-use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

@@ -437,7 +437,9 @@ export default {
       checkActie: true,
     };
   },
-  mounted() {},
+  mounted() {
+    console.log(this.data);
+  },
   props: ["data"],
   components: {
     VeeForm,

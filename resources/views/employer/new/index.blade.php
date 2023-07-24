@@ -67,7 +67,7 @@
                         @if ($company)
                             <span
                                 style="margin-right: 410px;
-                                margin-top: 5px;
+                                margin-top: 3px;
                                 float: right;
                                 display: flex;
                                 justify-content: space-evenly;

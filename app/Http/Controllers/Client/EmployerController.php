@@ -73,7 +73,6 @@ class EmployerController extends BaseController
             $this->setFlash(__('đăng ký tài khoản nhà tuyển dụng thành công'));
             return redirect(route('home'));
         } catch (\Throwable $th) {
-            dd($th->getMessage());
             DB::rollBack();
             $this->setFlash(__('đã có một lỗi không xác định đã xảy ra, kiểm tra lại thông tin của bạn'), 'error');
             return view('client.employer.register', [

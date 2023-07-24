@@ -23602,7 +23602,9 @@ __webpack_require__.r(__webpack_exports__);
       checkActie: true
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    console.log(this.data);
+  },
   props: ["data"],
   components: {
     VeeForm: vee_validate__WEBPACK_IMPORTED_MODULE_1__.Form,
