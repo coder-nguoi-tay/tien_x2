@@ -159,19 +159,6 @@
                   </div>
                   <!-- end billing-content -->
                 </div>
-                <div class="row">
-                  <h6 class="title-update-employer mb-3">Tài liệu hướng dẫn</h6>
-                  <a
-                    class="p-update-employer"
-                    href="https://docs.google.com/document/d/1wOSg50rCXduzUxLYIYOAdWA-k3fjvfvyR-B8ASUsUUs/edit?usp=sharing"
-                    >Hướng dẫn đăng lên</a
-                  >
-                  <a
-                    class="p-update-employer"
-                    href="https://docs.google.com/document/d/1kw-3VIZHwNqCpIZZlYrQ1PmgK1dg0sw8zVImxBorYRY/edit?usp=sharing"
-                    >Giấy phép kinh doanh</a
-                  >
-                </div>
                 <!-- end billing-form-item -->
 
                 <!-- end billing-form-item -->

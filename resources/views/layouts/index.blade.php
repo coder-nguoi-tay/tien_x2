@@ -21,6 +21,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/chosen.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/colors/colors.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/bootstrap.css') }}" />
+    {{-- css home --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('company/css.css') }}" />
     <link rel="stylesheet"
         href="{{ asset('home/maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
     <script>

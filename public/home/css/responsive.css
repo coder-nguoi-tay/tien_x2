@@ -888,6 +888,7 @@
     .job-title-sec span {
         float: left;
         width: 100%;
+        margin-left: 1px;
     }
 
     .job-listing .job-lctn {

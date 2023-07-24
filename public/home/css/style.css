@@ -1938,6 +1938,7 @@ input[type=radio] + label::after {
      float: left;
      width: 90px;
      text-align: center;
+     margin-right: 10px;
  }
 
  .c-logo img {
@@ -1961,6 +1962,7 @@ input[type=radio] + label::after {
      font-family: Open Sans;
      font-size: 13px;
      margin-top: 1px;
+     margin-left: 100px;
  }
 
  .job-lctn {

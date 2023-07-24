@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployerCreateRequest;
 use App\Http\Requests\ReasonCvRequest;
 use App\Models\Accuracy;
+use App\Models\Company;
 use App\Models\Employer;
 use App\Models\Job;
 use App\Models\Jobskill;
@@ -26,16 +27,12 @@ class NewEmployerController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
 
         $checkCompany = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
-        if ($checkCompany->id_company) {
-            $checkCompanyXt = Accuracy::where('user_id', $checkCompany->id_company)->first();
-            if ($checkCompanyXt) {
-                $checkCompanyStatus = $checkCompanyXt->status;
-            }
-        }
+        $company = Company::query()->find($checkCompany->id_company);
+        $accuracy = Accuracy::query()->where('user_id', $checkCompany->id)->first();
         $job = Job::query()->where([
             ['job.employer_id', $checkCompany->id],
         ])->with(['AllCv'])
@@ -48,9 +45,8 @@ class NewEmployerController extends BaseController
             [
                 'job' => $job,
                 'title' => 'Tin Tuyển Dụng',
-                'checkCompany' => $checkCompany,
-                'request' => $request,
-                'checkCompanyStatus' => $checkCompanyStatus ?? '',
+                'company' => $company,
+                'accuracy' => $accuracy,
             ]
         );
     }

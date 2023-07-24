@@ -29,7 +29,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-6">
                             <div class="p-category">
                                 <a href="{{ route('company.detail', $item->id) }}" title="">
-                                    <img class="mt-5" src="/{{ asset($item->logo) }}" style="border-radius: 10px"
+                                    <img class="mt-5" src="{{ asset($item->logo) }}" style="border-radius: 10px"
                                         alt="" width="100">
                                     <span>{{ $item->name }}</span>
                                     <p>({{ count($item->employer->job) }} Việc làm)</p>

@@ -30,7 +30,7 @@
                             @foreach ($job as $item)
                                 <div class="job-listing render-job-search">
                                     <div class="job-title-sec">
-                                        <div class="c-logo"> <img src="/{{ asset($item->logo) }}" alt="" />
+                                        <div class="c-logo"> <img src="{{ asset($item->logo) }}" alt="" />
                                         </div>
                                         <h3><a href="{{ route('client.detail', [$item->slug, $item->id]) }}"
                                                 title="">{{ $item->title }}</a></h3>

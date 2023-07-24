@@ -68,7 +68,7 @@
                                         <h3><a href="{{ route('client.detail', [$item->slug, $item->id]) }}"
                                                 title="">{{ $item->title }}</a></h3>
                                         <span><a
-                                                href="{{ route('company.detail', $item->id) }}">{{ $item->nameCompany }}</a></span>
+                                                href="{{ route('company.detail', $item->idCompany) }}">{{ $item->nameCompany }}</a></span>
                                     </div>
                                     <span class="job-lctn"><i
                                             class="la la-map-marker"></i>{{ $item->getlocation->name }}</span>
@@ -163,7 +163,7 @@
                                         <h3><a href="{{ route('client.detail', [$item->slug, $item->id]) }}"
                                                 title="">{{ $item->title }}</a></h3>
                                         <span><a
-                                                href="{{ route('company.detail', $item->id) }}">{{ $item->nameCompany }}</a></span>
+                                                href="{{ route('company.detail', $item->idCompany) }}">{{ $item->nameCompany }}</a></span>
                                     </div>
                                     <span class="job-lctn"><i
                                             class="la la-map-marker"></i>{{ $item->getlocation->name }}</span>
