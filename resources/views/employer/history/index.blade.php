@@ -13,9 +13,19 @@
                             <ul class="timeline-widget mb-0 position-relative">
                                 <li class="timeline-item d-flex position-relative overflow-hidden">
                                     <div class="timeline-time text-dark flex-shrink-0 text-end">
-                                        {{ Carbon::parse($item->created_at)->format('d-m-yy') }}</div>
-                                    <div class="timeline-badge-wrap d-flex flex-column align-items-center"
-                                    >
+                                        {{ Carbon::parse($item->created_at)->format('d-m-yy') }}
+                                        <br>
+                                        @if ($item->status == 1)
+                                            <span class="p-2 text-info" role="alert">
+                                                Thành công
+                                            </span>
+                                        @else
+                                            <span class="p-2 text-danger" role="alert">
+                                                Bị hủy
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
                                         <span
                                             class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
                                         <span class="timeline-badge-border d-block flex-shrink-0"></span>

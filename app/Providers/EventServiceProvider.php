@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\Job\JobApplyEvent;
 use App\Events\User\MailApplyJobEvent;
 use App\Events\User\UserEvent;
+use App\Listeners\Job\JobApplyListener;
 use App\Listeners\User\MailApplyJobListener;
 use App\Listeners\User\UserListener;
 use Illuminate\Auth\Events\Registered;
@@ -27,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         MailApplyJobEvent::class => [
             MailApplyJobListener::class,
+        ],
+        JobApplyEvent::class => [
+            JobApplyListener::class,
         ],
     ];
 

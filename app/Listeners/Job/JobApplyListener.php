@@ -4,7 +4,6 @@ namespace App\Listeners\Job;
 
 use App\Events\Job\JobApplyEvent;
 use App\Mail\MailApplyJob;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 
 class JobApplyListener
@@ -18,9 +17,7 @@ class JobApplyListener
      */
     public function handle(JobApplyEvent $event): void
     {
-        $mailContents = [
-            'time' => Carbon::now(),
-        ];
+        $mailContents = [];
         Mail::to($event->email)->send(new MailApplyJob($mailContents));
     }
 }

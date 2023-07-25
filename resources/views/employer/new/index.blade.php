@@ -83,7 +83,7 @@
                         <br>
                         Bước 2: Xác thực giấy phép kinh doanh <a href="{{ route('employer.company.business') }}">tại
                             đây</a>
-                        @if ($accuracy)
+                        @if ($acctiveAccuracy)
                             <span
                                 style="margin-right: 350px;
                                 margin-top: 5px;
@@ -97,12 +97,23 @@
                                 height: 20px;">
                                 <i class="fas fa-check" style="color: rgb(20, 148, 252); font-size: 10px"></i>
                             </span>
+                        @else
+                            <span
+                                style="margin-right: 225px;
+                                margin-top: -1px;
+                                float: right;
+                                display: flex;
+                                justify-content: space-evenly;
+                                align-items: center;
+                                border-radius: 10px;
+                                border: 1px solid rgb(217, 11, 11);
+                                width: 143px;
+                                height: 28px;
+                                color: rgb(217, 11, 11);">
+                                đang xác thực
+                            </span>
                         @endif
                     </span>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -112,7 +123,6 @@
             $('.js-check-all').click(function(e) {
                 $('input:checkbox').prop('checked', this.checked);
             });
-            console.log();
             if ({!! json_encode($company) !!} && {!! json_encode($acctiveAccuracy) !!}) {
                 $('#exampleModal').modal('hidden');
             } else {
