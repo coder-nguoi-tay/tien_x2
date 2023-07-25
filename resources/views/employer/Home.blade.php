@@ -200,11 +200,12 @@
                                         </td>
                                         <td>
                                             @if ($item->status == 0)
-                                                <a class="btn border" href="/{{ $item->file_cv }}"
+                                                <a class="btn border" target="_blank" href="{{ asset($item->file_cv) }}"
                                                     onclick="chanstatusCv(JSON.parse('{{ $item }}'))">Xem</a>
                                             @endif
                                             @if ($item->status == 1)
-                                                <a class="btn border" href="/{{ $item->file_cv }}">Xem</a>
+                                                <a class="btn border" target="_blank"
+                                                    href="{{ asset($item->file_cv) }}">Xem</a>
                                                 |
                                                 <button class="btn btn-danger border" data-bs-toggle="modal"
                                                     data-bs-target="#modalNoteCv">Từ chối</button>
@@ -242,7 +243,7 @@
                                                 </div>
                                             @endif
                                             @if ($item->status == 2)
-                                                <a class="btn" href="/{{ $item->file_cv }}">Xem</a>
+                                                <a class="btn" href="{{ asset($item->file_cv) }}">Xem</a>
                                             @endif
                                         </td>
                                     </tr>
@@ -254,4 +255,29 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('.js-check-all').click(function(e) {
+                $('input:checkbox').prop('checked', this.checked);
+            });
+        })
+
+        function chanstatusCv(id) {
+            // location.reload();
+            const url = 'employers/new/change-status-cv/' + id.cv_id;
+            axios.get(url).then(function(res) {}).catch(function(error) {
+                console.log(error);
+            })
+        }
+
+        function Reason(id) {
+            const url = 'employers/new/get-data-reason/' + id.cv_id;
+            axios.get(url).then(function(res) {
+                $('#dataReasonCv').text(res.data.data.content);
+                $('#modalReasonCv').modal('show');
+            }).catch(function(error) {
+                console.log(error);
+            })
+        }
+    </script>
 @endsection

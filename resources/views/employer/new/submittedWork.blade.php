@@ -114,7 +114,7 @@
         })
 
         function chanstatusCv(id) {
-            // location.reload();
+            location.reload();
             const url = '/employers/new/change-status-cv/' + id.cv_id;
             axios.get(url).then(function(res) {}).catch(function(error) {
                 console.log(error);
