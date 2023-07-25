@@ -125,7 +125,6 @@ class ManageController extends BaseController
     }
     public function createFormCv(Request $request)
     {
-        // dd($request->all());
         try {
             $user = ProfileUserCv::query()->where('user_id', Auth::guard('user')->user()->id)->first();
             if ($user) {

@@ -150,9 +150,11 @@
 
 .p3 {
     margin-top: 20px;
-    color: var(--lightgray);
+    color: #5e5f60;
     text-align: justify;
     /* word-spacing: -4px; */
+    margin-left: 55px;
+    font-size: 18px;
 }
 
 .left {
@@ -171,13 +173,15 @@
 }
 
 .p4 {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .p5 {
     font-size: 12px;
-    color: var(--lightgray);
+    color: #5e5f60;
+    margin-left: 55px;
+    font-size: 16px;
 }
 
 .s-box {

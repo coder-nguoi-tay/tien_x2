@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Employer;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\AccuacyRequest;
 use App\Models\Accuracy;
 use App\Models\Company;
 use App\Models\Employer;
@@ -117,9 +118,8 @@ class ProfileCompanyController extends BaseController
             'accuracy' => $ImageAccuracy
         ]);
     }
-    public function ImageAccuracy(Request $request)
+    public function ImageAccuracy(AccuacyRequest $request)
     {
-
         $employer = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
         if (!$employer->id_company) {
             $this->setFlash(__('Bạn chưa cập nhật thông tin công ty!'), 'error');

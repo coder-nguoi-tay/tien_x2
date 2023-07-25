@@ -61,18 +61,20 @@
                 <span><img src="{{ asset('home/images/resource/profile.jpg') }}"
                         alt="">{{ Auth::guard('user')->user()->name }}<i class="la la-angle-down"></i></span>
                 <ul>
-                    <li><a href="employer_profile.html" title=""><i class="la la-file-text"></i>Thông tin
+                    <li><a href="{{ route('users.profile.index', Auth::guard('user')->user()->slug) }}"
+                            title=""><i class="la la-file-text"></i>Thông tin
                             cá nhân</a></li>
-                    <li><a href="employer_manage_jobs.html" title=""><i class="la la-briefcase"></i>Công
+                    <li><a href="{{ route('users.apply') }}" title=""><i class="la la-briefcase"></i>Công
                             việc đã ứng tuyển</a></li>
-                    <li><a href="employer_transactions.html" title=""><i class="la la-money"></i>Công việc
+                    <li><a href="{{ route('users.love') }}" title=""><i class="la la-money"></i>Công việc
                             đã ưu thích</a></li>
-                    <li><a href="employer_resume.html" title=""><i class="la la-paper-plane"></i>Công việc
-                            đã nộp</a>
+                    <li><a href="{{ route('users.apply') }}" title=""><i class="la la-paper-plane"></i>Công việc
+                            đã ứng tuyển</a>
                     </li>
-                    <li><a href="employer_packages.html" title=""><i class="la la-user"></i>Quản lý CV</a>
+                    <li><a href="{{ route('users.file.index') }}" title=""><i class="la la-user"></i>Quản lý
+                            CV</a>
                     </li>
-                    <li><a href="employer_change_password.html" title=""><i class="la la-lock"></i>Đổi mật
+                    <li><a href="{{ route('users.changePassword') }}" title=""><i class="la la-lock"></i>Đổi mật
                             khẩu</a></li>
                     <li><a href="{{ route('logout') }}" title=""><i class="la la-unlink"></i>Logout</a>
                     </li>
@@ -113,16 +115,15 @@
                         <li><a href="{{ route('users.profile.index', Auth::guard('user')->user()->slug) }}"
                                 title=""><i class="la la-file-text"></i>Thông tin
                                 cá nhân</a></li>
-                        <li><a href="employer_manage_jobs.html" title=""><i class="la la-briefcase"></i>Công
+                        <li><a href="{{ route('users.apply') }}" title=""><i class="la la-briefcase"></i>Công
                                 việc đã ứng tuyển</a></li>
-                        <li><a href="employer_transactions.html" title=""><i class="la la-money"></i>Công việc
+                        <li><a href="{{ route('users.love') }}" title=""><i class="la la-money"></i>Công việc
                                 đã ưu thích</a></li>
-                        <li><a href="employer_resume.html" title=""><i class="la la-paper-plane"></i>Công việc
-                                đã nộp</a>
+                        <li><a href="{{ route('users.file.index') }}" title=""><i class="la la-user"></i>Quản
+                                lý CV</a>
                         </li>
-                        <li><a href="employer_packages.html" title=""><i class="la la-user"></i>Quản lý CV</a>
-                        </li>
-                        <li><a href="employer_change_password.html" title=""><i class="la la-lock"></i>Đổi mật
+                        <li><a href="{{ route('users.changePassword') }}" title=""><i
+                                    class="la la-lock"></i>Đổi mật
                                 khẩu</a></li>
                         <li><a href="{{ route('logout') }}" title=""><i class="la la-unlink"></i>Logout</a>
                         </li>
@@ -169,10 +170,10 @@
 </div><!-- LOGIN POPUP -->
 <div class="account-popup-area signup-popup-box">
     <form-register-user
-            :data="{{ json_encode([
-                'urlStore' => route('users.login.register'),
-                'urlBack' => route('home'),
-            ]) }}">
-        </form-register-user>
-    
+        :data="{{ json_encode([
+            'urlStore' => route('users.login.register'),
+            'urlBack' => route('home'),
+        ]) }}">
+    </form-register-user>
+
 </div><!-- SIGNUP POPUP -->

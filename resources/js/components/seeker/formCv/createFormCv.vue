@@ -12,13 +12,6 @@
         method="POST"
         enctype="multipart/form-data"
       >
-        <input
-          type="text"
-          class="form-control"
-          name="title"
-          v-model="data.title"
-          placeholder="Tiêu đề"
-        />
         <input type="hidden" :value="csrfToken" name="_token" />
         <div class="left-section">
           <div class="profile">
@@ -433,28 +426,45 @@
           <img src="/asset/formCv/image/book.png" class="h-img" />
           <img src="/asset/formCv/image/design.png" class="h-img" />
           <img src="/asset/formCv/image/chess.png" class="h-img" />
-        </div>
-        <div class="save-cv" v-if="changeCv">
-          <button class="btn btn-primary mt-5 ml-5 mb-5" type="submit">
+          <div class="save-cv text-center" v-if="changeCv">
+          <a class="btn btn-primary mt-5 mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Lưu
-          </button>
+          </a>
           <span
-            class="btn btn-danger mt-5 ml-5 mb-5"
+            class="btn btn-danger mt-5 mb-5"
+            style="margin-left: 10px"
             @click="changeCv = !changeCv"
             >Hủy</span
           >
         </div>
         <span
-          class="mt-5 ml-5 mb-5"
+          class="ml-5 mb-5"
           style="cursor: pointer"
           @click="changeCv = !changeCv"
           v-else
-          ><i style="font-size: 20px" class="far fa-edit"></i
+          ><i style="font-size: 20px" class="far fa-edit mt-5"></i
         ></span>
+        </div>
+        <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Mời bạn đặt tên cho CV của mình</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <input type="text" name="title" v-model="data.title" class="form-control" placeholder="mời bạn đặt tên cho cv">
+                <button class="btn btn-primary mt-2">Lưu</button>
+                </div>
+              </div>
+            </div>
+          </div>
       </form>
     </VeeForm>
     <div class="clearfix"></div>
   </div>
+
 </template>
 
 <script>
@@ -618,8 +628,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.ml-5 {
-  margin-left: 225px !important;
-}
-</style>

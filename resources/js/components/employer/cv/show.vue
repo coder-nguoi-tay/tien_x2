@@ -162,9 +162,14 @@
       </div>
       <div class="clearfix"></div>
       <!--  -->
-      <div class="lr-box" v-for="item in ducation" :key="item">
+      <div
+        class="lr-box"
+        style="margin-left: 55px"
+        v-for="item in ducation"
+        :key="item"
+      >
         <div class="left">
-          <p class="p4">
+          <p class="">
             <span v-html="item.timeDucation"></span>
           </p>
         </div>
@@ -182,8 +187,13 @@
       </div>
       <div class="clearfix"></div>
       <!--  -->
-      <div class="mt-2" v-for="item in skill" :key="item">
-        <span v-html="item.nameSkill"></span>
+      <div
+        class="mt-2"
+        style="margin-left: 55px"
+        v-for="item in skill"
+        :key="item"
+      >
+        <span style="font-size: 15px; font-weight: 600;" v-html="item.nameSkill"></span>
         <div class="d-flex mt-2" style="align-items: center">
           <rating-cv
             :rating="item.valueSkill"

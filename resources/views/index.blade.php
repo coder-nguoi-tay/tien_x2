@@ -154,15 +154,15 @@
                             <h2>Việc làm hấp dẫn</h2>
                             <span>Các nhà tuyển dụng hàng đầu đã sử dụng công việc và nhân tài.</span>
                         </div><!-- Heading -->
-                        <div class="job-listings-sec" id="paginated-list">
+                        <div class="job-listings-sec">
                             @foreach ($jobAttractive as $item)
-                                <div class="job-listing render-job-search">
+                                <div class="job-listing">
                                     <div class="job-title-sec">
                                         <div class="c-logo"> <img src="{{ asset($item->logo) }}" alt="" />
                                         </div>
                                         <h3><a href="{{ route('client.detail', [$item->slug, $item->id]) }}"
                                                 title="">{{ $item->title }}</a></h3>
-                                        <span><a
+                                        <span style="margin-left: 1px !important"><a
                                                 href="{{ route('company.detail', $item->idCompany) }}">{{ $item->nameCompany }}</a></span>
                                     </div>
                                     <span class="job-lctn"><i
@@ -172,47 +172,14 @@
                                 </div><!-- Job -->
                             @endforeach
                         </div>
-                        {{-- paginate --}}
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 job-list browse-all-cat">
-                                <span class="text-center p-3 ">
-                                    <div id="pagination-numbers" style="margin-bottom: 20px">
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-                        {{-- end paginate --}}
                     </div>
-
+                </div>
+                <div class="box-next-index text-center mt-5">
+                    <a href="{{ route('home.search') }}" class="btn btn-primary">Xem tất cả</a>
                 </div>
             </div>
         </div>
     </section>
-    <section>
-        <div class="block">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="heading">
-                            <h2>Các công ty đang hợp tác</h2>
-                            <span>Một số công ty chúng tôi đã giúp tuyển dụng những ứng viên xuất sắc trong những năm
-                                qua.</span>
-                        </div><!-- Heading -->
-                        <div class="comp-sec">
-                            <div class="company-img">
-                                @foreach ($company as $item)
-                                    <a href="" title="">
-                                        <img src="{{ asset($item->logo) }}" alt="" width="100" />
-                                    </a>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section>
         <div class="block">
             <div data-velocity="-.1"
@@ -222,7 +189,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="heading">
-                            <h2>Tin tức nổi bật</h2>
+                            <h2>Tin tức</h2>
                         </div><!-- Heading -->
                         <div class="blog-sec">
                             <div class="row">

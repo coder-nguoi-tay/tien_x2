@@ -53,7 +53,13 @@ class HomeController extends BaseController
                 ['job.status', 1],
                 ['job.expired', 0],
                 ['job.package_id_position', 0],
+            ])
+            ->orwhere([
                 ['employer.position', 1],
+                ['job.package_id_position', 0]
+            ])
+            ->orwhere([
+                ['employer.position', 0]
             ])
             ->select('job.*', 'company.logo as logo', 'company.id as idCompany', 'company.name as nameCompany', 'company.address as addressCompany')
             ->orderBy('employer.prioritize', 'desc')

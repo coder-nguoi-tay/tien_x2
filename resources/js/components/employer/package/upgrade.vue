@@ -54,7 +54,7 @@
                         new Intl.NumberFormat("de-DE", {
                           style: "currency",
                           currency: "VND",
-                        }).format(payment.price - checkPackage)
+                        }).format(payment.price)
                       }}
                     </h3>
                     <p>{{ payment.name }}</p>
@@ -90,7 +90,7 @@ export default {
   data() {
     return {
       flagShowLoader: false,
-      dataPackage: ''
+      dataPackage: 0,
     };
   },
   components: {
@@ -111,7 +111,7 @@ export default {
       axios
         .get("/employers/package/" + id)
         .then((x) => {
-          this.dataPackage = x.data
+          this.dataPackage = x.data;
         })
         .catch((y) => {
           console.log(y);
@@ -166,6 +166,7 @@ export default {
                       },
                     ],
                   });
+                  console.log(response);
                   if (response.data.status == 403) {
                     setTimeout(function () {
                       location.reload();
@@ -182,6 +183,24 @@ export default {
                   that.flagShowLoader = false;
                 });
             }
+          } else {
+            const notyf = new Notyf({
+              duration: 6000,
+              position: {
+                x: "right",
+                y: "bottom",
+              },
+              types: [
+                {
+                  type: "error",
+                  duration: 8000,
+                  dismissible: true,
+                },
+              ],
+            });
+            return notyf.error(
+              "bạn cầm nạp tiền vào tk để sử dụng dịch vụ"
+            );
           }
         }
       });
