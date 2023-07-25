@@ -19,10 +19,6 @@
 
                 </div>
                 <ErrorMessage class="error ml-2" name="password" /> <br>
-
-                <p class="remember-label">
-                    <Field type="checkbox" name="cb" id="cb1" /><label for="cb1">Remember me</label>
-                </p>
                 <a href="#" title="">Forgot Password?</a>
                 <button type="submit">Login</button>
             </form>

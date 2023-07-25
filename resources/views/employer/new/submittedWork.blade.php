@@ -33,17 +33,18 @@
                                     @if ($item->status == 2)
                                         <span class="badge p-1 bg-danger text-white mb-2">Đã từ chối</span>
                                         <br>
-                                        <a href="javascript:void(0)" onclick="Reason(JSON.parse('{{ $item }}'))">Lý do từ
+                                        <a href="javascript:void(0)" onclick="Reason(JSON.parse('{{ $item }}'))">Lý
+                                            do từ
                                             chối</a>
                                     @endif
                                 </td>
                                 <td>
                                     @if ($item->status == 0)
-                                        <a class="btn border" href="/{{ $item->file_cv }}"
+                                        <a class="btn border" target="_blank" href="{{ asset($item->file_cv) }}"
                                             onclick="chanstatusCv(JSON.parse('{{ $item }}'))">Xem</a>
                                     @endif
                                     @if ($item->status == 1)
-                                        <a class="btn border" href="/{{ $item->file_cv }}">Xem</a>
+                                        <a class="btn border" target="_blank" href="{{ asset($item->file_cv) }}">Xem</a>
                                         |
                                         <button class="btn btn-danger border" data-bs-toggle="modal"
                                             data-bs-target="#modalNoteCv">Từ chối</button>
@@ -78,7 +79,7 @@
                                         </div>
                                     @endif
                                     @if ($item->status == 2)
-                                        <a class="btn border" href="/{{ $item->file_cv }}">Xem</a>
+                                        <a class="btn border" target="_blank" href="{{ asset($item->file_cv) }}">Xem</a>
                                     @endif
                                 </td>
                             </tr>
@@ -113,6 +114,7 @@
         })
 
         function chanstatusCv(id) {
+            // location.reload();
             const url = '/employers/new/change-status-cv/' + id.cv_id;
             axios.get(url).then(function(res) {}).catch(function(error) {
                 console.log(error);

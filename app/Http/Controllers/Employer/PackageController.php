@@ -44,9 +44,9 @@ class PackageController extends BaseController
         // 
         $checkpaPhageForEmployer = packageofferbought::query()
             ->where('company_id', $employer->id)
-            ->first()->toArray();
+            ->first();
         if ($checkpaPhageForEmployer) {
-            $package = jobAttractive::query()->whereNotIn('id', [$checkpaPhageForEmployer['attractive_id']])->get();
+            $package = jobAttractive::query()->whereNotIn('id', [$checkpaPhageForEmployer->toArray()['attractive_id']])->get();
         }
         return view('employer.package.index', [
             'checkPackage' => $checkPackage,

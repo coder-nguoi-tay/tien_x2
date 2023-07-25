@@ -39,11 +39,11 @@
                                 </td>
                                 <td>
                                     @if ($item->status == 0)
-                                        <a class="btn border" href="/{{ $item->file_cv }}"
+                                        <a class="btn border" target="_blank" href="{{ asset($item->file_cv) }}"
                                             onclick="chanstatusCv(JSON.parse('{{ $item }}'))">Xem</a>
                                     @endif
                                     @if ($item->status == 1)
-                                        <a class="btn border" href="/{{ $item->file_cv }}">Xem</a>
+                                        <a class="btn border" target="_blank" href="{{ asset($item->file_cv) }}">Xem</a>
                                         |
                                         <button class="btn btn-danger border" data-bs-toggle="modal"
                                             data-bs-target="#modalNoteCv">Từ chối</button>
@@ -78,7 +78,7 @@
                                         </div>
                                     @endif
                                     @if ($item->status == 2)
-                                        <a class="btn border" href="/{{ $item->file_cv }}">Xem</a>
+                                        <a class="btn border" href="/{{ $item->file_cv }}" target="_blank">Xem</a>
                                     @endif
                                 </td>
                             </tr>
@@ -113,6 +113,7 @@
         })
 
         function chanstatusCv(id) {
+            location.reload();
             const url = 'change-status-cv/' + id.cv_id;
             axios.get(url).then(function(res) {}).catch(function(error) {
                 console.log(error);

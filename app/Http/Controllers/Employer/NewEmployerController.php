@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Employer;
 
 use App\Enums\StatusCode;
+use App\Events\Job\JobApplyEvent;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployerCreateRequest;
@@ -268,8 +269,9 @@ class NewEmployerController extends BaseController
         $cv = SaveCv::query()->find($id);
         $cv->status = 1;
         $cv->save();
+        event(new JobApplyEvent($cv->user->email));
         return [
-            'status' => 200
+            'status' => 200,
         ];
     }
     public function reasonCv(ReasonCvRequest $request)

@@ -55,6 +55,10 @@ class LoginController extends BaseController
     public function register(UserRegisterRequest $request)
     {
         try {
+            if (!$this->checkMailUser($request)) {
+                $this->setFlash(__('Email này đã được đăng ký trước đây'), 'error');
+                return back();
+            }
             $user =  User::query()->create([
                 'name' => $request->name,
                 'email' => $request->email,
