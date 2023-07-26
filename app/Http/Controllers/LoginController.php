@@ -40,6 +40,7 @@ class LoginController extends BaseController
                 }
                 return redirect()->route('home');
             } else {
+                Auth::guard('user')->logout();
                 $this->setFlash(__('Tải khoản chưa được kích hoạt'), 'error');
                 return redirect()->back();
             }

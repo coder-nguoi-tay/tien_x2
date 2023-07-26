@@ -5,7 +5,7 @@
             'urlRegister' => route('register.store'),
             'message' => $message ?? '',
             'location' => $location,
-            'request' => $request,
+            'request' => !empty($request) ? $request->all() : new stdClass(),
         ]) }}">
 
     </form-register>
