@@ -7,6 +7,7 @@ use App\Events\User\MailApplyJobEvent;
 use App\Models\Company;
 use App\Models\Favourite;
 use App\Models\Job;
+use App\Models\Jobseeker;
 use App\Models\Jobskill;
 use App\Models\KeyUserSearch;
 use App\Models\location;
@@ -36,6 +37,13 @@ class HomeController extends BaseController
 
         $allJob = Job::query()->get();
         // Việc làm nổi bật
+        $array = [
+            'experience_id' => '',
+            'wage_id' => '',
+            'location_id' => '',
+            'majors_id' => ''
+        ];
+        $jobSeekerForUser =  Auth::guard('user')->check() ? Jobseeker::query()->where('user_id', 14)->first()->toArray()   : $array;
         $jobForUser = Job::query()
             ->join('employer', 'employer.id', '=', 'job.employer_id')
             ->join('company', 'company.id', '=', 'employer.id_company')
@@ -44,6 +52,12 @@ class HomeController extends BaseController
                 ['job.expired', 0],
                 ['job.package_id_position', 1],
                 ['employer.position', 1],
+            ])
+            ->orWhere([
+                ['job.experience_id', $jobSeekerForUser['experience_id']],
+                ['job.wage_id', $jobSeekerForUser['wage_id']],
+                ['job.location_id', $jobSeekerForUser['location_id']],
+                ['job.majors_id', $jobSeekerForUser['majors_id']],
             ])
             ->select('job.*', 'company.logo as logo', 'company.id as idCompany', 'company.name as nameCompany', 'company.address as addressCompany')
             ->orderBy('employer.prioritize', 'desc')
@@ -63,6 +77,12 @@ class HomeController extends BaseController
             ])
             ->orwhere([
                 ['employer.position', 0]
+            ])
+            ->orWhere([
+                ['job.experience_id', $jobSeekerForUser['experience_id']],
+                ['job.wage_id', $jobSeekerForUser['wage_id']],
+                ['job.location_id', $jobSeekerForUser['location_id']],
+                ['job.majors_id', $jobSeekerForUser['majors_id']],
             ])
             ->select('job.*', 'company.logo as logo', 'company.id as idCompany', 'company.name as nameCompany', 'company.address as addressCompany')
             ->orderBy('employer.prioritize', 'desc')
