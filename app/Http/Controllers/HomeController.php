@@ -258,20 +258,22 @@ class HomeController extends BaseController
     }
     public function search(Request $request)
     {
-        if ($request->key) {
-            $checkKeySearch = KeyUserSearch::query()->where('key', $request->key)->first();
-            if ($checkKeySearch) {
-                if ($checkKeySearch->key == $request->key) {
-                    $keySearch = $checkKeySearch;
-                    $keySearch->count += 1;
+        if (Auth::guard('user')->check()) {
+            if ($request->key) {
+                $checkKeySearch = KeyUserSearch::query()->where('key', $request->key)->first();
+                if ($checkKeySearch) {
+                    if ($checkKeySearch->key == $request->key) {
+                        $keySearch = $checkKeySearch;
+                        $keySearch->count += 1;
+                    }
+                } else {
+                    $keySearch = new KeyUserSearch();
+                    $keySearch->count = 1;
                 }
-            } else {
-                $keySearch = new KeyUserSearch();
-                $keySearch->count = 1;
+                $keySearch->key = $request->key;
+                $keySearch->user_id = Auth::guard('user')->user()->id;
+                $keySearch->save();
             }
-            $keySearch->key = $request->key;
-            $keySearch->user_id = Auth::guard('user')->user()->id;
-            $keySearch->save();
         }
         $that = $request;
         $data = Job::query()
