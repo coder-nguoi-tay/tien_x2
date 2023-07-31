@@ -194,67 +194,21 @@
                         <div class="blog-sec">
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <div class="my-blog">
-                                        <div class="blog-thumb">
-                                            <a href="" title=""><img
-                                                    src="{{ asset('home/images/resource/b1.jpg') }}"
-                                                    alt="" /></a>
-                                            <div class="blog-metas">
-                                                <a href="" title="">March 29, 2017</a>
-                                                <a href="" title="">0 Comments</a>
+                                    @foreach ($news as $item)
+                                        <div class="my-blog">
+                                            <div class="blog-thumb">
+                                                <a href="" title=""><img
+                                                        src="{{ env('IMAGE') . $item->new_image }}" alt="" /></a>
+                                                <div class="blog-metas">
+                                                    <a href="" title="">{{ $item->created_at }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="blog-details">
+                                                <h3><a href="" title="">{{ $item->title }}</a></h3>
+                                                <p>{{ $item->describe }}</p>
                                             </div>
                                         </div>
-                                        <div class="blog-details">
-                                            <h3><a href="" title="">Attract More Attention Sales And
-                                                    Profits</a></h3>
-                                            <p>A job is a regular activity performed in exchange becoming an
-                                                employee, volunteering, </p>
-                                            <a href="" title="">Read More <i
-                                                    class="la la-long-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="my-blog">
-                                        <div class="blog-thumb">
-                                            <a href="" title=""><img
-                                                    src="{{ asset('home/images/resource/b2.jpg') }}"
-                                                    alt="" /></a>
-                                            <div class="blog-metas">
-                                                <a href="" title="">March 29, 2017</a>
-                                                <a href="" title="">0 Comments</a>
-                                            </div>
-                                        </div>
-                                        <div class="blog-details">
-                                            <h3><a href="" title="">11 Tips to Help You Get New
-                                                    Clients</a></h3>
-                                            <p>A job is a regular activity performed in exchange becoming an
-                                                employee, volunteering, </p>
-                                            <a href="" title="">Read More <i
-                                                    class="la la-long-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="my-blog">
-                                        <div class="blog-thumb">
-                                            <a href="" title=""><img
-                                                    src="{{ asset('home/images/resource/b3.jpg') }}"
-                                                    alt="" /></a>
-                                            <div class="blog-metas">
-                                                <a href="" title="">March 29, 2017</a>
-                                                <a href="" title="">0 Comments</a>
-                                            </div>
-                                        </div>
-                                        <div class="blog-details">
-                                            <h3><a href="" title="">An Overworked Newspaper
-                                                    Editor</a></h3>
-                                            <p>A job is a regular activity performed in exchange becoming an
-                                                employee, volunteering, </p>
-                                            <a href="" title="">Read More <i
-                                                    class="la la-long-arrow-right"></i></a>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

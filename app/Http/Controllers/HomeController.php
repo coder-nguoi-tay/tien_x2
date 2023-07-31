@@ -11,6 +11,7 @@ use App\Models\Jobskill;
 use App\Models\KeyUserSearch;
 use App\Models\location;
 use App\Models\Majors;
+use App\Models\News;
 use App\Models\SaveCv;
 use App\Models\UploadCv;
 use App\Models\User;
@@ -30,6 +31,8 @@ class HomeController extends BaseController
         $majors = Majors::query()->get();
 
         $location = location::query()->get();
+        // news 
+        $news = News::query()->with('majors')->limit(3)->get();
 
         $allJob = Job::query()->get();
         // Việc làm nổi bật
@@ -73,6 +76,7 @@ class HomeController extends BaseController
             'company' => $company,
             'countJob' => $allJob->count(),
             'jobAttractive' => $jobAttractive,
+            'news' => $news,
         ]);
     }
 

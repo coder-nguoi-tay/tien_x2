@@ -12,8 +12,13 @@ class News extends Model
     protected $fillable = [
         'id',
         'title',
-        'profession_id',
+        'majors_id',
         'new_image',
         'describe',
+        'status',
     ];
+    public function majors()
+    {
+        return $this->hasOne(Majors::class, 'id', 'majors_id');
+    }
 }
