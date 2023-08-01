@@ -2,10 +2,9 @@
 @section('main-employer')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title fw-semibold mb-4">Danh sách ứng viên nộp đơn</h5>
-            <a href="{{ route('employer.new.refuse') }}" class="btn btn-primary">Hồ sơ đã bị từ tối</a>
-            <a href="{{ route('employer.new.filterApply') }}" class="btn btn-primary" style="margin-left: 10px">Ứng viên bị cấm
-                nộp
+            <h5 class="card-title fw-semibold mb-4">Danh sách ứng viên bị từ chối</h5>
+            <a href="{{ route('employer.submittedWork') }}" class="btn btn-primary">Hồ sơ chưa xem</a>
+            <a href="{{ route('employer.new.filterApply') }}" class="btn btn-primary" style="margin-left: 10px">Ứng viên bị cấm nộp
                 lại hồ sơ</a>
             <div class="table-responsive mt-4">
                 <table class="table" id="dataTable" width="100%" cellspacing="0">
@@ -37,8 +36,7 @@
                                     @if ($item->status == 2)
                                         <span class="badge p-1 bg-danger text-white mb-2">Đã từ chối</span>
                                         <br>
-                                        <a href="javascript:void(0)" onclick="Reason(JSON.parse('{{ $item }}'))">Lý
-                                            do từ
+                                        <a href="#" onclick="Reason(JSON.parse('{{ $item }}'))">Lý do từ
                                             chối</a>
                                     @endif
                                 </td>
@@ -89,7 +87,7 @@
                                         </div>
                                     @endif
                                     @if ($item->status == 2)
-                                        <a class="btn border" target="_blank" href="{{ asset($item->file_cv) }}">Xem</a>
+                                        <a class="btn border" href="/{{ $item->file_cv }}" target="_blank">Xem</a>
                                     @endif
                                 </td>
                             </tr>
@@ -122,14 +120,6 @@
                 $('input:checkbox').prop('checked', this.checked);
             });
         })
-
-        function chanstatusCv(id) {
-            location.reload();
-            const url = '/employers/new/change-status-cv/' + id.cv_id;
-            axios.get(url).then(function(res) {}).catch(function(error) {
-                console.log(error);
-            })
-        }
 
         function Reason(id) {
             const url = '/employers/new/get-data-reason/' + id.cv_id;

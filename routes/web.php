@@ -105,6 +105,9 @@ Route::middleware('checkLogin')->group(function () {
                 Route::get('job/top-new', [NewEmployerController::class, 'topNew'])->name('topNew');
                 Route::post('job/top-new', [NewEmployerController::class, 'upTopNew'])->name('upTopNew');
                 Route::post('job/delete-top-new/{id}', [NewEmployerController::class, 'deleteTopNew'])->name('deleteTopNew');
+                Route::get('cv/get-data-cv-refuse', [NewEmployerController::class, 'refuse'])->name('refuse');
+                Route::get('cv/get-data-cv-filter-apply', [NewEmployerController::class, 'filterApply'])->name('filterApply');
+                Route::delete('delete/cv/filter-apply/{id}', [NewEmployerController::class, 'deletefilterApply'])->name('deletefilterApply');
             });
             // submitted work
             Route::get('submitted-work', [NewEmployerController::class, 'submittedWork'])->name('submittedWork');

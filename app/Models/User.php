@@ -51,4 +51,7 @@ class User  extends Model
     {
         return $this->hasOne(ProfileUserCv::class, 'user_id', 'id');
     }
+    public function savecv(){
+        
+    }
 }
