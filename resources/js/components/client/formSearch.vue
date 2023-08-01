@@ -49,6 +49,7 @@
                         name="location"
                         style="height: 62px"
                       >
+                        <option value="">..Mời bạn chọn địa chỉ..</option>
                         <option
                           v-for="item in data.location"
                           :selected="data.request.location == item.id"

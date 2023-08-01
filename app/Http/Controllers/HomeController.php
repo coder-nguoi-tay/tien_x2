@@ -43,7 +43,7 @@ class HomeController extends BaseController
             'location_id' => '',
             'majors_id' => ''
         ];
-        $jobSeekerForUser =  Auth::guard('user')->check() ? Jobseeker::query()->where('user_id', Auth::guard('user')->user()->id)->first()->toArray()   : $array;
+        $jobSeekerForUser =  Auth::guard('user')->check() && Auth::guard('user')->user()->role_id == 1 && User::query()->find(Auth::guard('user')->user()->id)->getCheckUser ? Jobseeker::query()->where('user_id', Auth::guard('user')->user()->id)->first()->toArray()   : $array;
         $jobForUser = Job::query()
             ->join('employer', 'employer.id', '=', 'job.employer_id')
             ->join('company', 'company.id', '=', 'employer.id_company')

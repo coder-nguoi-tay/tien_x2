@@ -378,9 +378,9 @@
                         <tr>
                             <td>
                                 <div class="redesign-headline-modernized headline-font-size-m"><a
-                                        href="{{ route('company.detail', $data['id']) }}">{{ $data['employer'] }}</a> đã
-                                    xem hờ sơ của bạn <br>
-                                    hãy chờ công ty chúng tôi phản hồi về hồ sơ của bạn</div>
+                                        href="{{ route('company.detail', $data['id']) }}">{{ $data['employer'] }}</a>
+                                    đã từ chối CV của bạn<br>
+                                    lý do: {{$data['content']}}</div>
                             </td>
                         </tr>
                         <tr>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Employer;
 
 use App\Enums\StatusCode;
+use App\Events\Job\AcceptanceCvEvent;
 use App\Events\Job\JobApplyEvent;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
@@ -32,7 +33,11 @@ class NewEmployerController extends BaseController
 
         $checkCompany = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
         $company = Company::query()->find($checkCompany->id_company);
-        $accuracy = Accuracy::query()->where('user_id', $company->id)->first();
+        if ($company) {
+            $accuracy = Accuracy::query()->where('user_id', $company->id)->first();
+        } else {
+            $accuracy = null;
+        }
         $checkAcctive = true;
         if ($accuracy) {
             if ($accuracy->status == 1) {
@@ -269,7 +274,8 @@ class NewEmployerController extends BaseController
         $cv = SaveCv::query()->find($id);
         $cv->status = 1;
         $cv->save();
-        event(new JobApplyEvent($cv->user->email));
+        $employer = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+        event(new JobApplyEvent($cv->user->email, $employer));
         return [
             'status' => 200,
         ];
@@ -291,6 +297,9 @@ class NewEmployerController extends BaseController
                 $this->setFlash(__('Đã có một lỗi sảy ra'), 'error');
                 return back();
             }
+            $company = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
+
+            event(new AcceptanceCvEvent($cv->user->email, $company, $request->content));
             $this->setFlash(__('Phản hồi thành công'));
             return back();
         } catch (\Throwable $th) {

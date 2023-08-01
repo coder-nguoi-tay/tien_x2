@@ -12,15 +12,30 @@
       >
         <input type="hidden" :value="csrfToken" name="_token" />
         <div class="cfield">
-          <input type="text" placeholder="Họ và tên" name="name" v-model="model.name" />
+          <input
+            type="text"
+            placeholder="Họ và tên"
+            name="name"
+            v-model="model.name"
+          />
           <i class="la la-user"></i>
         </div>
         <div class="cfield">
-          <input type="password" placeholder="********" name="password" v-model="model.password" />
+          <input
+            type="password"
+            placeholder="********"
+            name="password"
+            v-model="model.password"
+          />
           <i class="la la-key"></i>
         </div>
         <div class="cfield">
-          <input type="text" placeholder="Email" name="email" v-model="model.email" />
+          <input
+            type="text"
+            placeholder="Email"
+            name="email"
+            v-model="model.email"
+          />
           <i class="la la-envelope-o"></i>
         </div>
         <button type="submit">Đăng ký</button>

@@ -110,7 +110,7 @@
                                 width: 143px;
                                 height: 28px;
                                 color: rgb(217, 11, 11);">
-                                đang xác thực
+                                Chờ xác thực
                             </span>
                         @endif
                     </span>

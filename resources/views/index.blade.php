@@ -11,14 +11,14 @@
                             </div>
                             <div class="job-search-sec">
                                 <div class="job-search">
-                                    <h3>The Easiest Way to Get Your New Job</h3>
-                                    <span>Find Jobs, Employment & Career Opportunities</span>
+                                    <h3>Cách dễ nhất để có được công việc mới của bạn</h3>
+                                    <span>Tìm Việc Làm, Việc Làm & Cơ Hội Nghề Nghiệp</span>
                                     <form action="{{ route('home.search') }}">
                                         <div class="row">
                                             <div class="col-lg-7 col-md-5 col-sm-12 col-xs-12">
                                                 <div class="job-field">
                                                     <input type="text" name="key" class="form-control"
-                                                        placeholder="Job title, keywords or company name" />
+                                                        placeholder="Tìm kiếm...." />
                                                     <i class="la la-keyboard-o"></i>
                                                 </div>
                                             </div>
@@ -104,9 +104,10 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="simple-text-block">
-                            <h3>Make a Difference with Your Online Resume!</h3>
-                            <span>Your resume in minutes with JobHunt resume assistant is ready!</span>
-                            <a href="" title="">Create an Account</a>
+                            <h3>Tạo sự khác biệt với Sơ yếu lý lịch trực tuyến của bạn!!</h3>
+                            <span>Sơ yếu lý lịch của bạn trong vài phút với trợ lý sơ yếu lý lịch JobHunt đã sẵn
+                                sàng!</span>
+                            <a href="" title="">Tạo một tài khoản</a>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,12 @@
 <template>
   <div class="resume-box mb-5">
+    <div class="edit" style="    margin-right: 25px;
+    margin-top: 25px;
+    float: right;
+">
+        <button class="btn btn-primary" @click="changeCv = !changeCv"
+         v-if="!changeCv">Sửa Hồ sơ</button>
+    </div>
     <VeeForm
       as="div"
       v-slot="{ handleSubmit }"
@@ -437,13 +444,6 @@
             >Hủy</span
           >
         </div>
-        <span
-          class="ml-5 mb-5"
-          style="cursor: pointer"
-          @click="changeCv = !changeCv"
-          v-else
-          ><i style="font-size: 20px" class="far fa-edit mt-5"></i
-        ></span>
         </div>
         <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

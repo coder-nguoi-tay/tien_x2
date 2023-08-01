@@ -53,7 +53,7 @@
                             @endphp
                             <login-user
                                 :data="{{ json_encode([
-                                    'urlStore' => route('users.login.store'),
+                                    'urlStore' => route('login.store'),
                                     'urlBack' => route('home'),
                                 ]) }}">
                             </login-user>

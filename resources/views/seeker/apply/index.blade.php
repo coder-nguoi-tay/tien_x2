@@ -38,7 +38,7 @@
                                                 <h6 class="fw-semibold mb-1">{{ $item->title }}</h6>
                                             </a>
                                             <span class="fw-normal"><a
-                                                    href="{{ route('company.detail', $item->id) }}">{{ $item->nameCompany }}</a></span>
+                                                    href="{{ route('company.detail', $item->idCompany) }}">{{ $item->nameCompany }}</a></span>
                                         </td>
                                         <td class="border-bottom-0">
                                             <div class="align-items-center gap-2">

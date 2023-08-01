@@ -198,9 +198,7 @@ export default {
                 },
               ],
             });
-            return notyf.error(
-              "bạn cầm nạp tiền vào tk để sử dụng dịch vụ"
-            );
+            return notyf.error("bạn cầm nạp tiền vào tk để sử dụng dịch vụ");
           }
         }
       });

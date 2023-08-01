@@ -4,6 +4,7 @@ namespace App\Listeners\Job;
 
 use App\Events\Job\JobApplyEvent;
 use App\Mail\MailApplyJob;
+use App\Models\Company;
 use Illuminate\Support\Facades\Mail;
 
 class JobApplyListener
@@ -17,7 +18,11 @@ class JobApplyListener
      */
     public function handle(JobApplyEvent $event): void
     {
-        $mailContents = [];
+        $company = Company::query()->find($event->employer->id_company);
+        $mailContents = [
+            'employer' => $event->employer->name,
+            'id' => $company->id,
+        ];
         Mail::to($event->email)->send(new MailApplyJob($mailContents));
     }
 }

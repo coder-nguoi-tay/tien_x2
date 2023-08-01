@@ -79,7 +79,7 @@
                                                                     align="center">
                                                                     <h1
                                                                         style="font-size:32px;font-weight:500;letter-spacing:0.01em;color:#141212;text-align:center;line-height:39px;margin:30px;font-family:inherit">
-                                                                        -ĐẶT LẠI MẬT KHẨU ITWORK-</h1>
+                                                                        -ĐẶT LẠI MẬT KHẨU ITJOB-</h1>
                                                                 </td>
                                                                 <td class="m_5481519774969413387hTfFsy"
                                                                     style="margin:0;padding:0;border:none;border-spacing:0;height:100%;overflow:hidden;width:72px;border-collapse:collapse;font-family:inherit"

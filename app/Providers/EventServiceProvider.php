@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Events\Job\AcceptanceCvEvent;
 use App\Events\Job\JobApplyEvent;
 use App\Events\User\MailApplyJobEvent;
 use App\Events\User\UserEvent;
+use App\Listeners\Job\AcceptanceListener;
 use App\Listeners\Job\JobApplyListener;
 use App\Listeners\User\MailApplyJobListener;
 use App\Listeners\User\UserListener;
@@ -32,6 +34,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         JobApplyEvent::class => [
             JobApplyListener::class,
+        ],
+        AcceptanceCvEvent::class => [
+            AcceptanceListener::class,
         ],
     ];
 

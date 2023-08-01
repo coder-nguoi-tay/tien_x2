@@ -163,7 +163,7 @@
 <div class="account-popup-area signin-popup-box">
     <login-user
         :data="{{ json_encode([
-            'urlStore' => route('users.login.store'),
+            'urlStore' => route('login.store'),
             'urlBack' => route('home'),
         ]) }}">
     </login-user>
@@ -171,7 +171,7 @@
 <div class="account-popup-area signup-popup-box">
     <form-register-user
         :data="{{ json_encode([
-            'urlStore' => route('users.login.register'),
+            'urlStore' => route('login.register'),
             'urlBack' => route('home'),
         ]) }}">
     </form-register-user>

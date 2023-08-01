@@ -27,6 +27,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// login
+Route::resource('/login', LoginController::class);
+Route::prefix('login')->name('login.')->group(function () {
+    Route::post('/dang-ky', [LoginController::class, 'register'])->name('register');
+    Route::post('/dang-nhap', [LoginController::class, 'store'])->name('store');
+});
 // home
 Route::get('/', [ControllersHomeController::class, 'index'])->name('home');
 
@@ -58,79 +64,80 @@ Route::prefix('cong-ty')->name('company.')->group(function () {
 // search job
 Route::get('/search', [ControllersHomeController::class, 'search'])->name('home.search');
 
-// client user
-Route::prefix('users')->name('users.')->group(function () {
-    Route::resource('login', LoginController::class);
-    Route::prefix('login')->name('login.')->group(function () {
-        Route::post('/dang-ky', [LoginController::class, 'register'])->name('register');
-    });
-    Route::prefix('profile')->name('profile.')->group(function () {
-        Route::get('/{slug}', [ProfileController::class, 'index'])->name('index');
-        Route::post('/on-status-profile', [ProfileController::class, 'onStatus'])->name('onStatus');
-        Route::post('/off-status-profile', [ProfileController::class, 'offStatus'])->name('offStatus');
-    });
-    Route::resource('file', ManageController::class);
-    Route::prefix('file')->name('file.')->group(function () {
-        Route::get('destroy/{id}', [ManageController::class, 'destroy'])->name('destroy');
-        Route::get('/cv/create-cv', [ManageController::class, 'createCv'])->name('createCv');
-        Route::post('/cv/create-cv', [ManageController::class, 'createFormCv'])->name('createFormCv');
-    });
-    Route::get('apply', [ManageController::class, 'apply'])->name('apply');
-    Route::get('love', [ManageController::class, 'love'])->name('love');
-    Route::prefix('love')->group(function () {
-        Route::delete('delete-love-cv', [ManageController::class, 'deleteLoveCv'])->name('deleteLoveCv');
-    });
-    Route::get('change-password', [ProfileController::class, 'changePassword'])->name('changePassword');
-    Route::post('change-password', [ProfileController::class, 'changePasswordSucsses'])->name('changePasswordSucsses');
-});
+Route::middleware('checkLogin')->group(function () {
+    // client user
+    Route::prefix('users')->name('users.')->group(function () {
 
-// logout
-Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+        Route::prefix('profile')->name('profile.')->group(function () {
+            Route::get('/{slug}', [ProfileController::class, 'index'])->name('index');
+            Route::post('/on-status-profile', [ProfileController::class, 'onStatus'])->name('onStatus');
+            Route::post('/off-status-profile', [ProfileController::class, 'offStatus'])->name('offStatus');
+        });
+        Route::resource('file', ManageController::class);
+        Route::prefix('file')->name('file.')->group(function () {
+            Route::get('destroy/{id}', [ManageController::class, 'destroy'])->name('destroy');
+            Route::get('/cv/create-cv', [ManageController::class, 'createCv'])->name('createCv');
+            Route::post('/cv/create-cv', [ManageController::class, 'createFormCv'])->name('createFormCv');
+        });
+        Route::get('apply', [ManageController::class, 'apply'])->name('apply');
+        Route::get('love', [ManageController::class, 'love'])->name('love');
+        Route::prefix('love')->group(function () {
+            Route::delete('delete-love-cv', [ManageController::class, 'deleteLoveCv'])->name('deleteLoveCv');
+        });
+        Route::get('change-password', [ProfileController::class, 'changePassword'])->name('changePassword');
+        Route::post('change-password', [ProfileController::class, 'changePasswordSucsses'])->name('changePasswordSucsses');
+    });
 
-// ntd 
-Route::prefix('employers')->name('employer.')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('index');
-    Route::resource('/new', NewEmployerController::class);
-    Route::prefix('/new')->name('new.')->group(function () {
-        Route::post('/update/{id}', [NewEmployerController::class, 'update'])->name('update');
-        Route::get('/{id}', [NewEmployerController::class, 'destroy'])->name('destroy');
-        Route::get('change-status-cv/{id}', [NewEmployerController::class, 'changeStatusCv'])->name('changeStatusCv');
-        Route::post('update-reason-cv', [NewEmployerController::class, 'reasonCv'])->name('reasonCv');
-        Route::get('get-data-reason/{id}', [NewEmployerController::class, 'getDataReason'])->name('getDataReason');
-        Route::get('job/top-new', [NewEmployerController::class, 'topNew'])->name('topNew');
-        Route::post('job/top-new', [NewEmployerController::class, 'upTopNew'])->name('upTopNew');
-        Route::post('job/delete-top-new/{id}', [NewEmployerController::class, 'deleteTopNew'])->name('deleteTopNew');
+    // logout
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+    // ntd 
+    Route::middleware('checkEmployer')->group(function () {
+        Route::prefix('employers')->name('employer.')->group(function () {
+            Route::get('/', [HomeController::class, 'index'])->name('index');
+            Route::resource('/new', NewEmployerController::class);
+            Route::prefix('/new')->name('new.')->group(function () {
+                Route::post('/update/{id}', [NewEmployerController::class, 'update'])->name('update');
+                Route::get('/{id}', [NewEmployerController::class, 'destroy'])->name('destroy');
+                Route::get('change-status-cv/{id}', [NewEmployerController::class, 'changeStatusCv'])->name('changeStatusCv');
+                Route::post('update-reason-cv', [NewEmployerController::class, 'reasonCv'])->name('reasonCv');
+                Route::get('get-data-reason/{id}', [NewEmployerController::class, 'getDataReason'])->name('getDataReason');
+                Route::get('job/top-new', [NewEmployerController::class, 'topNew'])->name('topNew');
+                Route::post('job/top-new', [NewEmployerController::class, 'upTopNew'])->name('upTopNew');
+                Route::post('job/delete-top-new/{id}', [NewEmployerController::class, 'deleteTopNew'])->name('deleteTopNew');
+            });
+            // submitted work
+            Route::get('submitted-work', [NewEmployerController::class, 'submittedWork'])->name('submittedWork');
+            // 
+            Route::resource('/package', PackageController::class);
+            Route::resource('/profile', ProfileEmployerController::class);
+            Route::resource('/company', ProfileCompanyController::class);
+            Route::prefix('/company')->name('company.')->group(function () {
+                Route::get('new/business', [ProfileCompanyController::class, 'business'])->name('business');
+                Route::post('new/business', [ProfileCompanyController::class, 'ImageAccuracy'])->name('ImageAccuracy');
+            });
+            Route::prefix('/package')->name('package.')->group(function () {
+                Route::post('/payment', [PackageController::class, 'payment'])->name('payment');
+                Route::get('package/payment/return', [PackageController::class, 'vnpayReturn'])->name('return');
+                Route::get('package/payment/output', [PackageController::class, 'vnpayOutput'])->name('output');
+                Route::post('package/payment/update-time/{id}', [PackageController::class, 'updateTimePayment'])->name('updateTimePayment');
+                Route::post('package/payment/upgrade-package/{id}', [PackageController::class, 'upgradePackage'])->name('upgradePackage');
+            });
+            // search cv
+            Route::get('search-cv', [SearchCvController::class, 'index'])->name('search.cv');
+            Route::get('search-cv/{id}', [SearchCvController::class, 'show'])->name('search.show');
+            Route::post('payment-cv', [SearchCvController::class, 'paymentCv'])->name('search.paymentCv');
+            Route::post('search-cv/feedback', [SearchCvController::class, 'feedback'])->name('search.feedback');
+            Route::get('cv-bought', [SearchCvController::class, 'showCvBought'])->name('cvbought');
+            // nap  tiền
+            Route::resource('payment-for-emplyer', PaymentForEmployerController::class);
+            Route::prefix('/payment-for-emplyer')->name('payment-for-emplyer.')->group(function () {
+                Route::get('payment/vnpay-return', [PaymentForEmployerController::class, 'vnpayReturn'])->name('vnpayReturn');
+            });
+            Route::resource('payment-history', PaymentHistoryController::class);
+            // đoi mk
+            Route::get('change-password', [HomeController::class, 'changePassword'])->name('changePassword');
+            Route::post('change-password', [HomeController::class, 'changePasswordSucsses'])->name('changePasswordSucsses');
+        });
     });
-    // submitted work
-    Route::get('submitted-work', [NewEmployerController::class, 'submittedWork'])->name('submittedWork');
-    // 
-    Route::resource('/package', PackageController::class);
-    Route::resource('/profile', ProfileEmployerController::class);
-    Route::resource('/company', ProfileCompanyController::class);
-    Route::prefix('/company')->name('company.')->group(function () {
-        Route::get('new/business', [ProfileCompanyController::class, 'business'])->name('business');
-        Route::post('new/business', [ProfileCompanyController::class, 'ImageAccuracy'])->name('ImageAccuracy');
-    });
-    Route::prefix('/package')->name('package.')->group(function () {
-        Route::post('/payment', [PackageController::class, 'payment'])->name('payment');
-        Route::get('package/payment/return', [PackageController::class, 'vnpayReturn'])->name('return');
-        Route::get('package/payment/output', [PackageController::class, 'vnpayOutput'])->name('output');
-        Route::post('package/payment/update-time/{id}', [PackageController::class, 'updateTimePayment'])->name('updateTimePayment');
-        Route::post('package/payment/upgrade-package/{id}', [PackageController::class, 'upgradePackage'])->name('upgradePackage');
-    });
-    // search cv
-    Route::get('search-cv', [SearchCvController::class, 'index'])->name('search.cv');
-    Route::get('search-cv/{id}', [SearchCvController::class, 'show'])->name('search.show');
-    Route::post('payment-cv', [SearchCvController::class, 'paymentCv'])->name('search.paymentCv');
-    Route::post('search-cv/feedback', [SearchCvController::class, 'feedback'])->name('search.feedback');
-    Route::get('cv-bought', [SearchCvController::class, 'showCvBought'])->name('cvbought');
-    // nap  tiền
-    Route::resource('payment-for-emplyer', PaymentForEmployerController::class);
-    Route::prefix('/payment-for-emplyer')->name('payment-for-emplyer.')->group(function () {
-        Route::get('payment/vnpay-return', [PaymentForEmployerController::class, 'vnpayReturn'])->name('vnpayReturn');
-    });
-    Route::resource('payment-history', PaymentHistoryController::class);
-    // đoi mk
-    Route::get('change-password', [HomeController::class, 'changePassword'])->name('changePassword');
-    Route::post('change-password', [HomeController::class, 'changePasswordSucsses'])->name('changePasswordSucsses');
 });
