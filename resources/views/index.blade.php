@@ -194,8 +194,9 @@
                         </div><!-- Heading -->
                         <div class="blog-sec">
                             <div class="row">
-                                <div class="col-lg-4">
-                                    @foreach ($news as $item)
+                                @foreach ($news as $item)
+                                    <div class="col-lg-4">
+
                                         <div class="my-blog">
                                             <div class="blog-thumb">
                                                 <a href="" title=""><img
@@ -209,8 +210,8 @@
                                                 <p>{{ $item->describe }}</p>
                                             </div>
                                         </div>
-                                    @endforeach
-                                </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
