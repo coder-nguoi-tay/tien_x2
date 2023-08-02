@@ -1942,6 +1942,7 @@ input[type=radio] + label::after {
  }
 
  .c-logo img {
+    border-radius: 10px;
      float: none;
      display: inline-block;
      max-width: 100%;
