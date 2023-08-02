@@ -86,6 +86,8 @@ Route::middleware('checkLogin')->group(function () {
         });
         Route::get('change-password', [ProfileController::class, 'changePassword'])->name('changePassword');
         Route::post('change-password', [ProfileController::class, 'changePasswordSucsses'])->name('changePasswordSucsses');
+        // 
+        Route::get('get-data-reason/{id}', [ManageController::class, 'getDataReason'])->name('getDataReason');
     });
 
     // logout

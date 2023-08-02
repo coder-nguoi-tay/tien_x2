@@ -300,12 +300,12 @@ class NewEmployerController extends BaseController
             }
             $company = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
 
-            event(new AcceptanceCvEvent($cv->user->email, $company, $request->content));
+            event(new AcceptanceCvEvent($cv->user->email, $company, $request->reason));
             if ($request->check_var) {
                 $filteer =  FilterApplyJob::query()->create([
                     'employer_id' => $company->id,
                     'seeker_id' => $cv->user_id,
-                    'content' => $request->content,
+                    'content' => $request->reason,
                 ]);
                 $filteer->save();
             }
@@ -443,8 +443,15 @@ class NewEmployerController extends BaseController
     }
     public function deletefilterApply($id)
     {
-        FilterApplyJob::query()->find($id)->delete();
-        $this->setFlash(__('xóa thành công'));
-        return redirect()->back();
+        if (FilterApplyJob::query()->find($id)->delete()) {
+            return response()->json([
+                'message' => 'Xóa thành công!',
+                'status' => StatusCode::OK,
+            ], StatusCode::OK);
+        }
+        return response()->json([
+            'message' => 'Có một lỗi không xác định đã xảy ra',
+            'status' => StatusCode::FORBIDDEN,
+        ], StatusCode::OK);
     }
 }

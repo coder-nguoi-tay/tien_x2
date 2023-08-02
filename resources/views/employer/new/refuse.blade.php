@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title fw-semibold mb-4">Danh sách ứng viên bị từ chối</h5>
-            <a href="{{ route('employer.submittedWork') }}" class="btn btn-primary">Hồ sơ chưa xem</a>
+            <a href="{{ route('employer.submittedWork') }}" class="btn btn-primary">Hồ sơ chưa xem/đã xem</a>
             <a href="{{ route('employer.new.filterApply') }}" class="btn btn-primary" style="margin-left: 10px">Ứng viên bị cấm nộp
                 lại hồ sơ</a>
             <div class="table-responsive mt-4">
@@ -119,6 +119,8 @@
             $('.js-check-all').click(function(e) {
                 $('input:checkbox').prop('checked', this.checked);
             });
+            console.log($('input:checkbox'));
+            
         })
 
         function Reason(id) {

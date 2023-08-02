@@ -6,6 +6,7 @@ use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Models\Favourite;
 use App\Models\ProfileUserCv;
+use App\Models\Reason;
 use App\Models\SaveCv;
 use App\Models\UploadCv;
 use App\Models\User;
@@ -84,7 +85,7 @@ class ManageController extends BaseController
             ->join('employer', 'employer.id', '=', 'job.employer_id')
             ->join('company', 'company.id', '=', 'employer.id_company')
             ->Orderby('save_cv.created_at', 'DESC')
-            ->select('job.id as id', 'job.slug as slug', 'job.title as title', 'company.id as idCompany', 'company.logo as logo', 'company.name as nameCompany', 'save_cv.created_at as created_at', 'save_cv.status as status', 'save_cv.file_cv as file','save_cv.id as id_save_cv')
+            ->select('job.id as id', 'job.slug as slug', 'job.title as title', 'company.id as idCompany', 'company.logo as logo', 'company.name as nameCompany', 'save_cv.created_at as created_at', 'save_cv.status as status', 'save_cv.file_cv as file', 'save_cv.id as id_save_cv')
             ->get();
         return view('seeker.apply.index', [
             'apply' => $apply
@@ -197,5 +198,13 @@ class ManageController extends BaseController
             $this->setFlash(__('Cập nhật thất bại !'), 'error');
             return redirect()->back();
         }
+    }
+    public function getDataReason($id)
+    {
+        $reason = Reason::query()->where('cv_id', $id)->first();
+        return [
+            'data' => $reason,
+            'code' => 200,
+        ];
     }
 }

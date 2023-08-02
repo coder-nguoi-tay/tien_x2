@@ -64,6 +64,9 @@ import btnUpgrade from "./components/employer/package/upgrade.vue";
 app.component('btn-upgrade', btnUpgrade);
 import changePassword from "./components/seeker/changePassword.vue";
 app.component('change-password', changePassword);
+// test 
+import Test from "./components/employer/cv/test.vue";
+app.component('test-tap', Test);
 app.mount('#app');
 
 

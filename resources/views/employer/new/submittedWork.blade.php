@@ -73,12 +73,8 @@
                                                                     name="job_id">
                                                                 <label for="" class="form-label">Lý do</label>
                                                                 <textarea class="form-control" name="content" cols="30" rows="10" placeholder="mời bạn nhập"></textarea>
-                                                                <div class="form-group d-flex p-2">
-                                                                    <input type="checkbox" name="check_var" id="check_var">
-                                                                    <label for="check_var" style="margin-left: 5px">Nếu như
-                                                                        bạn không muốn ứng viên
-                                                                        nộp hồ sơ vài baif viết của ban!</label>
-                                                                </div>
+                                                                
+                                                                <test-tap></test-tap>
                                                                 <button class="btn btn-primary mt-3" type="submit">Phản
                                                                     hồi</button>
                                                             </form>
