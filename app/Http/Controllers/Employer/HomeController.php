@@ -60,7 +60,7 @@ class HomeController extends BaseController
                 // ['save_cv.status', 0],
             ])
             ->orderBy('save_cv.created_at', 'desc')
-            ->select('job.id as job_id', 'users.name as user_name', 'users.images as images', 'save_cv.status as status', 'save_cv.id as cv_id', 'save_cv.file_cv as file_cv', 'save_cv.user_id as user_id', 'majors.name as majors_name', 'save_cv.created_at as create_at_sv', 'save_cv.token as token', 'time_work.name  as time_work_name')
+            ->select('job.id as job_id', 'users.name as user_name', 'users.images as images', 'save_cv.status as status', 'save_cv.id as cv_id', 'save_cv.file_cv as file_cv', 'save_cv.user_id as user_id', 'majors.name as majors_name', 'save_cv.created_at as create_at_sv',  'time_work.name  as time_work_name')
             ->get();
         return view('employer.home', [
             'request' => $request->all(),
