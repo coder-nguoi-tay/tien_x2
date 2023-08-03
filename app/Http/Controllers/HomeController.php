@@ -31,6 +31,11 @@ class HomeController extends BaseController
      */
     public function index()
     {
+        if (Auth::guard('user')->check()) {
+            if (Auth::guard('user')->user()->role_id == 2) {
+                return redirect(route('employer.index'));
+            }
+        }
         $majors = Majors::query()->get();
 
         $location = location::query()->get();
@@ -107,7 +112,7 @@ class HomeController extends BaseController
             ->orderBy('employer.prioritize', 'desc')
             ->distinct()
             ->get();
-            
+
         // company
         $company = Company::query()->with('employer.job')->get();
         return view('index', [

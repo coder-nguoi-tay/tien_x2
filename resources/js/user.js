@@ -157,6 +157,9 @@ app.component('form-register-user', formRegisterUser);
 // đổi mật khẩu
 import changePassword from "./components/seeker/changePassword.vue";
 app.component('change-password', changePassword);
+// change image
+import changeImageProfile from "./components/seeker/changeImage.vue";
+app.component('change-image', changeImageProfile);
 app.mount('#app');
 
 

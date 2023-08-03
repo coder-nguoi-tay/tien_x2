@@ -30,7 +30,7 @@
                                 @foreach ($apply as $item)
                                     <tr>
                                         <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0"><img src="{{ $item->logo }}"
+                                            <h6 class="fw-semibold mb-0"><img src="{{ asset($item->logo) }}"
                                                     style="border-radius: 10px" alt="" width="100"></h6>
                                         </td>
                                         <td class="border-bottom-0">

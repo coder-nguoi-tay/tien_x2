@@ -75,6 +75,7 @@ Route::middleware('checkLogin')->group(function () {
 
         Route::prefix('profile')->name('profile.')->group(function () {
             Route::get('/{slug}', [ProfileController::class, 'index'])->name('index');
+            Route::post('/update-image-user', [ProfileController::class, 'changeImage'])->name('changeImage');
             Route::post('/on-status-profile', [ProfileController::class, 'onStatus'])->name('onStatus');
             Route::post('/off-status-profile', [ProfileController::class, 'offStatus'])->name('offStatus');
         });

@@ -610,21 +610,6 @@ export default {
         reader.readAsDataURL(imgFile[0]);
       }
     },
-    chooseImage() {
-      this.$refs["fileInput"].click();
-    },
-    onChange(e) {
-      let fileInput = this.$refs.fileInput;
-      let imgFile = fileInput.files;
-
-      if (imgFile && imgFile[0]) {
-        let reader = new FileReader();
-        reader.onload = (e) => {
-          this.filePreview = e.target.result;
-        };
-        reader.readAsDataURL(imgFile[0]);
-      }
-    },
   },
 };
 </script>

@@ -12,7 +12,7 @@
                             <div class="avatar">
                                 <a target="_blank"
                                     href="https://www.topcv.vn/viec-lam/thuc-tap-sinh-lap-trinh-website-php-wordpress/853861.html">
-                                    <img src="{{ $item->logo }}" class="w-100">
+                                    <img src="{{ asset($item->logo) }}" class="w-100">
                                 </a>
                             </div>
                             <div class="body">

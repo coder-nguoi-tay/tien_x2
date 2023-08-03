@@ -30,7 +30,7 @@
                             <h5 class="card-title mb-9 fw-semibold">Thông tin cá nhân</h5>
                             <div class="row align-items-center">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4" style="text-align: center">
                                         <div class="profile-avatar">
                                             <img src="{{ asset(Auth::guard('user')->user()->images) }}" alt=""
                                                 style=" border-radius: 50%;
@@ -42,8 +42,8 @@
                                             <input type="file" name="avatar" style="display: none;" id="img-avatar">
                                             <a href="javascript:void(0)"
                                                 style="font-size: 11px; padding: 3px 5px;margin: 6px 0px; color: #777; font-style: italic;"
-                                                data-target="#upload-profile-avatar" data-toggle="modal"
-                                                id="btn-upload-avatar">
+                                                id="btn-upload-avatar" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
                                                 Cập nhật ảnh
                                             </a>
                                         </div>
@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-12">
+                                <div class="col-xs-12 mt-3">
                                     <btn-toggle
                                         :data="{{ json_encode([
                                             'profileCv' => $profileCv,
@@ -103,7 +103,7 @@
                             <div class="row alig n-items-start">
                                 <div class="col-8">
                                     <h5 class="card-title mb-9 fw-semibold">Số lượng nhà tuyển dụng xem hồ sơ </h5>
-                                    <h4 class="fw-semibold mb-3">$6,820</h4>
+                                    <h4 class="fw-semibold mb-3">{{ $countEmployerSeeCv }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -111,6 +111,13 @@
                 </div>
             </div>
         </div>
+        {{-- modal change image user --}}
+        <!-- Modal -->
+        <change-image
+            :data="{{ json_encode([
+                'user' => $user,
+                'urlChange' => route('users.profile.changeImage'),
+            ]) }}"></change-image>
     </div>
     <div class="row">
         <div class="col-lg-4 d-flex align-items-stretch">

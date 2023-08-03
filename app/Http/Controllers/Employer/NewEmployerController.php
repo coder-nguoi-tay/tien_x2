@@ -274,6 +274,7 @@ class NewEmployerController extends BaseController
     {
         $cv = SaveCv::query()->find($id);
         $cv->status = 1;
+        $cv->countEmployer += 1;
         $cv->save();
         $employer = Employer::query()->where('user_id', Auth::guard('user')->user()->id)->first();
         event(new JobApplyEvent($cv->user->email, $employer));

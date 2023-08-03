@@ -12,8 +12,6 @@
                         <h4 class="title-cv mt-2"><a href="/{{ $item->file_cv }}" target="_blank">{{ $item->title }}</a>
                         </h4>
                         <ul class="action d-flex">
-                            <li><a href="" class="btn btn-sm btn-primary bold tcv-tooltip"><i
-                                        class="fa-solid fa-turn-up"></i> Tải xuống</a></li>
                             <li><a href="{{ route('users.file.destroy', $item->id) }}"><i
                                         class="fas fa-trash-alt icon-delete-cv"></i></a></li>
                         </ul>
@@ -56,6 +54,6 @@
                 </div>
             @endif
         </div>
-        
+
     </div>
 @endsection
