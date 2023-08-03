@@ -254,6 +254,22 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="modalReasonCv" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Lý do
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="title">
+                            <span id="dataReasonCv"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
         $(document).ready(function() {
@@ -263,7 +279,7 @@
         })
 
         function chanstatusCv(id) {
-            // location.reload();
+            location.reload();
             const url = 'employers/new/change-status-cv/' + id.cv_id;
             axios.get(url).then(function(res) {}).catch(function(error) {
                 console.log(error);

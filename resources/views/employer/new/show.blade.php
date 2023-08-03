@@ -120,14 +120,14 @@
 
         function chanstatusCv(id) {
             location.reload();
-            const url = 'change-status-cv/' + id.cv_id;
+            const url = '/employers/new/change-status-cv/' + id.cv_id;
             axios.get(url).then(function(res) {}).catch(function(error) {
                 console.log(error);
             })
         }
 
         function Reason(id) {
-            const url = 'get-data-reason/' + id.cv_id;
+            const url = '/employers/new/get-data-reason/' + id.cv_id;
             axios.get(url).then(function(res) {
                 $('#dataReasonCv').text(res.data.data.content);
                 $('#modalReasonCv').modal('show');
