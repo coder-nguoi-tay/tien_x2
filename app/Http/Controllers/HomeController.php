@@ -15,6 +15,7 @@ use App\Models\location;
 use App\Models\Majors;
 use App\Models\News;
 use App\Models\SaveCv;
+use App\Models\SeekerSkill;
 use App\Models\UploadCv;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -38,16 +39,27 @@ class HomeController extends BaseController
 
         $allJob = Job::query()->get();
         // Việc làm nổi bật
-        $array = [
+        $arrayForUser = [
             'experience_id' => '',
             'wage_id' => '',
             'location_id' => '',
-            'majors_id' => ''
+            'majors_id' => '',
         ];
-        $jobSeekerForUser =  Auth::guard('user')->check() && Auth::guard('user')->user()->role_id == 1 && User::query()->find(Auth::guard('user')->user()->id)->getCheckUser ? Jobseeker::query()->where('user_id', Auth::guard('user')->user()->id)->first()->toArray()   : $array;
+
+        $jobSeekerForUser =  Auth::guard('user')->check() && Auth::guard('user')->user()->role_id == 1
+            && User::query()->find(Auth::guard('user')->user()->id)->getCheckUser
+            ? Jobseeker::query()->where('user_id', Auth::guard('user')->user()->id)->first()->toArray()
+            : $arrayForUser;
+        // 
+        $skillForUserLogin = [];
+        if (count($jobSeekerForUser) > 4) {
+            $skillForUserLogin =  SeekerSkill::query()->where('job-seeker_id', $jobSeekerForUser['id'])->get()->pluck('skill_id')->toArray();
+        }
         $jobForUser = Job::query()
             ->join('employer', 'employer.id', '=', 'job.employer_id')
             ->join('company', 'company.id', '=', 'employer.id_company')
+            ->join('job_skill', 'job_skill.job_id', '=', 'job.id')
+            ->join('skill', 'job_skill.skill_id', '=', 'skill.id')
             ->where([
                 ['job.status', 1],
                 ['job.expired', 0],
@@ -60,13 +72,18 @@ class HomeController extends BaseController
                 ['job.location_id', $jobSeekerForUser['location_id']],
                 ['job.majors_id', $jobSeekerForUser['majors_id']],
             ])
+            ->whereIn('job_skill.skill_id', $skillForUserLogin)
             ->select('job.*', 'company.logo as logo', 'company.id as idCompany', 'company.name as nameCompany', 'company.address as addressCompany')
             ->orderBy('employer.prioritize', 'desc')
+            ->distinct()
             ->get();
+
         // việc làm hấp dẫn
         $jobAttractive = Job::query()
             ->join('employer', 'employer.id', '=', 'job.employer_id')
             ->join('company', 'company.id', '=', 'employer.id_company')
+            ->join('job_skill', 'job_skill.job_id', '=', 'job.id')
+            ->join('skill', 'job_skill.skill_id', '=', 'skill.id')
             ->where([
                 ['job.status', 1],
                 ['job.expired', 0],
@@ -85,9 +102,12 @@ class HomeController extends BaseController
                 ['job.location_id', $jobSeekerForUser['location_id']],
                 ['job.majors_id', $jobSeekerForUser['majors_id']],
             ])
+            ->whereIn('job_skill.skill_id', $skillForUserLogin)
             ->select('job.*', 'company.logo as logo', 'company.id as idCompany', 'company.name as nameCompany', 'company.address as addressCompany')
             ->orderBy('employer.prioritize', 'desc')
+            ->distinct()
             ->get();
+            
         // company
         $company = Company::query()->with('employer.job')->get();
         return view('index', [

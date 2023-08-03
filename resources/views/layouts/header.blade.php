@@ -153,7 +153,7 @@
                         <a href="{{ route('company.index') }}" title="">Nhà tuyển dụng</a>
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="#" title="">Câu hỏi thường hỏi</a>
+                        <a href="{{ route('faqs.index') }}" title="">Câu hỏi thường hỏi</a>
                     </li>
                 </ul>
             </nav><!-- Menus -->
