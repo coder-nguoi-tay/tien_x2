@@ -169,17 +169,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($apply as $item)
+                                @foreach ($apply as $key => $item)
                                     <tr>
                                         <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">1</h6>
+                                            <h6 class="fw-semibold mb-0">{{ $key + 1 }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-1">{{ $item->title }}</h6>
-                                            <span class="fw-normal">{{ $item->getMajors->name }}</span>
+                                            <span class="fw-normal">{{ $item->majors }}</span>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <p class="mb-0 fw-normal">{{ $item->getlocation->name }}</p>
+                                            <p class="mb-0 fw-normal">{{ $item->location }}</p>
                                         </td>
                                         <td class="border-bottom-0">
                                             <div class="d-flex align-items-center gap-2">
@@ -232,7 +232,8 @@
     </div>
     <script>
         async function Reason(id) {
-            const url = '/employers/new/get-data-reason/' + id.id;
+            console.log(id);
+            const url = '/users/get-data-reason/' + id.id_save_cv;
             await axios.get(url).then(function(res) {
                 $('#dataReasonCv').text(res.data.data.content);
             })

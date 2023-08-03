@@ -27,14 +27,27 @@ class ProfileController extends BaseController
     public function index()
     {
         $profileCv =  ProfileUserCv::where('user_id', Auth::guard('user')->user()->id)->first();
-        $apply = Job::query()
-            ->where('save_cv.user_id', Auth::guard('user')->user()->id)
-            ->leftjoin('save_cv', 'save_cv.id_job', '=', 'job.id')
+        $apply = SaveCv::where('save_cv.user_id', Auth::guard('user')->user()->id)
+            ->leftjoin('job', 'job.id', '=', 'save_cv.id_job')
             ->join('employer', 'employer.id', '=', 'job.employer_id')
+            ->join('location', 'location.id', '=', 'job.location_id')
+            ->join('majors', 'majors.id', '=', 'job.majors_id')
             ->join('company', 'company.id', '=', 'employer.id_company')
             ->Orderby('save_cv.created_at', 'DESC')
-            ->with('getMajors')
-            ->select('job.id as id', 'job.location_id', 'job.majors_id', 'job.slug as slug', 'job.title as title', 'company.id as idCompany', 'company.logo as logo', 'company.name as nameCompany', 'save_cv.created_at as created_at', 'save_cv.status as status', 'save_cv.file_cv as file')
+            ->select(
+                'job.id as id',
+                'job.slug as slug',
+                'job.title as title',
+                'company.id as idCompany',
+                'company.logo as logo',
+                'company.name as nameCompany',
+                'save_cv.created_at as created_at',
+                'save_cv.status as status',
+                'save_cv.file_cv as file',
+                'save_cv.id as id_save_cv',
+                'location.name as location',
+                'majors.name as majors',
+            )
             ->get();
         $keySearch = KeyUserSearch::query()->where('user_id', Auth::guard('user')->user()->id)->orderBy('count', 'desc')->get();
 
