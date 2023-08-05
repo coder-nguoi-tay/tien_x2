@@ -24,7 +24,7 @@
                             <tr>
                                 <td><input type="checkbox" value="{{ $item->id }}" name="id[]" class="js-check-one">
                                 </td>
-                                <td><img src="{{ $item->images }}" width="100" alt=""></td>
+                                <td><img src="{{ asset($item->images) }}" width="100" alt=""></td>
                                 <td>{{ $item->majors_name }}</td>
                                 <td>{{ $item->create_at_sv }}</td>
                                 <td>
@@ -73,7 +73,7 @@
                                                                     name="job_id">
                                                                 <label for="" class="form-label">Lý do</label>
                                                                 <textarea class="form-control" name="content" cols="30" rows="10" placeholder="mời bạn nhập"></textarea>
-                                                                
+
                                                                 <test-tap></test-tap>
                                                                 <button class="btn btn-primary mt-3" type="submit">Phản
                                                                     hồi</button>

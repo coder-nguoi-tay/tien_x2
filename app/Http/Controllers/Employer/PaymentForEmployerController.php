@@ -23,6 +23,9 @@ class PaymentForEmployerController extends BaseController
 
     public function store(Request $request)
     {
+        $request->validate([
+            'price' => 'required|integer',
+        ]);
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = route('employer.payment-for-emplyer.vnpayReturn');
         $vnp_TmnCode = "S50PEHFY"; //Mã website tại VNPAY 

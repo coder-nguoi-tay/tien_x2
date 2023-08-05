@@ -8233,14 +8233,13 @@ input[type=radio] + label::after {
 
  .btns-profiles-sec>span>img {
      float: left;
-
      -webkit-border-radius: 50%;
      -moz-border-radius: 50%;
      -ms-border-radius: 50%;
      -o-border-radius: 50%;
      border-radius: 50%;
-
      margin-right: 13px;
+     /* width: 100% */
  }
 
  .btns-profiles-sec>span>i {

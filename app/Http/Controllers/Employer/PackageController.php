@@ -82,6 +82,9 @@ class PackageController extends BaseController
     }
     public function payment(Request $request)
     {
+        $request->validate([
+            'price' => 'required|integer',
+        ]);
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = route('employer.package.return');
         $vnp_TmnCode = "S50PEHFY"; //Mã website tại VNPAY 

@@ -23,7 +23,7 @@
                             <tr>
                                 <td><input type="checkbox" value="{{ $item->id }}" name="id[]" class="js-check-one">
                                 </td>
-                                <td><img src="{{ $item->images }}" width="100" alt=""></td>
+                                <td><img src="{{ asset($item->images) }}" width="100" alt=""></td>
                                 <td>{{ $item->majors_name }}</td>
                                 <td>{{ $item->create_at_sv }}</td>
                                 <td>
