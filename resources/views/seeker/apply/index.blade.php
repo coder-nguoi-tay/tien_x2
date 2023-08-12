@@ -63,7 +63,7 @@
                                             <h6 class="fw-semibold mb-0 fs-4">{{ $item->created_at }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <a href="{{ asset($item->file) }}">Xem Cv</a>
+                                            <a href="{{ asset($item->file) }}" target="_blank">Xem CV</a>
                                         </td>
                                     </tr>
                                 @endforeach

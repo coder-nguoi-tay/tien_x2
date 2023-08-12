@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Modernize Free</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('employer/images/logos/favicon.png') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('home/images/resource/logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('employer/css/styles.min.css') }}" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="{{ asset('asset/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">

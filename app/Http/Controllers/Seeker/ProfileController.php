@@ -115,7 +115,6 @@ class ProfileController extends BaseController
             $this->setFlash(__('Bật tìm việc thành công!'));
             return back();
         } catch (\Throwable $th) {
-            dd($th->getMessage());
             DB::rollBack();
             $this->setFlash(__('Đã có một lỗi xảy ra'), 'error');
             return back();
@@ -132,7 +131,6 @@ class ProfileController extends BaseController
                 'status' => StatusCode::OK
             ], StatusCode::OK);
         } catch (\Throwable $th) {
-            dd($th->getMessage());
             DB::rollback();
             return response()->json([
                 'message' => 'Đã có một lỗi xảy ra',
@@ -151,7 +149,7 @@ class ProfileController extends BaseController
             $user->password = Hash::make($request->password);
             $user->save();
             $this->setFlash(_('Đổi mật khẩu thành công'));
-            return redirect()->route('user.changepass');
+            return redirect()->route('users.changePassword');
         } catch (\Throwable $th) {
             DB::rollBack();
             $this->setFlash(_('Đã có một lỗi xảy ra'));

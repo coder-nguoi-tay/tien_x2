@@ -243,7 +243,8 @@
                                                 </div>
                                             @endif
                                             @if ($item->status == 2)
-                                                <a class="btn" href="{{ asset($item->file_cv) }}">Xem</a>
+                                                <a class="btn" href="{{ asset($item->file_cv) }}"
+                                                    target="_blank">Xem</a>
                                             @endif
                                         </td>
                                     </tr>

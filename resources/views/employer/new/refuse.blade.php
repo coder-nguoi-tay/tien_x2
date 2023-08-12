@@ -118,9 +118,7 @@
         $(document).ready(function() {
             $('.js-check-all').click(function(e) {
                 $('input:checkbox').prop('checked', this.checked);
-            });
-            console.log($('input:checkbox'));
-            
+            }); 
         })
 
         function Reason(id) {
@@ -129,7 +127,6 @@
                 $('#dataReasonCv').text(res.data.data.content);
                 $('#modalReasonCv').modal('show');
             }).catch(function(error) {
-                console.log(error);
             })
         }
     </script>

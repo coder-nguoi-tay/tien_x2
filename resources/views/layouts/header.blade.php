@@ -5,9 +5,11 @@
 @endphp
 <div class="responsive-header">
     <div class="responsive-menubar">
-        <div class="res-logo"><a href="{{ route('home') }}" title=""><img
-                    src="{{ asset(Auth::guard('user')->user()->images) }}" alt="" /></a>
-        </div>
+        @if (Auth::guard('user')->check())
+            <div class="res-logo"><a href="{{ route('home') }}" title=""><img
+                        src="{{ asset(Auth::guard('user')->user()->images) }}" alt="" /></a>
+            </div>
+        @endif
         <div class="menu-resaction">
             <div class="res-openmenu">
                 <img src="{{ asset('home/images/icon.png') }}" alt="" /> Menu
